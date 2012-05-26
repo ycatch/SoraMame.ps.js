@@ -1,4 +1,4 @@
-function nadesico(source){
+function soramame(source){
   // ¥½¡¼¥¹¥³¡¼¥É
   this.source = source;
 
@@ -28,7 +28,7 @@ function nadesico(source){
 }
 
 
-nadesico.prototype.yylex = function(){
+soramame.prototype.yylex = function(){
   var retval = WORD;
 
   // Ê¸¤Î½ªÃ¼¤òÆÉ¤ßÈô¤Ð¤¹
@@ -164,7 +164,7 @@ nadesico.prototype.yylex = function(){
 }
 
 
-nadesico.prototype.isCRLF = function(c){
+soramame.prototype.isCRLF = function(c){
   var l = this.CRLF.length;
   for(var i = 0; i < l; i++){
     if(c == this.CRLF[i]){
@@ -175,7 +175,7 @@ nadesico.prototype.isCRLF = function(c){
 }
 
 
-nadesico.prototype.isdigit = function(c){
+soramame.prototype.isdigit = function(c){
   if('0' <= c && c <= '9'){
     return c;
   }
@@ -189,7 +189,7 @@ nadesico.prototype.isdigit = function(c){
 }
 
 
-nadesico.prototype.isoperator = function(c){
+soramame.prototype.isoperator = function(c){
   switch(c){
   case "+":
   case "-":
@@ -223,18 +223,18 @@ nadesico.prototype.isoperator = function(c){
 }
 
 
-nadesico.prototype.zen2han = function(c){
+soramame.prototype.zen2han = function(c){
   var hankaku = "0123456789+-**//%^()";
   var zenkaku = "£°£±£²£³£´£µ£¶£·£¸£¹¡Ü¡Ý¡ß¡ö¡à¡¿¡ó¡°¡Ê¡Ë";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
 
-nadesico.prototype.debug = function(str){
+soramame.prototype.debug = function(str){
   this.Escreen.innerHTML += str+"<br />\n";
 }
 
 
-nadesico.prototype.debug_clean = function(){
+soramame.prototype.debug_clean = function(){
   this.Escreen.innerHTML = '';
 }

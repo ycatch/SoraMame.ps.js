@@ -25,8 +25,8 @@
 
 （リンゴの値段×リンゴの個数＋ミカンの値段×ミカンの個数）×消費税率を表示。
 </textarea><br />
-<input type="button" value="実行" onclick="nadesico_exec()" />
-<input type="button" value="字句解析" onclick="nadesico_parse()" />
+<input type="button" value="実行" onclick="soramame_exec()" />
+<input type="button" value="字句解析" onclick="soramame_parse()" />
 <h2>結果</h2>
 <pre id="screen"></pre>
 </body>
@@ -37,22 +37,22 @@
 
 <script type="text/javascript">
 <!--
-var nade;
+var sora;
 var yylval = '';
 var variables = {};
 
 
-function nadesico_exec(){
+function soramame_exec(){
   var Esource = document.getElementById("source");
-  nade = new nadesico(Esource.value);
+  sora = new soramame(Esource.value);
 
   yyparse();
 }
 
 
-function nadesico_parse(){
+function soramame_parse(){
   var Esource = document.getElementById("source");
-  nade = new nadesico(Esource.value);
+  sora = new soramame(Esource.value);
 
   var type;
   var retval;
@@ -75,7 +75,7 @@ function nadesico_parse(){
       type = retval;
       break;
     }
-    nade.debug(type+": "+yylval);
+    sora.debug(type+": "+yylval);
     if(i++ > 100){
       break;
     }
@@ -84,14 +84,14 @@ function nadesico_parse(){
 
 
 function yylex(){
-  var retval = nade.yylex();
-  yylval = nade.yylval;
+  var retval = sora.yylex();
+  yylval = sora.yylval;
   return retval;
 }
 
 
 function yyerror(str){
-  nade.debug(str);
+  sora.debug(str);
 }
 //-->
 </script>
