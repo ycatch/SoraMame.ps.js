@@ -1,0 +1,36 @@
+%token NUMBER STRING JOSI WORD
+
+%left '+' '-'
+%left '*' '/'
+%left '^'
+
+%%
+
+lines:
+	| lines line
+	;
+
+line	: SUBJECT
+	| SUBJECT JOSI DOUSI { alert($1) }
+	| WORD '=' expr { variables[$1] = $3; }
+	| error { $$ = ""; }
+	;
+
+SUBJECT	: expr
+	;
+
+DOUSI	: WORD
+	;
+
+expr    : expr '+' expr { $$ = $1 + $3; }
+	| expr '-' expr { $$ = $1 - $3; }
+	| expr '*' expr { $$ = $1 * $3; }
+	| expr '/' expr { $$ = $1 / $3; }
+	| expr '^' expr { $$ = Math.pow($1, $3); }
+	| '(' expr ')' { $$ = $2; }
+	| NUMBER { $$ = $1; }
+	| WORD { $$ = variables[$1]; }
+	| STRING { $$ = $1; }
+	;
+
+%%

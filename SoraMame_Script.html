@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="EUC-JP"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+
+
+<head>
+<title>SoraMame Script</title>
+<script type="text/javascript" src="parse.js"></script>
+<script type="text/javascript" src="soramame.js"></script>
+</head>
+
+
+<body>
+<h1>日本語っぽいプログラミング言語：SoraMame Script(そら豆スクリプト)</h1>
+入力した日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
+<hr />
+<textarea id="source" cols="80" rows="20">
+「こんにちは、世界！」と表示。
+
+リンゴの値段は300円
+リンゴの個数は5個
+ミカンの値段は250円
+ミカンの個数は4個
+消費税率は1.05
+
+（リンゴの値段×リンゴの個数＋ミカンの値段×ミカンの個数）×消費税率を表示。
+</textarea><br />
+<input type="button" value="実行" onclick="nadesico_exec()" />
+<input type="button" value="字句解析" onclick="nadesico_parse()" />
+<h2>結果</h2>
+<pre id="screen"></pre>
+</body>
+
+
+</html>
+
+
+<script type="text/javascript">
+<!--
+var nade;
+var yylval = '';
+var variables = {};
+
+
+function nadesico_exec(){
+  var Esource = document.getElementById("source");
+  nade = new nadesico(Esource.value);
+
+  yyparse();
+}
+
+
+function nadesico_parse(){
+  var Esource = document.getElementById("source");
+  nade = new nadesico(Esource.value);
+
+  var type;
+  var retval;
+  var i = 0;
+  while(retval = yylex()){
+    switch(retval){
+    case NUMBER:
+      type = "NUMBER";
+      break;
+    case STRING:
+      type = "STRING";
+      break;
+    case JOSI:
+      type = "JOSI";
+      break;
+    case WORD:
+      type = "WORD";
+      break;
+    default:
+      type = retval;
+      break;
+    }
+    nade.debug(type+": "+yylval);
+    if(i++ > 100){
+      break;
+    }
+  }
+}
+
+
+function yylex(){
+  var retval = nade.yylex();
+  yylval = nade.yylval;
+  return retval;
+}
+
+
+function yyerror(str){
+  nade.debug(str);
+}
+//-->
+</script>
