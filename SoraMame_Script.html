@@ -15,15 +15,15 @@
 入力した日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
 <hr />
 <textarea id="source" cols="80" rows="20">
-「こんにちは、世界！」と表示。
+◎設定する {
+  {w:250, h:250}のサイズ
+  {ミリ秒:20}のフレーム
+  {色:0}の背景
+}
 
-リンゴの値段は300円
-リンゴの個数は5個
-ミカンの値段は250円
-ミカンの個数は4個
-消費税率は1.05
-
-（リンゴの値段×リンゴの個数＋ミカンの値段×ミカンの個数）×消費税率を表示。
+◎描画する {
+  {x:,マウスx, y:マウスy}に{w:10, h:10}のマル
+}
 </textarea><br />
 <input type="button" value="実行" onclick="soramame_exec()" />
 <input type="button" value="字句解析" onclick="soramame_parse()" />
