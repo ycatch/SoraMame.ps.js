@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="EUC-JP"?>
+﻿<?xml version="1.0" encoding="EUC-JP"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
 
-
 <head>
+<meta charset="UTF-8">
 <title>SoraMame Script</title>
 <script type="text/javascript" src="parse.js"></script>
 <script type="text/javascript" src="soramame.js"></script>
@@ -11,23 +11,23 @@
 
 
 <body>
-<h1>���ܸ�äݤ��ץ�����ߥ󥰸��졧SoraMame Script(����Ʀ������ץ�)</h1>
-���Ϥ������ܸ�äݤ������ɤ򡢥ӥ��奢��ǥ������ѤΥץ�����ߥ󥰸���Processing.js���Ѵ����Ƽ¹Ԥ��ޤ�(SoraMame.ps.js)��
+<h1>日本語っぽいプログラミング言語：SoraMame Script(そら豆スクリプト)</h1>
+入力した日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
 <hr />
 <textarea id="source" cols="80" rows="20">
-�����ꤹ�� {
-  {w:250, h:250}�Υ�����
-  {�ߥ���:20}�Υե졼��
-  {��:0}���ط�
+◎設定する {
+  {w:250, h:250}のサイズ
+  {ミリ秒:20}のフレーム
+  {色:0}の背景
 }
 
-�����褹�� {
-  {x:,�ޥ���x, y:�ޥ���y}��{w:10, h:10}�Υޥ�
+◎描画する {
+  {x:,マウスx, y:マウスy}に{w:10, h:10}のマル
 }
 </textarea><br />
-<input type="button" value="�¹�" onclick="soramame_exec()" />
-<input type="button" value="�������" onclick="soramame_parse()" />
-<h2>���</h2>
+<input type="button" value="実行" onclick="soramame_exec()" />
+<input type="button" value="字句解析" onclick="soramame_lex()" />
+<h2>結果</h2>
 <pre id="screen"></pre>
 </body>
 
@@ -50,7 +50,7 @@ function soramame_exec(){
 }
 
 
-function soramame_parse(){
+function soramame_lex(){
   var Esource = document.getElementById("source");
   sora = new soramame(Esource.value);
 
