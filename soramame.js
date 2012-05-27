@@ -1,27 +1,27 @@
-function soramame(source){
-  // ¥½¡¼¥¹¥³¡¼¥É
+ï»¿function soramame(source){
+  // ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰
   this.source = source;
 
-  // ½õ»ì
+  // åŠ©è©
   this.josi = [
-    "¤Ç¤Ê¤±¤ì¤Ğ", "¤Ë¤Ä¤¤¤Æ", "¤Ê¤é¤Ğ", "¤Ş¤Ç¤ò", "¤Ş¤Ç¤Î", "¤¯¤é¤¤", "¤Ê¤Î¤«",
-    "¤È¤·¤Æ", "¤È¤Ï", "¤Ê¤é", "¤«¤é", "¤Ş¤Ç", "¤·¤Æ", "¤À¤±", "¤è¤ê", "¤Û¤É",
-    "¤Ê¤É", "¤Ã¤Æ", "¤Ç¤Ï", "¤Ï", "¤Ç", "¤ò", "¤Î", "¤¬", "¤Ë", "¤Ø", "¤È", "¤Æ"
+	"ã¯", "ã®", "ã«", "ã§", "ã‚’", "ã™ã‚‹",
+	"â—", "â—",
+	"ã ã‘", "ã—ã„",
   ];
 
-  // Ê¸»úÎó¥ê¥Æ¥é¥ë
-  this.string_literal = [["¡Ö", "¡×"], ["¡Ø", "¡Ù"], ["¡É", "¡É"], ['"', '"'], ["¡Æ", "¡Æ"], ["`", "`"]];
+  // æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«
+  this.string_literal = [["ã€Œ", "ã€"], ["ã€", "ã€"], ["â€", "â€"], ['"', '"'], ["â€˜", "â€˜"], ["`", "`"]];
 
-  // Ê¸¤Î½ªÃ¼µ­¹æ
-  this.CRLF = ["\n", "\r", "¡£"];
+  // æ–‡ã®çµ‚ç«¯è¨˜å·
+  this.CRLF = ["\n", "\r", "ã€‚"];
 
-  // Ã±°Ìµ­¹æ
+  // å˜ä½è¨˜å·
   this.unit = [
-    "¥á¡¼¥È¥ë", "¥É¥Ã¥È", "¤ÄÌÜ", "¤Ä¤á", "¸ÄÌÜ", "¸Ä", "±ß", "¤Ä", "ËÜ", "ºı", 
+    "ãƒ¡ãƒ¼ãƒˆãƒ«", "ãƒ‰ãƒƒãƒˆ", "ã¤ç›®", "ã¤ã‚", "å€‹ç›®", "å€‹", "å††", "ã¤", "æœ¬", "å†Š", 
     "px", "pt", "cm", "mm", "m", "kg", "g"
   ];
 
-  // ¤½¤ÎÂ¾
+  // ãã®ä»–
   this.yylval;
   this.Escreen = document.getElementById("screen");
   this.debug_clean();
@@ -31,12 +31,12 @@ function soramame(source){
 soramame.prototype.yylex = function(){
   var retval = WORD;
 
-  // Ê¸¤Î½ªÃ¼¤òÆÉ¤ßÈô¤Ğ¤¹
+  // æ–‡ã®çµ‚ç«¯ã‚’èª­ã¿é£›ã°ã™
   while(this.isCRLF(this.source.charAt(0))){
     this.source = this.source.substring(1);
   }
 
-  // 1Ê¸¤ò¼è¤ê½Ğ¤¹
+  // 1æ–‡ã‚’å–ã‚Šå‡ºã™
   var line = this.source;
   var l = this.CRLF.length;
   for(var i = 0; i < l; i++){
@@ -47,7 +47,7 @@ soramame.prototype.yylex = function(){
     }
   }
 
-  // Ê¸»úÎó
+  // æ–‡å­—åˆ—
   var l = this.string_literal.length;
   for(var i = 0; i < l; i++){
     var sl = this.string_literal[i];
@@ -55,7 +55,7 @@ soramame.prototype.yylex = function(){
       continue;
     }
 
-    // Ê¸»úÎó¤ò¼è¤ê½Ğ¤¹
+    // æ–‡å­—åˆ—ã‚’å–ã‚Šå‡ºã™
     line = line.substring(1);
     var p = line.indexOf(sl[1]);
     var token = line;
@@ -71,7 +71,7 @@ soramame.prototype.yylex = function(){
   }
 
 
-  // ½õ»ì
+  // åŠ©è©
   var l = this.josi.length;
   for(var i = 0; i < l; i++){
     var josi = this.josi[i];
@@ -83,11 +83,11 @@ soramame.prototype.yylex = function(){
       continue;
     }
 
-    // ½õ»ì¤ò¼è¤ê½Ğ¤¹
+    // åŠ©è©ã‚’å–ã‚Šå‡ºã™
     this.source = this.source.substring(josi.length);
     this.yylval = josi;
     switch(josi){
-    case "¤Ï":
+    case "ã¯":
       return "=".charCodeAt(0);
     default:
       return JOSI;
@@ -95,7 +95,7 @@ soramame.prototype.yylex = function(){
   }
 
 
-  // ¿ô»ú
+  // æ•°å­—
   if(this.isdigit(line.charAt(0))){
     var token = '';
     var l = line.length;
@@ -109,7 +109,7 @@ soramame.prototype.yylex = function(){
     this.source = this.source.substring(i);
     this.yylval = token - 0;
 
-    // Ã±°Ì
+    // å˜ä½
     var line = line.substring(i);;
     var l = this.unit.length;
     for(var i = 0; i < l; i++){
@@ -119,7 +119,7 @@ soramame.prototype.yylex = function(){
         continue;
       }
 
-      // Ã±°Ì¤òÆÉ¤ßÈô¤Ğ¤¹
+      // å˜ä½ã‚’èª­ã¿é£›ã°ã™
       this.source = this.source.substring(unit.length);
       break;
     }
@@ -128,7 +128,7 @@ soramame.prototype.yylex = function(){
   }
 
 
-  // ±é»»»Ò
+  // æ¼”ç®—å­
   var c = this.isoperator(line.charAt(0));
   if(c){
     this.source = this.source.substring(1);
@@ -137,8 +137,8 @@ soramame.prototype.yylex = function(){
   }
 
 
-  // Ã±¸ì
-  var token = line.match(/^[^0123456789+-\/%^()£°£±£²£³£´£µ£¶£·£¸£¹¡Ü¡İ¡ß¡ö¡à¡¿¡ó¡°¡Ê¡Ë]+/);
+  // å˜èª
+  var token = line.match(/^[^0123456789+-\/%^()ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™ï¼‹ï¼Ã—ï¼ŠÃ·ï¼ï¼…ï¼¾ï¼ˆï¼‰]+/);
   if(token){
     token = String(token);
   } else {
@@ -179,7 +179,7 @@ soramame.prototype.isdigit = function(c){
   if('0' <= c && c <= '9'){
     return c;
   }
-  if('£°' <= c && c <= '£¹'){
+  if('ï¼' <= c && c <= 'ï¼™'){
     return this.zen2han(c);
   }
   if(c == '.'){
@@ -200,16 +200,16 @@ soramame.prototype.isoperator = function(c){
   case ")":
     return c;
 
-  case "¡Ü":
-  case "¡İ":
-  case "¡ß":
-  case "¡ö":
-  case "¡à":
-  case "¡¿":
-  case "¡ó":
-  case "¡°":
-  case "¡Ê":
-  case "¡Ë":
+  case "ï¼‹":
+  case "ï¼":
+  case "Ã—":
+  case "ï¼Š":
+  case "Ã·":
+  case "ï¼":
+  case "ï¼…":
+  case "ï¼¾":
+  case "ï¼ˆ":
+  case "ï¼‰":
     return this.zen2han(c);
   }
 
@@ -225,7 +225,7 @@ soramame.prototype.isoperator = function(c){
 
 soramame.prototype.zen2han = function(c){
   var hankaku = "0123456789+-**//%^()";
-  var zenkaku = "£°£±£²£³£´£µ£¶£·£¸£¹¡Ü¡İ¡ß¡ö¡à¡¿¡ó¡°¡Ê¡Ë";
+  var zenkaku = "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™ï¼‹ï¼Ã—ï¼ŠÃ·ï¼ï¼…ï¼¾ï¼ˆï¼‰";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
