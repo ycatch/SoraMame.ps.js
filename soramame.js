@@ -126,7 +126,7 @@ soramame.prototype.yylex = function(){
 
 
   // 単語
-  var token = line.match(/^[^0123456789+-\/%^(){},０１２３４５６７８９＋－×＊÷／％＾（）｛｝、]+/);
+  var token = line.match(/^[^0123456789+-\/%^(){},:０１２３４５６７８９＋－×＊÷／％＾（）｛｝、：]+/);
   if(token){
     token = String(token);
   } else {
@@ -189,6 +189,7 @@ soramame.prototype.isoperator = function(c){
   case "{":
   case "}":
   case ",":
+  case ":":
     return c;
 
   case "＋":
@@ -204,6 +205,7 @@ soramame.prototype.isoperator = function(c){
   case "｛":
   case "｝":
   case "、":
+  case "：":
     return this.zen2han(c);
   }
 
@@ -218,8 +220,8 @@ soramame.prototype.isoperator = function(c){
 
 
 soramame.prototype.zen2han = function(c){
-  var hankaku = "0123456789+-**//%^(){},";
-  var zenkaku = "０１２３４５６７８９＋－×＊÷／％＾（）｛｝、";
+  var hankaku = "0123456789+-**//%^(){},:";
+  var zenkaku = "０１２３４５６７８９＋－×＊÷／％＾（）｛｝、：";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
