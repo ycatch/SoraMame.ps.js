@@ -8,6 +8,8 @@
 	"◎", "●",
 	"だけ", "しい",
   ];
+  
+  this.josi2 = new RegExp("^[◎|●|は|の|に|で|を|する]");
 
   // 文字列リテラル
   this.string_literal = [["「", "」"], ["『", "』"], ["”", "”"], ['"', '"'], ["‘", "‘"], ["`", "`"]];
@@ -72,28 +74,14 @@ soramame.prototype.yylex = function(){
 
 
   // 助詞
-  var l = this.josi.length;
-  for(var i = 0; i < l; i++){
-    var josi = this.josi[i];
-    p = line.indexOf(josi);
-    if(p > 0){
-      line = line.substring(0, p);
-      break;
-    } else if(p < 0){
-      continue;
-    }
-
-    // 助詞を取り出す
-    this.source = this.source.substring(josi.length);
-    this.yylval = josi;
-    switch(josi){
-    case "は":
-      return "=".charCodeAt(0);
-    default:
-      return JOSI;
-    }
+  var p = line.match(this.josi2);
+  if (p != null) {
+	var josi = p[0];
+	line = line.substring(josi.length);
+	this.source = this.source.substring(josi.length);
+    this.yylval = josi + "";
+	return JOSI;
   }
-
 
   // 数字
   if(this.isdigit(line.charAt(0))){
