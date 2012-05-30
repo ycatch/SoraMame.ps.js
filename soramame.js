@@ -7,8 +7,10 @@
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
-  this.string_literal = [["「", "」"], ["『", "』"], ["”", "”"], ['"', '"'], ["‘", "‘"], ["`", "`"]];
-
+  var pat_kakko1 = "「.*」|『.*』";
+  var pat_kakko2 = "「『";
+  this.string_literal = new RegExp("^" + pat_kakko1);
+  
   // 数字
   pat_num = "[0-9０-９]";
   this.num = new RegExp("^" + pat_num);
@@ -53,28 +55,14 @@ soramame.prototype.yylex = function(){
   }
 
   // 文字列
-  var l = this.string_literal.length;
-  for(var i = 0; i < l; i++){
-    var sl = this.string_literal[i];
-    if(line.charAt(0) != sl[0]){
-      continue;
-    }
-
-    // 文字列を取り出す
-    line = line.substring(1);
-    var p = line.indexOf(sl[1]);
-    var token = line;
-    if(p > 0){
-      token = line.substring(0, p);
-      p += 2;
-    } else {
-      p = line.length;
-    }
-    this.source = this.source.substring(p);
-    this.yylval = token;
-    return STRING;
+  var p = line.match(this.string_literal);
+  if (p != null) {
+	var line = p[0];
+	
+	this.source = this.source.substring(line.length);
+    this.yylval = line + "";
+	return STRING;
   }
-
 
   // 助詞
   var p = line.match(this.josi);
