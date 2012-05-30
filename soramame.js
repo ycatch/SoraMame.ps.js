@@ -2,18 +2,21 @@
   // ソースコード
   this.source = source;
 
-  // 助詞
-  this.josi = [
-	"は", "の", "に", "で", "を", "する",
-	"◎", "●",
-	"だけ", "しい",
-  ];
-  
-  this.josi2 = new RegExp("^[◎|●|は|の|に|で|を|する]");
+  // 助詞  
+  var pat_josi = "[◎|●|は|の|に|で|を|する]";
+  this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
   this.string_literal = [["「", "」"], ["『", "』"], ["”", "”"], ['"', '"'], ["‘", "‘"], ["`", "`"]];
 
+  // 数字
+  pat_num = "[0-9０-９]";
+  this.num = new RegExp("^" + pat_num);
+  
+  // 記号
+  pat_symbol = "[^+-\/%^(){},:＋－×＊÷／％＾（）｛｝、：]";
+  this.symbol = new RegExp("^" + pat_symbol);
+  
   // 文の終端記号
   this.CRLF = ["\n", "\r", "。"];
 
@@ -74,7 +77,7 @@ soramame.prototype.yylex = function(){
 
 
   // 助詞
-  var p = line.match(this.josi2);
+  var p = line.match(this.josi);
   if (p != null) {
 	var josi = p[0];
 	line = line.substring(josi.length);
