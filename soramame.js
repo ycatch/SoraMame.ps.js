@@ -57,9 +57,13 @@ soramame.prototype.yylex = function(){
   // 文字列
   var p = line.match(this.string_literal);
   if (p != null) {
-	var line = p[0];
+  	var bracket = "'";
+    if (p[0].substring(0,1) == "『") {
+		bracket = '"';
+	}
+	var line = bracket + p[0].substring(1, p[0].length - 1) + bracket;
 	
-	this.source = this.source.substring(line.length);
+	this.source = this.source.substring(p[0].length);
     this.yylval = line + "";
 	return STRING;
   }
