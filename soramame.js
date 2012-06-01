@@ -12,7 +12,7 @@
   this.string_literal = new RegExp("^" + pat_kakko1);
   
   // 数字
-  pat_num = "[0-9]+(\.[0-9]+)?";
+  pat_num = "[0-9０-９]+([\.．][0-9０-９]+)?";
   this.num = new RegExp("^" + pat_num);
   
   // 記号
