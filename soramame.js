@@ -2,6 +2,9 @@
   // ソースコード
   this.source = source;
 
+  // 文の終端記号
+  this.CRLF = ["\n", "\r", "。"];
+
   // 助詞  
   var pat_josi = "[◎|●|は|の|に|で|を|する]";
   this.josi = new RegExp("^" + pat_josi);
@@ -11,17 +14,10 @@
   var pat_kakko2 = "「『";
   this.string_literal = new RegExp("^" + pat_kakko);
   
-  // 数字
-  pat_num = "[0-9０-９]+([\.．][0-9０-９]+)?";
-  this.num = new RegExp("^" + pat_num);
-  
   // 記号
   pat_symbol = "[^+-\/%^(){},:＋－×＊÷／％＾（）｛｝、：]";
   this.symbol = new RegExp("^" + pat_symbol);
   
-  // 文の終端記号
-  this.CRLF = ["\n", "\r", "。"];
-
   // その他
   this.yylval;
   this.Escreen = document.getElementById("screen");
@@ -73,14 +69,6 @@ soramame.prototype.yylex = function(){
   }
 
   // 数字
-  var p = line.match(this.num);
-  if (p != null) {
-	var token = p[0];
-	this.source = this.source.substring(p[0].length);
-    this.yylval = token - 0;
-    return NUMBER;
-  }
-  /*
   if(this.isdigit(line.charAt(0))){
     var token = '';
     var l = line.length;
@@ -93,11 +81,9 @@ soramame.prototype.yylex = function(){
     }
     this.source = this.source.substring(i);
     this.yylval = token - 0;
-    return NUMBER;
+	return NUMBER;
   }
-  */
-
-
+ 
   // 記号
   var c = this.isoperator(line.charAt(0));
   if(c){
@@ -108,7 +94,7 @@ soramame.prototype.yylex = function(){
 
 
   // 単語
-  var token = line.match(/^[^0123456789+-\/%^(){},:０１２３４５６７８９＋－×＊÷／％＾（）｛｝、：]+/);
+  var token = line.match(/^[^0123456789+-\/%^(){}.,:０１２３４５６７８９＋－×＊÷／％＾（）｛｝．、：]+/);
   if(token){
     token = String(token);
   } else {
@@ -154,6 +140,9 @@ soramame.prototype.isdigit = function(c){
   }
   if(c == '.'){
     return c;
+  }
+  if(c == '．'){
+    return this.zen2han(c);
   }
   return false;
 }
@@ -202,8 +191,8 @@ soramame.prototype.isoperator = function(c){
 
 
 soramame.prototype.zen2han = function(c){
-  var hankaku = "0123456789+-**//%^(){},:";
-  var zenkaku = "０１２３４５６７８９＋－×＊÷／％＾（）｛｝、：";
+  var hankaku = "0123456789+-**//%^(){}.,:";
+  var zenkaku = "０１２３４５６７８９＋－×＊÷／％＾（）｛｝．、：";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
