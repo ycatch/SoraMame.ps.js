@@ -22,12 +22,6 @@
   // 文の終端記号
   this.CRLF = ["\n", "\r", "。"];
 
-  // 単位記号
-  this.unit = [
-    "メートル", "ドット", "つ目", "つめ", "個目", "個", "円", "つ", "本", "冊", 
-    "px", "pt", "cm", "mm", "m", "kg", "g"
-  ];
-
   // その他
   this.yylval;
   this.Escreen = document.getElementById("screen");
@@ -91,27 +85,11 @@ soramame.prototype.yylex = function(){
     }
     this.source = this.source.substring(i);
     this.yylval = token - 0;
-
-    // 単位
-    var line = line.substring(i);;
-    var l = this.unit.length;
-    for(var i = 0; i < l; i++){
-      var unit = this.unit[i];
-      p = line.indexOf(unit);
-      if(p != 0){
-        continue;
-      }
-
-      // 単位を読み飛ばす
-      this.source = this.source.substring(unit.length);
-      break;
-    }
-
     return NUMBER;
   }
 
 
-  // 演算子
+  // 記号
   var c = this.isoperator(line.charAt(0));
   if(c){
     this.source = this.source.substring(1);
