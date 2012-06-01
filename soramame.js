@@ -7,9 +7,9 @@
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
-  var pat_kakko1 = "「.*」|『.*』";
+  var pat_kakko = "「.*」|『.*』";
   var pat_kakko2 = "「『";
-  this.string_literal = new RegExp("^" + pat_kakko1);
+  this.string_literal = new RegExp("^" + pat_kakko);
   
   // 数字
   pat_num = "[0-9０-９]+([\.．][0-9０-９]+)?";
