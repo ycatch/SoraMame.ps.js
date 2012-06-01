@@ -12,7 +12,7 @@
   this.string_literal = new RegExp("^" + pat_kakko1);
   
   // 数字
-  pat_num = "[0-9０-９]";
+  pat_num = "[0-9]+(\.[0-9]+)?";
   this.num = new RegExp("^" + pat_num);
   
   // 記号
@@ -73,6 +73,14 @@ soramame.prototype.yylex = function(){
   }
 
   // 数字
+  var p = line.match(this.num);
+  if (p != null) {
+	var token = p[0];
+	this.source = this.source.substring(p[0].length);
+    this.yylval = token - 0;
+    return NUMBER;
+  }
+  /*
   if(this.isdigit(line.charAt(0))){
     var token = '';
     var l = line.length;
@@ -87,6 +95,7 @@ soramame.prototype.yylex = function(){
     this.yylval = token - 0;
     return NUMBER;
   }
+  */
 
 
   // 記号
