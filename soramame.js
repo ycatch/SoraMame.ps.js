@@ -85,7 +85,7 @@ soramame.prototype.yylex = function(){
   }
  
   // 記号
-  var c = this.isoperator(line.charAt(0));
+  var c = this.issymbol(line.charAt(0));
   if(c){
     this.source = this.source.substring(1);
     this.yylval = c;
@@ -148,7 +148,7 @@ soramame.prototype.isdigit = function(c){
 }
 
 
-soramame.prototype.isoperator = function(c){
+soramame.prototype.issymbol = function(c){
   switch(c){
   case "+":
   case "-":
