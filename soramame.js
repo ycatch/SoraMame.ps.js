@@ -34,13 +34,19 @@ soramame.prototype.yylex = function(){
     this.source = this.source.substring(1);
   }
 
+  //スペースとタブを読み飛ばす
+  var p = this.source.match(/^\s+/);
+  if (p != null) {
+	this.source = this.source.substring(p[0].length);
+  }
+  
   // 1文を取り出す
   var line = this.source;
-  p = line.match(this.CRLF);
+  var p = line.match(this.CRLF);
   if (p != null) {
 	line = line.substring(0, p[0].length);
   }
- 
+
   // 文字列
   p = line.match(this.string_literal);
   if (p != null) {
@@ -59,7 +65,6 @@ soramame.prototype.yylex = function(){
   p = line.match(this.josi);
   if (p != null) {
 	var josi = p[0];
-	line = line.substring(josi.length);
 	this.source = this.source.substring(josi.length);
     this.yylval = josi + "";
 	return JOSI;
