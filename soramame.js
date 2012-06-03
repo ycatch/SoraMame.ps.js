@@ -3,10 +3,12 @@
   this.source = source;
 
   // 文の終端記号
-  this.CRLF = ["\n", "\r", "。"];
-
+  var pat_CRCF = "[\n|\r|。]";
+  this.CRLF = new RegExp("^" + pat_CRCF);
+  
   // 助詞  
-  var pat_josi = "[◎|●|は|の|に|で|を|する]";
+  var pat_josi = "[◎|●|は|の|に|で|を|する]";	//助詞の判定用
+  var pat_josi2 = "◎●はのにでを|する";			//助詞以外の判定用
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
@@ -15,8 +17,7 @@
   this.string_literal = new RegExp("^" + pat_kakko);
   
   // 記号
-  pat_symbol = "[^+-\/%^(){},:＋－×＊÷／％＾（）｛｝、：]";
-  this.symbol = new RegExp("^" + pat_symbol);
+  pat_symbol2 = "^+-\/%^(){},:＋－×＊÷／％＾（）｛｝、：";
   
   // その他
   this.yylval;
@@ -35,17 +36,13 @@ soramame.prototype.yylex = function(){
 
   // 1文を取り出す
   var line = this.source;
-  var l = this.CRLF.length;
-  for(var i = 0; i < l; i++){
-    var CRLF = this.CRLF[i];
-    var p = this.source.indexOf(CRLF);
-    if(p > 0){
-      line = this.source.substring(0, p);
-    }
+  p = line.match(this.CRLF);
+  if (p != null) {
+	line = this.line.substring(0, p[0]);
   }
-
+ 
   // 文字列
-  var p = line.match(this.string_literal);
+  p = line.match(this.string_literal);
   if (p != null) {
   	var bracket = "'";
     if (p[0].substring(0,1) == "『") {
@@ -59,7 +56,7 @@ soramame.prototype.yylex = function(){
   }
 
   // 助詞
-  var p = line.match(this.josi);
+  p = line.match(this.josi);
   if (p != null) {
 	var josi = p[0];
 	line = line.substring(josi.length);
