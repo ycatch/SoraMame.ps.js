@@ -38,7 +38,7 @@ soramame.prototype.yylex = function(){
   var line = this.source;
   p = line.match(this.CRLF);
   if (p != null) {
-	line = this.line.substring(0, p[0]);
+	line = line.substring(0, p[0].length);
   }
  
   // 文字列
