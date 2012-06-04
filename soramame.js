@@ -7,8 +7,8 @@
   this.CRLF = new RegExp("^" + pat_CRCF);
   
   // 助詞  
-  var pat_josi = "[◎|●|は|の|に|で|を|する]";	//助詞の判定用
-  var pat_josi2 = "◎●はのにでを|する";			//助詞以外の判定用
+  var pat_josi = "[◎|●|は|の|に|で|を]";	//助詞の判定用
+  var pat_josi2 = "◎●はのにでを";			//助詞以外の判定用
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
