@@ -12,7 +12,7 @@
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
-  var pat_kakko = "「.*」|『.*』";
+  var pat_kakko = "(「.*」|『.*』)";
   var pat_kakko2 = "「」『』";
   this.string_literal = new RegExp("^" + pat_kakko);
   
@@ -20,12 +20,12 @@
   var pat_num2 = "0123456789０１２３４５６７８９";
  
  　// 記号
-  var pat_symbol2 = "+-\/%^(){}.,:＋－×＊÷／％＾（）｛｝．、：";
+  var pat_symbol2 = "=+-\/%^(){}.,:＝＋－×＊÷／％＾（）｛｝．、：";
   
   //単語(識別子)
   var pat_ident = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_num2 + "]";
   var pat_ident2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + "]";
-  this.word = new RegExp("^" + pat_ident + "+");
+  this.word = new RegExp("^" + pat_ident + pat_ident2 + "+");
   
   // その他
   this.yylval;
@@ -161,6 +161,7 @@ soramame.prototype.isdigit = function(c){
 
 soramame.prototype.issymbol = function(c){
   switch(c){
+  case "=":
   case "+":
   case "-":
   case "*":
@@ -174,6 +175,7 @@ soramame.prototype.issymbol = function(c){
   case ":":
     return c;
 
+  case "＝":
   case "＋":
   case "－":
   case "×":
