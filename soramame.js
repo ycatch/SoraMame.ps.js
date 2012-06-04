@@ -34,8 +34,8 @@ soramame.prototype.yylex = function(){
     this.source = this.source.substring(1);
   }
 
-  //スペースとタブを読み飛ばす
-  var p = this.source.match(/^\s+/);
+  //スペース(全角、半角)とタブを読み飛ばす
+  var p = this.source.match(/^[\s　]+/);
   if (p != null) {
 	this.source = this.source.substring(p[0].length);
   }
