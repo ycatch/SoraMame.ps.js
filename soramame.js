@@ -13,11 +13,19 @@
 
   // 文字列リテラル
   var pat_kakko = "「.*」|『.*』";
-  var pat_kakko2 = "「『";
+  var pat_kakko2 = "「」『』";
   this.string_literal = new RegExp("^" + pat_kakko);
   
-  // 記号
-  pat_symbol2 = "^+-\/%^(){},:＋－×＊÷／％＾（）｛｝、：";
+  // 数字
+  var pat_num2 = "0123456789０１２３４５６７８９";
+ 
+ 　// 記号
+  var pat_symbol2 = "+-\/%^(){}.,:＋－×＊÷／％＾（）｛｝．、：";
+  
+  //単語(識別子)
+  var pat_ident = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_num2 + "]";
+  var pat_ident2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + "]";
+  this.word = new RegExp("^" + pat_ident + "+");
   
   // その他
   this.yylval;
@@ -96,9 +104,10 @@ soramame.prototype.yylex = function(){
 
 
   // 単語
-  var token = line.match(/^[^0123456789+-\/%^(){}.,:０１２３４５６７８９＋－×＊÷／％＾（）｛｝．、：]+/);
-  if(token){
-    token = String(token);
+  var token = line.match(this.word);
+  //var token = line.match(/^[^0123456789+-\/%^(){}.,:０１２３４５６７８９＋－×＊÷／％＾（）｛｝．、：]+/);
+  if(token != null){
+    token = String(token[0]);
   } else {
     token = "";
   }
