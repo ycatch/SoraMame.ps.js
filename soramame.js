@@ -25,7 +25,7 @@
   //単語(識別子)
   var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_num2 + "]";
   var pat_word2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + "]";
-  this.word = new RegExp("^" + pat_word1 + pat_word2 + "+");
+  this.word = new RegExp("^" + pat_word1 + pat_word2 + "*");
   
   // その他
   this.yylval;
