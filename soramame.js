@@ -6,6 +6,10 @@
   var pat_CRCF = "[\n|\r|。]";
   this.CRLF = new RegExp("^" + pat_CRCF);
   
+  //行コメント
+　　var pat_comment_line = "\/\/";
+  this.comment_line = new RegExp("^" + pat_comment_line);
+  
   // 助詞  
   var pat_josi = "[◎●はのにでを]";	//助詞の判定用
   var pat_josi2 = "◎●はのにでを";	//助詞以外の判定用
@@ -55,6 +59,14 @@ soramame.prototype.yylex = function(){
 	line = line.substring(0, p[0].length);
   }
 
+  //行コメント
+  p = line.match(this.comment_line);
+  if (p != null) {
+	this.source = this.source.substr(line.length);
+	this.yylval= line + "";
+	return COMMENT;
+  }
+  
   // 文字列
   p = line.match(this.string_literal);
   if (p != null) {
@@ -105,7 +117,6 @@ soramame.prototype.yylex = function(){
 
   // 単語
   var token = line.match(this.word);
-  //var token = line.match(/^[^0123456789+-\/%^(){}.,:０１２３４５６７８９＋－×＊÷／％＾（）｛｝．、：]+/);
   if(token != null){
     token = String(token[0]);
   } else {

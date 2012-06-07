@@ -62,6 +62,9 @@ function soramame_lex(){
   var i = 0;
   while(retval = yylex()){
     switch(retval){
+	case COMMENT:
+      type = "COMMENT";
+      break;
     case NUMBER:
       type = "NUMBER";
       break;

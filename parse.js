@@ -13,7 +13,7 @@ var NUMBER = 257;
 var STRING = 258;
 var JOSI = 259;
 var WORD = 260;
-
+var COMMENT = 261;
   
 /*
   #define yyclearin (yychar = -1)
