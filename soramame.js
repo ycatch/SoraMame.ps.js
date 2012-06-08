@@ -3,8 +3,9 @@
   this.source = source;
 
   // 文の終端記号
-  var pat_CRCF = "(\n|\r|。)";
-  this.CRLF = new RegExp("^" + pat_CRCF);
+  var pat_CRLF = "[。\n\r]+";
+  var pat_CRLF2 = "。";
+  this.CRLF = new RegExp("^" + pat_CRLF);
   this.CRLF2 = ["\n", "\r", "。"];
 
   //行コメント
@@ -28,8 +29,8 @@
   var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}\.,:＝＋－×＊÷／％＾（）［］｛｝．、：";
   
   //単語(識別子)
-  var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_num2 + "]";
-  var pat_word2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + "]";
+  var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_num2 + "]";
+  var pat_word2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + "]";
   this.word = new RegExp("^" + pat_word1 + pat_word2 + "*");
   
   // その他
@@ -43,12 +44,16 @@ soramame.prototype.yylex = function(){
   var retval = WORD;
 
   // 文の終端を読み飛ばす
-  while(this.isCRLF2(this.source.charAt(0))){
-    this.source = this.source.substring(1);
+  var p = this.source.match(this.CRCF);
+  if (p != null) {
+	this.source = this.source.substring(p[0].length);
   }
+/*    while(this.isCRLF2(this.source.charAt(0))){
+    this.source = this.source.substring(1);
+  } */
 
   //スペース(全角、半角)とタブを読み飛ばす
-  var p = this.source.match(/^[\s　]+/);
+  p = this.source.match(/^[\s　]+/);
   if (p != null) {
 	this.source = this.source.substring(p[0].length);
   }
