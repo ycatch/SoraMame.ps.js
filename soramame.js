@@ -3,7 +3,7 @@
   this.source = source;
 
   // 文の終端記号
-  var pat_CRCF = "[\n|\r|。]";
+  var pat_CRCF = "(\n|\r|。)";
   this.CRLF = new RegExp("^" + pat_CRCF);
   
   //行コメント
@@ -62,6 +62,10 @@ soramame.prototype.yylex = function(){
   //行コメント
   p = line.match(this.comment_line);
   if (p != null) {
+    var index = line.indexOf("\n");
+	if (index != "-1") {
+		line = line.substr(0, index);
+	}
 	this.source = this.source.substr(line.length);
 	this.yylval= line + "";
 	return COMMENT;
