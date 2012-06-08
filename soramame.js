@@ -5,7 +5,8 @@
   // 文の終端記号
   var pat_CRCF = "(\n|\r|。)";
   this.CRLF = new RegExp("^" + pat_CRCF);
-  
+  this.CRLF2 = ["\n", "\r", "。"];
+
   //行コメント
 　　var pat_comment_line = "\/\/";
   this.comment_line = new RegExp("^" + pat_comment_line);
@@ -42,7 +43,7 @@ soramame.prototype.yylex = function(){
   var retval = WORD;
 
   // 文の終端を読み飛ばす
-  while(this.isCRLF(this.source.charAt(0))){
+  while(this.isCRLF2(this.source.charAt(0))){
     this.source = this.source.substring(1);
   }
 
@@ -146,10 +147,10 @@ soramame.prototype.yylex = function(){
 }
 
 
-soramame.prototype.isCRLF = function(c){
-  var l = this.CRLF.length;
+soramame.prototype.isCRLF2 = function(c){
+  var l = this.CRLF2.length;
   for(var i = 0; i < l; i++){
-    if(c == this.CRLF[i]){
+    if(c == this.CRLF2[i]){
       return true;
     }
   }
