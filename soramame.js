@@ -6,7 +6,6 @@
   var pat_CRLF = "[。\n\r]+";
   var pat_CRLF2 = "。";
   this.CRLF = new RegExp("^" + pat_CRLF);
-  this.CRLF2 = ["\n", "\r", "。"];
 
   //行コメント
 　　var pat_comment_line = "\/\/";
@@ -48,9 +47,6 @@ soramame.prototype.yylex = function(){
   if (p != null) {
 	this.source = this.source.substring(p[0].length);
   }
-/*    while(this.isCRLF2(this.source.charAt(0))){
-    this.source = this.source.substring(1);
-  } */
 
   //スペース(全角、半角)とタブを読み飛ばす
   p = this.source.match(/^[\s　]+/);
@@ -149,17 +145,6 @@ soramame.prototype.yylex = function(){
   this.debug("this.source = "+this.source);
   this.debug("this.source = "+this.source);
   */
-}
-
-
-soramame.prototype.isCRLF2 = function(c){
-  var l = this.CRLF2.length;
-  for(var i = 0; i < l; i++){
-    if(c == this.CRLF2[i]){
-      return true;
-    }
-  }
-  return false;
 }
 
 
