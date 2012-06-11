@@ -30,6 +30,7 @@
 </textarea><br />
 <input type="button" value="実行" onclick="soramame_exec()" />
 <input type="button" value="字句解析" onclick="soramame_lex()" />
+<input type="button" value="構文解析" onclick="soramame_yacc()" />
 <h2>結果</h2>
 <pre id="screen"></pre>
 </body>
@@ -98,6 +99,12 @@ function yylex(){
 
 function yyerror(str){
   sora.debug(str);
+}
+
+function soramame_yacc(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  sora.debug("hello soramame_yacc");
 }
 //-->
 </script>
