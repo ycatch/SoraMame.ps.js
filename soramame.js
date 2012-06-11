@@ -3,9 +3,13 @@
   this.source = source;
 
   // 文の終端記号
-  var pat_CRLF = "[。\n\r]+";
+  this.CRLF0 = ["\n", "\r", "。"];
+
+  // 文の終端記号
+  var pat_CRLF = "(。|\n|\r)+";
   var pat_CRLF2 = "。";
   this.CRLF = new RegExp("^" + pat_CRLF);
+  this.CRLF3 = new RegExp(pat_CRLF);
 
   //行コメント
 　　var pat_comment_line = "\/\/";
@@ -42,24 +46,40 @@
 soramame.prototype.yylex = function(){
   var retval = WORD;
 
-  // 文の終端を読み飛ばす
+    // 文の終端を読み飛ばす
+  while(this.isCRLF(this.source.charAt(0))){
+    this.source = this.source.substring(1);
+  }
+  
+/*   // 文の終端を読み飛ばす
   var p = this.source.match(this.CRCF);
   if (p != null) {
 	this.source = this.source.substring(p[0].length);
-  }
+  } */
 
   //スペース(全角、半角)とタブを読み飛ばす
   p = this.source.match(/^[\s　]+/);
   if (p != null) {
 	this.source = this.source.substring(p[0].length);
   }
-  
+
   // 1文を取り出す
   var line = this.source;
-  var p = line.match(this.CRLF);
+  var l = this.CRLF0.length;
+  for(var i = 0; i < l; i++){
+    var CRLF0 = this.CRLF0[i];
+    var p = this.source.indexOf(CRLF0);
+    if(p > 0){
+      line = this.source.substring(0, p);
+    }
+  } 
+  
+/*   // 1文を取り出す
+  var line = this.source;
+  var p = line.match(this.CRLF3);
   if (p != null) {
-	line = line.substring(0, p[0].length);
-  }
+	line = line.substring(0, p[0].index);
+  } */
 
   //行コメント
   p = line.match(this.comment_line);
@@ -147,6 +167,15 @@ soramame.prototype.yylex = function(){
   */
 }
 
+soramame.prototype.isCRLF = function(c){
+  var l = this.CRLF0.length;
+  for(var i = 0; i < l; i++){
+    if(c == this.CRLF0[i]){
+      return true;
+    }
+  }
+  return false;
+}
 
 soramame.prototype.isdigit = function(c){
   if('0' <= c && c <= '9'){
