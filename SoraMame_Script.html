@@ -28,9 +28,9 @@
   {x:,マウスx, y:マウスy}に{幅:10, 高さ:10}のマル
 }
 </textarea><br />
-<input type="button" value="実行" onclick="soramame_exec()" />
 <input type="button" value="字句解析" onclick="soramame_lex()" />
-<input type="button" value="構文解析" onclick="soramame_yacc()" />
+<input type="button" value="構文解析" onclick="soramame_parse()" />
+<input type="button" value="実行" onclick="soramame_exec()" />
 <h2>結果</h2>
 <pre id="screen"></pre>
 </body>
@@ -101,7 +101,7 @@ function yyerror(str){
   sora.debug(str);
 }
 
-function soramame_yacc(){
+function soramame_parse(){
   var Esource = document.getElementById("source");
   sora = new soramame(Esource.value);
   sora.debug(Esource.value);
