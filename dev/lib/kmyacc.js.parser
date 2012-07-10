@@ -1,3 +1,8 @@
+$semval($) yyval
+$semval($,%t) yyval
+$semval(%n) yyastk[yysp-(%l-%n)]
+$semval(%n,%t) yyastk[yysp-(%l-%n)]
+$include;
 
 /* 
  * Copyright 2012 Yutaka Kachi
@@ -9,11 +14,9 @@ var buffer;
 var token;
 var toktype;
 
-var YYERRTOK = 256;
-var NUMBER = 257;
-var STRING = 258;
-var JOSI = 259;
-var WORD = 260;
+$tokenval
+var %s = %n;
+$endtokenval
 
   
 /*
@@ -60,104 +63,136 @@ function yyflush()
   }
 }
 
+$if -t
+yydebug = true;
+
+var yyterminals = [
+    $listvar terminals
+    , "???"
+    ];
+
+
+function yytokname(n)
+{
+  switch (n) {
+    $switch-for-token-name;
+  default:
+    return "???";
+  }
+}
+
+var yyproduction = [
+  $production-strings;
+];
+
+
+/* Traditional Debug Mode */
+function YYTRACE_NEWSTATE(state, sym)
+{
+  if (yydebug)
+    yyprintln("% State " + state + ", Lookahead "
+                       + (sym < 0 ? "--none--" : yyterminals[sym]));
+}
+
+function YYTRACE_READ(sym)
+{
+  if (yydebug)
+    yyprintln("% Reading " + yyterminals[sym]);
+}
+
+function YYTRACE_SHIFT(sym)
+{
+  if (yydebug)
+    yyprintln("% Shift " + yyterminals[sym]);
+}
+
+function YYTRACE_ACCEPT()
+{
+  if (yydebug) yyprintln("% Accepted.");
+}
+
+function YYTRACE_REDUCE(n)
+{
+  if (yydebug)
+    yyprintln("% Reduce by (" + n + ") " + yyproduction[n]);
+}
+
+function YYTRACE_POP(state)
+{
+  if (yydebug)
+    yyprintln("% Recovering, uncovers state " + state);
+}
+
+function YYTRACE_DISCARD(sym)
+{
+  if (yydebug)
+    yyprintln("% Discard " + yyterminals[sym]);
+}
+$endif
 
 
 var yytranslate = [
-      0,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     12,   13,    8,    6,   14,    7,   14,    9,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   11,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   10,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-     14,   14,   14,   14,   14,   14,    1,    2,    3,    4,
-      5
+  $listvar yytranslate
   ];
 
-var YYBADCH = 14;
-var YYMAXLEX = 261;
-var YYTERMS = 14;
-var YYNONTERMS = 6;
+var YYBADCH = $(YYBADCH);
+var YYMAXLEX = $(YYMAXLEX);
+var YYTERMS = $(YYTERMS);
+var YYNONTERMS = $(YYNONTERMS);
 
 var yyaction = [
-     34,   36,    7,    8,   35,   14,    0,   25,   27,   33,
-      5,   15,    9,   10,   11,    7,    8,   11,    0,    6
+  $listvar yyaction
   ];
 
-var YYLAST = 20;
+var YYLAST = $(YYLAST);
 
 var yycheck = [
-      2,    3,    6,    7,    5,    4,    0,    1,    5,   13,
-     12,    5,    8,    9,   10,    6,    7,   10,   -1,   11
+  $listvar yycheck
   ];
 
 var yybase = [
-      0,    6,   -4,    9,    9,   -1,   -1,   -1,   -1,   -1,
-     -1,   -1,    4,    4,    3,    8,    1,    7,    7,    0,
-     -2,    4,    4,    4,   -2,   -2,   -2,   -2,   -2,   -2,
-     -2
+  $listvar yybase
   ];
 
-var YY2TBLSTATE = 12;
+var YY2TBLSTATE = $(YY2TBLSTATE);
 
 var yydefault = [
-      1,32767,32767,    7,    5,32767,32767,32767,32767,32767,
-  32767,32767,    9,   10,32767,   16,    3,   11,   12
+  $listvar yydefault
   ];
 
 
 
 var yygoto = [
-      2,    4,   12,   13,   17,   18,   32
+  $listvar yygoto
   ];
 
-var YYGLAST = 7;
+var YYGLAST = $(YYGLAST);
 
 var yygcheck = [
-      5,    5,    5,    5,    5,    5,    5
+  $listvar yygcheck
   ];
 
 var yygbase = [
-      0,    0,    0,    0,    0,   -5
+  $listvar yygbase
   ];
 
 var yygdefault = [
-  -32768,    1,   21,   16,   23,    3
+  $listvar yygdefault
   ];
 
 var yylhs = [
-      0,    1,    1,    2,    2,    2,    2,    3,    4,    5,
-      5,    5,    5,    5,    5,    5,    5,    5
+  $listvar yylhs
   ];
 
 var yylen = [
-      1,    0,    2,    1,    3,    3,    1,    1,    1,    3,
-      3,    3,    3,    3,    3,    1,    1,    1
+  $listvar yylen
   ];
 
-var YYSTATES = 28;
-var YYNLSTATES = 19;
-var YYINTERRTOK = 1;
-var YYUNEXPECTED = 32767;
-var YYDEFAULT = -32766;
+var YYSTATES = $(YYSTATES);
+var YYNLSTATES = $(YYNLSTATES);
+var YYINTERRTOK = $(YYINTERRTOK);
+var YYUNEXPECTED = $(YYUNEXPECTED);
+var YYDEFAULT = $(YYDEFAULT);
 
 /*
  * Parser entry point
@@ -175,12 +210,18 @@ function yyparse()
   yysstk[yysp] = 0;
   yyerrflag = 0;
   for (;;) {
+$if -t
+    YYTRACE_NEWSTATE(yystate, yychar);
+$endif
     if (yybase[yystate] == 0)
       yyn = yydefault[yystate];
     else {
       if (yychar < 0) {
         if ((yychar = yylex()) <= 0) yychar = 0;
         yychar = yychar < YYMAXLEX ? yytranslate[yychar] : YYBADCH;
+$if -t
+        YYTRACE_READ(yychar);
+$endif
       }
 
       if (((yyn = yybase[yystate] + yychar) >= 0
@@ -198,6 +239,9 @@ function yyparse()
          */
         if (yyn > 0) {
           /* shift */
+$if -t
+          YYTRACE_SHIFT(yychar);
+$endif
           yysp++;
 
           yysstk[yysp] = yystate = yyn;
@@ -221,6 +265,9 @@ function yyparse()
       /* reduce/error */
       if (yyn == 0) {
         /* accept */
+$if -t
+        YYTRACE_ACCEPT();
+$endif
         yyflush();
         return 0;
       }
@@ -228,32 +275,15 @@ function yyparse()
         /* reduce */
         yyl = yylen[yyn];
         yyval = yyastk[yysp-yyl+1];
+$if -t
+        YYTRACE_REDUCE(yyn);
+$endif
         /* Following line will be replaced by reduce actions */
         switch(yyn) {
-        case 4:
-{ alert(yyastk[yysp-(3-1)]) } break;
-        case 5:
-{ variables[yyastk[yysp-(3-1)]] = yyastk[yysp-(3-3)]; } break;
-        case 6:
-{ yyval = ""; } break;
-        case 9:
-{ yyval = yyastk[yysp-(3-1)] + yyastk[yysp-(3-3)]; } break;
-        case 10:
-{ yyval = yyastk[yysp-(3-1)] - yyastk[yysp-(3-3)]; } break;
-        case 11:
-{ yyval = yyastk[yysp-(3-1)] * yyastk[yysp-(3-3)]; } break;
-        case 12:
-{ yyval = yyastk[yysp-(3-1)] / yyastk[yysp-(3-3)]; } break;
-        case 13:
-{ yyval = Math.pow(yyastk[yysp-(3-1)], yyastk[yysp-(3-3)]); } break;
-        case 14:
-{ yyval = yyastk[yysp-(3-2)]; } break;
-        case 15:
-{ yyval = yyastk[yysp-(1-1)]; } break;
-        case 16:
-{ yyval = variables[yyastk[yysp-(1-1)]]; } break;
-        case 17:
-{ yyval = yyastk[yysp-(1-1)]; } break;
+$reduce
+        case %n:
+{%b} break;
+$endreduce
         }
         /* Goto - shift nonterminal */
         yysp -= yyl;
@@ -289,12 +319,21 @@ function yyparse()
               return 1;
             }
             yystate = yysstk[--yysp];
+$if -t
+            YYTRACE_POP(yystate);
+$endif
           }
           yyn = yyaction[yyn];
+$if -t
+          YYTRACE_SHIFT(YYINTERRTOK);
+$endif
           yysstk[++yysp] = yystate = yyn;
           break;
 
         case 3:
+$if -t
+          YYTRACE_DISCARD(yychar);
+$endif
           if (yychar == 0) {
             yyflush();
             return 1;
@@ -313,3 +352,4 @@ function yyparse()
 }
 
 
+$tailcode;
