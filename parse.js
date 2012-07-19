@@ -14,6 +14,7 @@ var NUMBER = 257;
 var STRING = 258;
 var JOSI = 259;
 var WORD = 260;
+var COMMENT = 261;
 
   
 /*
@@ -89,11 +90,11 @@ var yytranslate = [
      14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
      14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
      14,   14,   14,   14,   14,   14,    1,    2,    3,    4,
-      5
+      5,   14
   ];
 
 var YYBADCH = 14;
-var YYMAXLEX = 261;
+var YYMAXLEX = 262;
 var YYTERMS = 14;
 var YYNONTERMS = 6;
 

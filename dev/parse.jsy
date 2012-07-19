@@ -1,4 +1,4 @@
-%token NUMBER STRING JOSI WORD
+%token NUMBER STRING JOSI WORD COMMENT
 
 %left '+' '-'
 %left '*' '/'
