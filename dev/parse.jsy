@@ -12,8 +12,12 @@ stmt_list : { $$ = '';}
 		| stmt_list stmt { $$ = $1 + $2+ '\n';}
 		;
 
-stmt : expr { $$ = $1 + ';' }
+stmt : assign { $$ = $1 + ';' }
+		| expr { $$ = $1 + ';' }
 		| COMMENT
+		;
+
+assign : WORD '=' expr { $$ = $1 + '=' + $3;}
 		;
 
 expr : expr '+' expr { $$ = $1 + '+' + $3; }
