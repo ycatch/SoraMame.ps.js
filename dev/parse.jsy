@@ -21,8 +21,8 @@ stmt : assign { $$ = $1 + ';' }
 assign : WORD '=' expr { $$ = $1 + '=' + $3;}
 		;
 
-funcall : args WORD { $$ = $2 + '(' + $1 + ')';}
-		| WORD { $$ = $1 + '()';}
+funcall : args WORD { $$ = commands.dic[$2] + '(' + $1 + ')';}
+		| WORD { $$ = commands.dic[$1] + '()';}
 		;
 
 args : phrase
