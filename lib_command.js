@@ -3,6 +3,7 @@
 
 function lib_command() {
 
-  this.dic = "include command lib";
-
+  this.dic = {
+	マル : 'circle',
+	test : 'lib!'};
 }
