@@ -45,6 +45,9 @@ var sora;
 var yylval = '';
 var variables = {};
 
+//コマンド置換辞書
+var commands = new lib_command();
+//alert(commands.dic);
 
 function soramame_exec(){
   var Esource = document.getElementById("source");
