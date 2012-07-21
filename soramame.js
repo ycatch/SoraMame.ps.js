@@ -243,8 +243,8 @@ soramame.prototype.issymbol = function(c){
 
 
 soramame.prototype.zen2han = function(c){
-  var hankaku = "0123456789+-**//%^()[]{}.,:";
-  var zenkaku = "０１２３４５６７８９＋－×＊÷／％＾（）［］｛｝．、：";
+  var hankaku = "0123456789=+-**//%^()[]{}.,:";
+  var zenkaku = "０１２３４５６７８９＝＋－×＊÷／％＾（）［］｛｝．、：";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
