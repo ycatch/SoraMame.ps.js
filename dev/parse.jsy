@@ -13,11 +13,27 @@ stmt_list : { $$ = '';}
 		;
 
 stmt : assign { $$ = $1 + ';' }
+		| funcall { $$ = $1 + ';' }
 		| expr { $$ = $1 + ';' }
 		| COMMENT
 		;
 
 assign : WORD '=' expr { $$ = $1 + '=' + $3;}
+		;
+
+funcall : args WORD { $$ = $2 + '(' + $1 + ')';}
+		| WORD { $$ = $1 + '()';}
+		;
+
+args : phrase
+		| args phrase { $$ = $1 + ',' + $2;}
+		;
+
+phrase : '{' phrase_part '}' JOSI { $$ = $2 }
+		;
+
+phrase_part : WORD ':' expr { $$ = $3 }
+		| phrase_part ',' WORD ':' expr { $$ = $1 + ',' + $5 }
 		;
 
 expr : expr '+' expr { $$ = $1 + '+' + $3; }
@@ -31,7 +47,6 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 
 primary : NUMBER
 		| STRING
-		| WORD
 		;
 
 %%
