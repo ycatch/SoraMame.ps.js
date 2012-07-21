@@ -36,6 +36,10 @@
   var pat_word2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + "]";
   this.word = new RegExp("^" + pat_word1 + pat_word2 + "*");
   
+  //コマンド置換辞書
+  this.commands = new lib_command();
+  alert(this.commands.dic);
+  
   // その他
   this.yylval;
   this.Escreen = document.getElementById("screen");
