@@ -101,20 +101,11 @@ function yyerror(str){
 }
 
 function soramame_parse(){
-
   var Esource = document.getElementById("source");
   sora = new soramame(Esource.value);
-  //sora.debug("parse now!");
   var script = yyparse();
   sora.debug(script);
-  
-  //yyyBuffer = document.getElementById("source");
-  //var script = yyparse();
-  //sora.debug(script);
-
-  //var Esource = document.getElementById("source");  
-  //sora = new soramame(Esource.value);
-  //sora.debug(Esource.value);
+ 
 }
 //-->
 </script>
