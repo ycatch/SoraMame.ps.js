@@ -15,18 +15,9 @@
 入力した日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
 <hr />
 <textarea id="source" cols="80" rows="20">
-文字列a = 「あいうえお」。文字列100 = 『１２３４５』
-
-//コメント文
-◎設定する {
-  {幅:250, 高さ:250}のサイズ
-  {ミリ秒:20}のフレーム
-  {色:0}の背景	//コメント文２
-}
-
-◎描画する {
-  {x:,マウスx, y:マウスy}に{幅:10, 高さ:10}のマル
-}
+1000
+文字列a
+「あいうえお」
 </textarea><br />
 <input type="button" value="字句解析" onclick="soramame_lex()" />
 <input type="button" value="構文解析" onclick="soramame_parse()" />
@@ -103,13 +94,15 @@ function yyerror(str){
 
 function soramame_parse(){
 
-  //yyyBuffer = document.compiledtext.one.value;
-  //var script = yyparse();
-  //setAnswer(script);
-  
-  yyyBuffer = document.getElementById("source");
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  //sora.debug("parse now!");
   var script = yyparse();
   sora.debug(script);
+  
+  //yyyBuffer = document.getElementById("source");
+  //var script = yyparse();
+  //sora.debug(script);
 
   //var Esource = document.getElementById("source");  
   //sora = new soramame(Esource.value);
