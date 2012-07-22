@@ -5,5 +5,7 @@ function lib_command() {
 
   this.dic = {
 	マル : 'ellipse',
+	サイズ : 'size',
+	直線 : 'line',
 	test : '//SoraMame Script!'};
 }
