@@ -1,0 +1,4 @@
+Copyright 2012 Yutaka kachi
+
+2005	”ö“¡³l(Masato Bito)	Javascript ‚È‚Å‚µ‚±i‚à‚Ç‚«j
+2011	wise9(UEI) edit.html

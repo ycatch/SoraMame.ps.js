@@ -4,6 +4,6 @@
 function lib_command() {
 
   this.dic = {
-	マル : 'circle',
+	マル : 'ellipse',
 	test : '//SoraMame Script!'};
 }
