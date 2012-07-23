@@ -16,8 +16,8 @@
   this.comment_line = new RegExp("^" + pat_comment_line);
   
   // 助詞  
-  var pat_josi = "[◎●はのにでを]";	//助詞の判定用
-  var pat_josi2 = "◎●はのにでを";	//助詞以外の判定用
+  var pat_josi = "[はのにでを]";	//助詞の判定用
+  var pat_josi2 = "はのにでを";	//助詞以外の判定用
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
@@ -29,7 +29,7 @@
   var pat_num2 = "0123456789０１２３４５６７８９";
  
  　// 記号
-  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}\.,:＝＋－×＊÷／％＾（）［］｛｝．、：";
+  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}\.,:＝＋－×＊÷／％＾（）［］｛｝．、：◎●";
   
   //単語(識別子)
   var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_num2 + "]";
@@ -210,6 +210,8 @@ soramame.prototype.issymbol = function(c){
   case "}":
   case ",":
   case ":":
+  case "◎":
+  case "●":
     return c;
 
   case "＝":
