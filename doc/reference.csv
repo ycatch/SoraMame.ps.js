@@ -35,7 +35,7 @@ Category,,SoraMame.ps.js,Processing.js
 ,,,return
 ,,,; (semicolon)
 ,,,setup()
-,,,size()
+,*,サイズ,size()
 ,,,static
 ,,,super
 ,,,this
@@ -140,13 +140,13 @@ Category,,SoraMame.ps.js,Processing.js
 ,,,PShape
 ,,,
 ##2D Primitives,,,
-,,,arc()
+,*,円弧,arc()
 ,*,マル,ellipse()
-,*,直線,line()
+,*,セン,line()
 ,*,テン,point()
-,,,quad()
-,,,rect()
-,*,三角,triangle()
+,*,四辺形,quad()
+,*,シカク,rect()
+,*,サンカク,triangle()
 ,,,
 ##Curves,,,
 ,,,bezier()

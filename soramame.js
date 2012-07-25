@@ -16,8 +16,8 @@
   this.comment_line = new RegExp("^" + pat_comment_line);
   
   // 助詞  
-  var pat_josi = "[はのにでを]";	//助詞の判定用
-  var pat_josi2 = "はのにでを";	//助詞以外の判定用
+  var pat_josi = "[はのとにでを]";	//助詞の判定用
+  var pat_josi2 = "はのとにでを";	//助詞以外の判定用
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル

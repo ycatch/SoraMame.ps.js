@@ -8,10 +8,13 @@ function lib_command() {
 	サイズ : 'size',
 
 	//2D Primitives
-	マル : 'ellipse',
-	直線 : 'line',
 	テン : 'point',
-	三角 : 'triangle',
+	セン: 'line',
+	マル : 'ellipse',
+	サンカク : 'triangle',
+	シカク : 'rect',
+	円弧 : 'arc',
+	四辺形 : 'quad',
 
 	//Mouse 
 	マウスX : 'mouseX',
