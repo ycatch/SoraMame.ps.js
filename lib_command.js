@@ -27,7 +27,7 @@ function lib_command() {
 lib_command.prototype.get = function(str){
 	var msg;
     if ( this.dic[str] === undefined ) {
-		msg = str + 'は、定義されていない命令です。';
+		msg = '"' + str + '"' + 'は、定義されていない命令です。';
 	} else {
     	msg = this.dic[str];
     }
