@@ -41,7 +41,6 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 		| expr '/' expr { $$ = $1 + '/' + $3; }
 		| expr '%' expr { $$ = $1 + '%' + $3; }
 		| '(' expr ')' { $$ = '(' + $2 + ')'; }
-		| WORD {$$ = system_vars.get($1);}
 		| funcall
 		| primary
 		;
