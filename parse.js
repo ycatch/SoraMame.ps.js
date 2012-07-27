@@ -99,7 +99,7 @@ var YYTERMS = 19;
 var YYNONTERMS = 11;
 
 var yyaction = [
-     49,   50,   23,   35,   24,    0,    5,    6,   21,   32,
+     50,   51,   23,   35,   24,    0,    5,    6,   21,   32,
       7,    8,    9,    5,    6,    3,   38,   46,   22,   25,
      34,    2,   10,   19,    0,    0,    4
   ];
@@ -146,20 +146,20 @@ var yygbase = [
   ];
 
 var yygdefault = [
-  -32768,   20,   14,   29,   30,   47,   11,   17,   36,   18,
-     48
+  -32768,   20,   14,   29,   30,   48,   11,   17,   36,   18,
+     49
   ];
 
 var yylhs = [
       0,    1,    2,    2,    3,    3,    3,    4,    5,    5,
       7,    7,    8,    9,    9,    6,    6,    6,    6,    6,
-      6,    6,    6,   10,   10
+      6,    6,    6,    6,   10,   10
   ];
 
 var yylen = [
       1,    1,    0,    2,    1,    1,    1,    3,    2,    1,
       1,    2,    4,    3,    5,    3,    3,    3,    3,    3,
-      3,    1,    1,    1,    1
+      3,    1,    1,    1,    1,    1
   ];
 
 var YYSTATES = 43;
@@ -275,6 +275,8 @@ function yyparse()
 { yyval = yyastk[yysp-(3-1)] + '%' + yyastk[yysp-(3-3)]; } break;
         case 20:
 { yyval = '(' + yyastk[yysp-(3-2)] + ')'; } break;
+        case 21:
+{yyval = system_vars.get(yyastk[yysp-(1-1)]);} break;
         }
         /* Goto - shift nonterminal */
         yysp -= yyl;
