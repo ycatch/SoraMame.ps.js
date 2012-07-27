@@ -23,3 +23,13 @@ function lib_command() {
 	//test
 	test : '//SoraMame Script!'};
 }
+
+lib_command.prototype.get = function(str){
+	var msg;
+    if ( this.dic[str] === undefined ) {
+		msg = str + 'は、定義されていない命令です。';
+	} else {
+    	msg = this.dic[str];
+    }
+	return msg;
+}
