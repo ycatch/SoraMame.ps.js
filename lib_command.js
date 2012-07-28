@@ -3,33 +3,39 @@
 
 function lib_command() {
 
+  //変換候補データ
+  //元データ ： [関数=true グローバル変数=false, 変換先データ]
   this.dic = {
   	//Structure
-	サイズ : 'size',
+	サイズ : [true, 'size'],
 
 	//2D Primitives
-	テン : 'point',
-	セン: 'line',
-	マル : 'ellipse',
-	サンカク : 'triangle',
-	シカク : 'rect',
-	円弧 : 'arc',
-	四辺形 : 'quad',
+	テン : [true, 'point'],
+	セン: [true, 'line'],
+	マル : [true, 'ellipse'],
+	サンカク : [true, 'triangle'],
+	シカク : [true, 'rect'],
+	円弧 : [true, 'arc'],
+	四辺形 : [true, 'quad'],
 
 	//Mouse 
-	マウスX : 'mouseX',
-	マウスY : 'mouseY',
+	マウスX : [false, 'mouseX'],
+	マウスY : [false, 'mouseY'],
 
 	//test
-	test : '//SoraMame Script!'};
+	test : [false, '//SoraMame Script!']};
 }
 
-lib_command.prototype.get = function(str){
+lib_command.prototype.get = function(str,arg){
 	var msg;
     if ( this.dic[str] === undefined ) {
 		msg = str;
 	} else {
-    	msg = this.dic[str];
+		if(this.dic[str][0]) {
+			msg = this.dic[str][1] + '(' + arg +')'; //function
+		} else {
+			msg = this.dic[str][1]; //global vars
+		}
     }
 	return msg;
 }

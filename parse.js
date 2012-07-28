@@ -240,7 +240,7 @@ function yyparse()
         /* Following line will be replaced by reduce actions */
         switch(yyn) {
         case 1:
-{ return commands.dic['test'] + '\n' + yyastk[yysp-(1-1)]; } break;
+{ return commands.dic['test'][1] + '\n' + yyastk[yysp-(1-1)]; } break;
         case 2:
 { yyval = '';} break;
         case 3:
@@ -252,9 +252,9 @@ function yyparse()
         case 7:
 { yyval = yyastk[yysp-(3-1)] + '=' + yyastk[yysp-(3-3)];} break;
         case 8:
-{ yyval = commands.get(yyastk[yysp-(2-2)]) + '(' + yyastk[yysp-(2-1)] + ')';} break;
+{ yyval = commands.get(yyastk[yysp-(2-2)], yyastk[yysp-(2-1)]);} break;
         case 9:
-{ yyval = commands.get(yyastk[yysp-(1-1)]) + '()';} break;
+{ yyval = commands.get(yyastk[yysp-(1-1)],'');} break;
         case 11:
 { yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
         case 12:
