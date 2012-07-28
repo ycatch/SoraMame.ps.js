@@ -25,14 +25,21 @@
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
 //基本的な図形
-｛幅：320、高さ：320｝のサイズ
+
+---設定する{
+　　　{幅:250, 高さ:250}のサイズ
+}
+
+---描画する{
 ｛X：100、Y：100｝に｛幅：50、高さ：50｝のマル
-｛始点X：0、始点y：0｝に｛始点X：100、始点y：100｝の直線
+｛始点X：0、始点y：0｝に｛終点X：マウスX、終点y：マウスY｝のセン
+}
 	</textarea><br />
-	<input type="button" value="字句解析" onclick="soramame_lex()" />
-	<input type="button" value="変換" onclick="soramame_parse()" />
-	<input type="button" value="実行" onclick="soramame_exec()" />
-	<input type="button" value="停止" onclick="soramame_stop()" />
+	<!-- <input type="button" value="字句解析" onclick="soramame_lex()" /> -->
+	<input type="button" value="テスト" onclick="soramame_parse()" />
+	<input type="button" value="うごかす" onclick="soramame_exec()" />
+	<input type="button" value="とめる" onclick="soramame_stop()" />
+	<a href="http://www.catch.jp/wiki/?SoraMame.ps.js%2FReference" target='_blannk'>ヘルプ?</a>
   </form>
   </td>
   </tr></tbody></table>  
