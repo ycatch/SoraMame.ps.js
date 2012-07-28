@@ -14,6 +14,7 @@ function lib_command() {
 	//Environment
 	幅 : [false, 'width'],
 	高さ : [false, 'height'],
+	コマ数 : [true, 'framerate'],
 	
 	//2D Primitives
 	テン : [true, 'point'],
@@ -28,6 +29,10 @@ function lib_command() {
 	マウスX : [false, 'mouseX'],
 	マウスY : [false, 'mouseY'],
 
+	//Color
+	//setting
+	背景色 : [true, 'background'],
+	
 	//test
 	test : [false, '//SoraMame Script!']};
 }
