@@ -48,11 +48,11 @@ Category,,SoraMame.ps.js,Processing.js
 ,,,frameCount
 ,,,frameRate()
 ,,,frameRate
-,,,height
+,*,çÇÇ≥,height
 ,,,noCursor()
 ,,,online
 ,,,screen
-,,,width
+,*,ïù,width
 ,,,
 #Data,,,
 ,,,Primitive

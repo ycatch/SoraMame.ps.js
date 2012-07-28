@@ -8,7 +8,11 @@ function lib_command() {
   this.dic = {
   	//Structure
 	サイズ : [true, 'size'],
-
+	
+	//Environment
+	幅 : [false, 'width'],
+	高さ : [false, 'height'],
+	
 	//2D Primitives
 	テン : [true, 'point'],
 	セン: [true, 'line'],
