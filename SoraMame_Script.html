@@ -24,18 +24,16 @@
   <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
-//基本的な図形
-
----設定する{
-　　　{幅:250, 高さ:250}のサイズ
+//マウスの位置にマルを描く
+---始める{
+  {幅:250, 高さ:250}のサイズ
 }
 
----描画する{
-｛X：100、Y：100｝に｛幅：50、高さ：50｝のマル
-｛始点X：0、始点y：0｝に｛終点X：マウスX、終点y：マウスY｝のセン
+---くり返す{
+  {x:マウスX, y:マウスY}に{幅:10, 高さ:10}のマル
 }
 	</textarea><br />
-	<!-- <input type="button" value="字句解析" onclick="soramame_lex()" /> -->
+	<!--<input type="button" value="字句解析" onclick="soramame_lex()" /> -->
 	<input type="button" value="テスト" onclick="soramame_parse()" />
 	<input type="button" value="うごかす" onclick="soramame_exec()" />
 	<input type="button" value="とめる" onclick="soramame_stop()" />

@@ -25,7 +25,10 @@ funcall : args WORD { $$ = commands.get($2, $1);}
 		| WORD { $$ = commands.get($1,'');}
 		;
 
-def_method : '-' '-' '-' WORD '{' stmt_list '}' {$$ = 'void ' + commands.get($4,'') + '{\n' + $6 + '}';}
+def_method : '-' '-' '-' WORD '{' stmt_list '}' 
+			{$$ = 'void ' + commands.get($4,'') + '{\n' + $6 + '}';}
+		|'-' '-' '-' WORD WORD '{' stmt_list '}' 
+			{$$ = 'void ' + commands.get($5,'') + '{\n' + $7 + '}';}
 		;
 
 args : phrase

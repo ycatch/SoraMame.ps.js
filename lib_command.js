@@ -8,8 +8,8 @@ function lib_command() {
   this.dic = {
   	//Structure
 	サイズ : [true, 'size'],
-	始め : [true, 'setup'],
-	くり返し : [true, 'draw'],
+	始める : [true, 'setup'],
+	くり返す : [true, 'draw'],
 	
 	//Environment
 	幅 : [false, 'width'],

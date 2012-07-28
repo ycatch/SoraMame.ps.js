@@ -29,7 +29,7 @@
   var pat_num2 = "0123456789０１２３４５６７８９";
  
  　// 記号
-  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}\.,:＝＋－×＊÷／％＾（）［］｛｝．、：◎●";
+  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}\.,:＝＋－×＊÷／％＾（）［］｛｝．、：";
   
   //単語(識別子)
   var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_num2 + "]";
@@ -72,7 +72,8 @@ soramame.prototype.yylex = function(){
     if(p > 0){
       line = this.source.substring(0, p);
     }
-  } 
+  }
+
   
 /*   // 1文を取り出す
   var line = this.source;
@@ -210,8 +211,6 @@ soramame.prototype.issymbol = function(c){
   case "}":
   case ",":
   case ":":
-  case "◎":
-  case "●":
     return c;
 
   case "＝":
