@@ -14,7 +14,7 @@ function lib_command() {
 	//Environment
 	幅 : [false, 'width'],
 	高さ : [false, 'height'],
-	コマ数 : [true, 'framerate'],
+	コマ数 : [true, 'frameRate'],
 	
 	//2D Primitives
 	テン : [true, 'point'],
