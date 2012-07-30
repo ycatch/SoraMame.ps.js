@@ -10,7 +10,7 @@ function lib_command() {
 	サイズ : [true, 'size'],
 	始める : [true, 'setup'],
 	くり返す : [true, 'draw'],
-	
+
 	//Environment
 	幅 : [false, 'width'],
 	高さ : [false, 'height'],
@@ -25,14 +25,23 @@ function lib_command() {
 	円弧 : [true, 'arc'],
 	四辺形 : [true, 'quad'],
 
+	//Attributes
+	輪郭幅 : [true, 'strokeWeight'],
+
 	//Mouse 
+	クリック時 : [true, 'mouseClicked'],
+	ドラッグ時 : [true, 'mouseDragged'],
 	マウスX : [false, 'mouseX'],
 	マウスY : [false, 'mouseY'],
 
 	//Color
 	//setting
 	背景色 : [true, 'background'],
-	
+	輪郭色 : [true, 'stroke'],
+	輪郭なし : [true, 'noStroke'],
+	塗りつぶし色 : [true, 'fill'],
+	塗りつぶしなし : [true, 'noFill'],
+
 	//test
 	test : [false, '//SoraMame Script!']};
 }
