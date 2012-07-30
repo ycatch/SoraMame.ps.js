@@ -2,7 +2,6 @@
 
 %left '+' '-'
 %left '*' '/' '%'
-%left '^'
 
 %%
 program : stmt_list { return commands.dic['test'][1] + '\n' + $1; }

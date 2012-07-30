@@ -99,79 +99,81 @@ var YYTERMS = 19;
 var YYNONTERMS = 12;
 
 var yyaction = [
-     57,   58,   39,   42,   23,   46,    6,    7,   22,    0,
-     43,    8,    9,   10,   26,    4,   20,   54,   39,   27,
-     23,   28,    6,    7,   30,   29,   41,   25,    3,   11,
-     31,   24,    0,    5
+     61,   62,   32,   45,   24,   42,   50,   25,    7,    8,
+     33,    0,   22,   31,   21,    5,    9,   10,   11,   58,
+     29,   28,   30,    7,    8,   44,   27,   26,   22,    4,
+      0,   34,    0,    0,    0,    0,   47,   46,    0,   12,
+      6
   ];
 
-var YYLAST = 34;
+var YYLAST = 41;
 
 var yycheck = [
-      2,    3,    6,    5,    8,    4,    7,    8,    5,    0,
-     14,    9,   10,   11,    8,   17,   13,   18,    6,   14,
-      8,   16,    7,    8,    5,    5,    5,    5,   12,   15,
-     13,    8,   -1,   15
+      2,    3,    5,    5,    5,    6,    4,    8,    7,    8,
+     13,    0,   13,    5,    5,   17,    9,   10,   11,   18,
+     14,    8,   16,    7,    8,    5,    5,    8,   13,   12,
+     -1,   13,   -1,   -1,   -1,   -1,   14,   14,   -1,   15,
+     15
   ];
 
 var yybase = [
-      0,   -1,   -4,   -2,   -2,   -2,   -2,   -2,   -2,   -2,
-     -2,   -2,   15,   15,   15,   12,    2,    2,   21,    5,
-     22,    9,   16,   23,    6,   18,   20,    1,   19,   17,
-     14,    0,    0,    2,    3,    3,    3,    3,    3,    3,
-      3,    3,    3,    3,    2,    2,    2,    3,    0,    0,
-      3
+      0,    1,   23,   22,   -2,   -2,   -2,   -2,   -2,   -2,
+     -2,   -2,   -2,   16,   16,   16,   -1,    7,    7,   20,
+      6,   -3,   21,   11,   17,   19,   13,   25,    9,    2,
+      8,   24,   18,    0,    0,    0,    7,   -1,   -1,   15,
+     15,   15,   15,   15,   15,   15,   15,   15,    7,    7,
+      7,    0,    0,    0,   15
   ];
 
-var YY2TBLSTATE = 19;
+var YY2TBLSTATE = 20;
 
 var yydefault = [
       2,32767,32767,32767,32767,32767,32767,32767,32767,32767,
-  32767,32767,    8,   15,   16,    1,   17,   18,32767,32767,
-  32767,32767,   10,32767,32767,32767,32767,32767,32767,32767,
-  32767,    2
+  32767,32767,32767,    8,   16,   17,    1,   18,   19,32767,
+  32767,32767,32767,32767,   10,32767,32767,32767,32767,32767,
+  32767,32767,32767,    2,    2
   ];
 
 
 
 var yygoto = [
-      1,   13,   16,   17,   51,   52,   53,   14,   37,   45,
-      2,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-      0,   37
+      1,   14,   17,   18,   55,   56,   57,   15,   40,   40,
+      2,    3,   49,    0,    0,    0,    0,    0,    0,    0,
+      0,    0,   40
   ];
 
-var YYGLAST = 22;
+var YYGLAST = 23;
 
 var yygcheck = [
-      7,    7,    7,    7,    7,    7,    7,    7,    5,    9,
-      2,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-     -1,    5
+      7,    7,    7,    7,    7,    7,    7,    7,    5,    5,
+      2,    2,    9,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
+     -1,   -1,    5
   ];
 
 var yygbase = [
-      0,    0,  -21,    0,    0,    6,    0,   -4,    0,   -9,
+      0,    0,  -23,    0,    0,    6,    0,   -5,    0,   -7,
       0,    0
   ];
 
 var yygdefault = [
-  -32768,   21,   15,   35,   36,   55,   38,   12,   18,   44,
-     19,   56
+  -32768,   23,   16,   38,   39,   59,   41,   13,   19,   48,
+     20,   60
   ];
 
 var yylhs = [
       0,    1,    2,    2,    3,    3,    3,    3,    4,    5,
-      5,    6,    8,    8,    9,   10,   10,    7,    7,    7,
-      7,    7,    7,    7,    7,   11,   11
+      5,    6,    6,    8,    8,    9,   10,   10,    7,    7,
+      7,    7,    7,    7,    7,    7,   11,   11
   ];
 
 var yylen = [
       1,    1,    0,    2,    1,    1,    1,    1,    3,    2,
-      1,    7,    1,    2,    4,    3,    5,    3,    3,    3,
-      3,    3,    3,    1,    1,    1,    1
+      1,    7,    8,    1,    2,    4,    3,    5,    3,    3,
+      3,    3,    3,    3,    1,    1,    1,    1
   ];
 
-var YYSTATES = 51;
-var YYNLSTATES = 32;
+var YYSTATES = 55;
+var YYNLSTATES = 35;
 var YYINTERRTOK = 1;
 var YYUNEXPECTED = 32767;
 var YYDEFAULT = -32766;
@@ -265,25 +267,27 @@ function yyparse()
 { yyval = commands.get(yyastk[yysp-(1-1)],'');} break;
         case 11:
 {yyval = 'void ' + commands.get(yyastk[yysp-(7-4)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
-        case 13:
-{ yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
+        case 12:
+{yyval = 'void ' + commands.get(yyastk[yysp-(8-5)],'') + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
         case 14:
-{ yyval = yyastk[yysp-(4-2)] } break;
+{ yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
         case 15:
-{ yyval = yyastk[yysp-(3-3)] } break;
+{ yyval = yyastk[yysp-(4-2)] } break;
         case 16:
-{ yyval = yyastk[yysp-(5-1)] + ',' + yyastk[yysp-(5-5)] } break;
+{ yyval = yyastk[yysp-(3-3)] } break;
         case 17:
-{ yyval = yyastk[yysp-(3-1)] + '+' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(5-1)] + ',' + yyastk[yysp-(5-5)] } break;
         case 18:
-{ yyval = yyastk[yysp-(3-1)] + '-' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '+' + yyastk[yysp-(3-3)]; } break;
         case 19:
-{ yyval = yyastk[yysp-(3-1)] + '*' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '-' + yyastk[yysp-(3-3)]; } break;
         case 20:
-{ yyval = yyastk[yysp-(3-1)] + '/' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '*' + yyastk[yysp-(3-3)]; } break;
         case 21:
-{ yyval = yyastk[yysp-(3-1)] + '%' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '/' + yyastk[yysp-(3-3)]; } break;
         case 22:
+{ yyval = yyastk[yysp-(3-1)] + '%' + yyastk[yysp-(3-3)]; } break;
+        case 23:
 { yyval = '(' + yyastk[yysp-(3-2)] + ')'; } break;
         }
         /* Goto - shift nonterminal */
