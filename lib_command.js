@@ -8,7 +8,7 @@ function lib_dic() {
   this.commands = {
   	//Structure
 	サイズ : 'size',
-	設定する : 'setup',
+	初期設定する : 'setup',
 	くり返し描画する : 'draw',
 
 	//Environment
