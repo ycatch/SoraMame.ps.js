@@ -30,7 +30,7 @@
 }
 
 ---クリック時{
-  {x:マウスX, y:マウスY}に{幅:10, 高さ:10}のマル
+  {x:@マウスX, y:@マウスY}に{幅:10, 高さ:10}のマル
 }
 	</textarea><br />
 	<!--<input type="button" value="字句解析" onclick="soramame_lex()" /> -->
@@ -55,7 +55,7 @@
 var sora;
 var yylval = '';
 var Pjs;
-var commands = new lib_command();	//コマンド置換辞書
+var lib_dic = new lib_dic();	//コマンド置換辞書
 
 function soramame_exec(){
   var Esource = document.getElementById("source");

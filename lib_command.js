@@ -26,7 +26,7 @@ function lib_dic() {
 	//Attributes
 	輪郭幅 : 'strokeWeight',
 
-	//Mouse 
+	//Input - Mouse 
 	クリック時 : 'mouseClicked',
 	ドラッグ時 : 'mouseDragged',
 
@@ -41,7 +41,7 @@ function lib_dic() {
 	//test
 	test : '//SoraMame Script!'};
 
-  //変換候補データ - システム変数
+  //変換候補データ - 環境変数
   //元データ ： 変換先データ
   this.vars = {
 
@@ -73,7 +73,7 @@ lib_dic.prototype.get_vars = function(str, arg){
     if ( this.vars[str] === undefined ) {
 		msg = str;
 	} else {
-		msg = this.vars[str]; //global vars
+		msg = this.vars[str]; //vars of environment
     }
 	return msg;
 }
