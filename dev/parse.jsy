@@ -13,7 +13,7 @@ stmt_list : { $$ = '';}
 
 stmt : assign { $$ = $1 + ';' }
 		| funcall { $$ = $1 + ';' }
-		| def_method
+		| def_function
 		| COMMENT
 		;
 
@@ -24,10 +24,10 @@ funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
 		| WORD { $$ = lib_dic.get_comm($1,'');}
 		;
 
-def_method : '-' '-' '-' WORD '{' stmt_list '}' 
+def_function : '-' '-' '-' WORD '{' stmt_list '}' 
 			{$$ = 'void ' + lib_dic.get_comm($4,'') + '{\n' + $6 + '}';}
 		|'-' '-' '-' WORD WORD '{' stmt_list '}' 
-			{$$ = 'void ' + lib_dic.get_comm($5,'') + '{\n' + $7 + '}';}
+			{$$ = $4 + ' ' + lib_dic.get_comm($5,'') + '{\n' + $7 + '}';}
 		;
 
 args : phrase

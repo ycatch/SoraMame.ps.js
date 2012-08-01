@@ -268,7 +268,7 @@ function yyparse()
         case 11:
 {yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(7-4)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
         case 12:
-{yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(8-5)],'') + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
+{yyval = yyastk[yysp-(8-4)] + ' ' + lib_dic.get_comm(yyastk[yysp-(8-5)],'') + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
         case 14:
 { yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
         case 15:
