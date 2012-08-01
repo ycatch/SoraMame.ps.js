@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>SoraMame Script</title>
-	<script type="text/javascript" src="./processing-1.3.6.js"></script> 
-	<script type="text/javascript" src="./parse.js"></script>
-	<script type="text/javascript" src="./lib_command.js"></script>
-	<script type="text/javascript" src="./soramame.js"></script>
+	<script type="text/javascript" src="../processing-1.3.6.js"></script> 
+	<script type="text/javascript" src="../parse.js"></script>
+	<script type="text/javascript" src="../lib_command.js"></script>
+	<script type="text/javascript" src="../soramame.js"></script>
 </head>
 
 
@@ -24,12 +24,12 @@
   <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
-//マウスの位置にマルを描く
+//クリック時に、マウスの位置にマルを描く
 ---設定する{
-  {幅:250, 高さ:250}のサイズ
+  {幅:300, 高さ:300}のサイズ
 }
 
----くり返し描画する{
+---クリック時{
   {x:マウスX, y:マウスY}に{幅:10, 高さ:10}のマル
 }
 	</textarea><br />

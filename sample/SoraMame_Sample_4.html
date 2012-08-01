@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>SoraMame Script</title>
-	<script type="text/javascript" src="./processing-1.3.6.js"></script> 
-	<script type="text/javascript" src="./parse.js"></script>
-	<script type="text/javascript" src="./lib_command.js"></script>
-	<script type="text/javascript" src="./soramame.js"></script>
+	<script type="text/javascript" src="../processing-1.3.6.js"></script> 
+	<script type="text/javascript" src="../parse.js"></script>
+	<script type="text/javascript" src="../lib_command.js"></script>
+	<script type="text/javascript" src="../soramame.js"></script>
 </head>
 
 
@@ -24,13 +24,14 @@
   <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
-//マウスの位置にマルを描く
+//マウスの位置に合わせて、サイズを変えてマルを描く
 ---設定する{
-  {幅:250, 高さ:250}のサイズ
+  {幅:300, 高さ:300}のサイズ
 }
 
 ---くり返し描画する{
-  {x:マウスX, y:マウスY}に{幅:10, 高さ:10}のマル
+  {色:255}の背景色
+  {x:150, y:150}に{幅:マウスX, 高さ:マウスY}のマル
 }
 	</textarea><br />
 	<!--<input type="button" value="字句解析" onclick="soramame_lex()" /> -->
