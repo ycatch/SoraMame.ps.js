@@ -250,7 +250,7 @@ function yyparse()
         /* Following line will be replaced by reduce actions */
         switch(yyn) {
         case 1:
-{ return commands.dic_commands['test'][1] + '\n' + yyastk[yysp-(1-1)]; } break;
+{ return lib_dic.commands['test'] + '\n' + yyastk[yysp-(1-1)]; } break;
         case 2:
 { yyval = '';} break;
         case 3:
@@ -262,13 +262,13 @@ function yyparse()
         case 8:
 { yyval = yyastk[yysp-(3-1)] + '=' + yyastk[yysp-(3-3)];} break;
         case 9:
-{ yyval = commands.get(yyastk[yysp-(2-2)], yyastk[yysp-(2-1)]);} break;
+{ yyval = lib_dic.get_comm(yyastk[yysp-(2-2)], yyastk[yysp-(2-1)]);} break;
         case 10:
-{ yyval = commands.get(yyastk[yysp-(1-1)],'');} break;
+{ yyval = lib_dic.get_comm(yyastk[yysp-(1-1)],'');} break;
         case 11:
-{yyval = 'void ' + commands.get(yyastk[yysp-(7-4)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
+{yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(7-4)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
         case 12:
-{yyval = 'void ' + commands.get(yyastk[yysp-(8-5)],'') + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
+{yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(8-5)],'') + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
         case 14:
 { yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
         case 15:

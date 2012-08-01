@@ -1,61 +1,79 @@
 ﻿/* Soramame.ps.js から Processing.jsへの変換辞書
 */
 
-function lib_command() {
+function lib_dic() {
 
-  //変換候補データ
-  //元データ ： [関数=true グローバル変数=false, 変換先データ]
-  this.dic_commands = {
+  //変換候補データ - 命令
+  //元データ ： 変換先データ
+  this.commands = {
   	//Structure
-	サイズ : [true, 'size'],
-	設定する : [true, 'setup'],
-	くり返し描画する : [true, 'draw'],
+	サイズ : 'size',
+	設定する : 'setup',
+	くり返し描画する : 'draw',
 
 	//Environment
-	幅 : [false, 'width'],
-	高さ : [false, 'height'],
-	コマ数 : [true, 'frameRate'],
+	コマ数 : 'frameRate',
 	
 	//2D Primitives
-	テン : [true, 'point'],
-	セン: [true, 'line'],
-	マル : [true, 'ellipse'],
-	サンカク : [true, 'triangle'],
-	シカク : [true, 'rect'],
-	円弧 : [true, 'arc'],
-	四辺形 : [true, 'quad'],
+	テン : 'point',
+	セン: 'line',
+	マル : 'ellipse',
+	サンカク : 'triangle',
+	シカク : 'rect',
+	円弧 : 'arc',
+	四辺形 : 'quad',
 
 	//Attributes
-	輪郭幅 : [true, 'strokeWeight'],
+	輪郭幅 : 'strokeWeight',
 
 	//Mouse 
-	クリック時 : [true, 'mouseClicked'],
-	ドラッグ時 : [true, 'mouseDragged'],
-	マウスX : [false, 'mouseX'],
-	マウスY : [false, 'mouseY'],
+	クリック時 : 'mouseClicked',
+	ドラッグ時 : 'mouseDragged',
 
 	//Color
 	//setting
-	背景色 : [true, 'background'],
-	輪郭色 : [true, 'stroke'],
-	輪郭なし : [true, 'noStroke'],
-	塗りつぶし色 : [true, 'fill'],
-	塗りつぶしなし : [true, 'noFill'],
+	背景色 : 'background',
+	輪郭色 : 'stroke',
+	輪郭なし : 'noStroke',
+	塗りつぶし色 : 'fill',
+	塗りつぶしなし : 'noFill',
 
 	//test
-	test : [false, '//SoraMame Script!']};
+	test : '//SoraMame Script!'};
+
+  //変換候補データ - システム変数
+  //元データ ： 変換先データ
+  this.vars = {
+
+	//Environment
+	幅 : 'width',
+	高さ : 'height',
+	
+	//Input - Mouse
+	マウスX : 'mouseX',
+	マウスY : 'mouseY',
+	
+	//test
+	test : '//SoraMame Script!'};
 }
 
-lib_command.prototype.get = function(str,arg){
+lib_dic.prototype.get_comm = function(str, arg){
 	var msg;
-    if ( this.dic_commands[str] === undefined ) {
+    if ( this.commands[str] === undefined ) {
 		msg = str;
 	} else {
-		if(this.dic_commands[str][0]) {
-			msg = this.dic_commands[str][1] + '(' + arg +')'; //function
-		} else {
-			msg = this.dic_commands[str][1]; //global vars
-		}
+		msg = this.commands[str] + '(' + arg +')'; //function
+    }
+	return msg;
+}
+
+
+lib_dic.prototype.get_vars = function(str, arg){
+	var msg;
+    if ( this.vars[str] === undefined ) {
+		msg = str;
+	} else {
+		msg = this.vars[str]; //global vars
     }
 	return msg;
 }
