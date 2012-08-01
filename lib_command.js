@@ -5,7 +5,7 @@ function lib_command() {
 
   //変換候補データ
   //元データ ： [関数=true グローバル変数=false, 変換先データ]
-  this.dic = {
+  this.dic_commands = {
   	//Structure
 	サイズ : [true, 'size'],
 	設定する : [true, 'setup'],
@@ -48,13 +48,13 @@ function lib_command() {
 
 lib_command.prototype.get = function(str,arg){
 	var msg;
-    if ( this.dic[str] === undefined ) {
+    if ( this.dic_commands[str] === undefined ) {
 		msg = str;
 	} else {
-		if(this.dic[str][0]) {
-			msg = this.dic[str][1] + '(' + arg +')'; //function
+		if(this.dic_commands[str][0]) {
+			msg = this.dic_commands[str][1] + '(' + arg +')'; //function
 		} else {
-			msg = this.dic[str][1]; //global vars
+			msg = this.dic_commands[str][1]; //global vars
 		}
     }
 	return msg;

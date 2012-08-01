@@ -250,7 +250,7 @@ function yyparse()
         /* Following line will be replaced by reduce actions */
         switch(yyn) {
         case 1:
-{ return commands.dic['test'][1] + '\n' + yyastk[yysp-(1-1)]; } break;
+{ return commands.dic_commands['test'][1] + '\n' + yyastk[yysp-(1-1)]; } break;
         case 2:
 { yyval = '';} break;
         case 3:

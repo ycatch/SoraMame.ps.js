@@ -4,7 +4,7 @@
 %left '*' '/' '%'
 
 %%
-program : stmt_list { return commands.dic['test'][1] + '\n' + $1; }
+program : stmt_list { return commands.dic_commands['test'][1] + '\n' + $1; }
         ;
 
 stmt_list : { $$ = '';}
