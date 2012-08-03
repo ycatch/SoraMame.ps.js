@@ -26,7 +26,7 @@ function lib_dic() {
 	円弧 : 'arc',
 	四辺形 : 'quad',
 
-	//Attributes
+	//attributes
 	輪郭幅 : 'strokeWeight',
 
 	//Input - Mouse 
@@ -41,6 +41,13 @@ function lib_dic() {
 	塗りつぶし色 : 'fill',
 	塗りつぶしなし : 'noFill',
 
+	//Typography
+	//Loading & Displaying
+	もじ表示 : 'text',
+
+	//attributes
+	もじサイズ : 'textSize',
+	
 	//test
 	test : '//SoraMame Script!'};
 
