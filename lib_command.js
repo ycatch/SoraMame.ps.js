@@ -3,6 +3,8 @@
 
 function lib_dic() {
 
+  this.num = 0;
+
   //変換候補データ - 命令
   //元データ ： 変換先データ
   this.commands = {
@@ -60,10 +62,10 @@ function lib_dic() {
 lib_dic.prototype.get_comm = function(str, arg){
 	var msg;
     if ( this.commands[str] === undefined ) {
-		msg = str;
-	} else {
-		msg = this.commands[str] + '(' + arg +')'; //function
-    }
+		this.commands[str] = "func_" + this.num;
+		this.num += 1;
+	}
+	msg = this.commands[str] + '(' + arg +')'; //function
 	return msg;
 }
 
