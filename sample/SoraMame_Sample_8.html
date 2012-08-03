@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="EUC-JP"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>SoraMame Script</title>
+	<script type="text/javascript" src="../processing-1.3.6.js"></script> 
+	<script type="text/javascript" src="../parse.js"></script>
+	<script type="text/javascript" src="../lib_command.js"></script>
+	<script type="text/javascript" src="../soramame.js"></script>
+</head>
+
+
+<body>
+<h1>SoraMame Script(そら豆スクリプト) - 日本語っぽいプログラミング言語</h1>
+日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
+<hr />
+
+<table width="960px" heiht="320px" bgcolor="#eeeeee"><tbody><tr> 
+  <td width="320px" height="320px" bgcolor="white"> 
+		<canvas id="canvas0" width="320px" height="320px"></canvas> 
+  </td>	
+  <td>
+  <form name="compiledtext" id="compiledtext" onsubmit="return main()">
+	<textarea id="source" cols="80" rows="20">
+//マウスの位置に合わせて、文字を表示
+---初期設定する{
+  {幅:300, 高さ:300}のサイズ
+}
+
+---くり返し描画する{
+　　フェードアウト
+  {赤：255、緑：0、青：0}の塗りつぶし色
+  {テキスト:「あいうえお」}で{x:@マウスX, y:@マウスY}にもじ表示
+}
+
+---フェードアウト{
+  輪郭なし
+　{色:255, 透明:30}の塗りつぶし色
+  {x:0, y:0, 幅:@幅, 高さ:@高さ}のシカク
+}
+	</textarea><br />
+	<!--<input type="button" value="字句解析" onclick="soramame_lex()" /> -->
+	<input type="button" value="テスト" onclick="soramame_parse()" />
+	<input type="button" value="うごかす" onclick="soramame_exec()" />
+	<input type="button" value="とめる" onclick="soramame_stop()" />
+	<a href="http://www.catch.jp/wiki/?SoraMame.ps.js%2FReference" target='_blannk'>ヘルプ?</a>
+  </form>
+  </td>
+  </tr></tbody></table>  
+<hr>
+<h2>変換結果</h2>
+<pre id="screen"></pre>
+</body>
+
+
+</html>
+
+
+<script type="text/javascript">
+<!--
+var sora;
+var yylval = '';
+var Pjs;
+var lib_dic = new lib_dic();	//コマンド置換辞書
+
+function soramame_exec(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  var script = yyparse();
+  sora.debug(script);
+
+  soramame_stop();
+　　var canvas = document.getElementById('canvas0');
+  try{
+    Pjs = new Processing(canvas, script);
+  }catch(e){
+    alert(e);
+  }
+　　return false;
+}
+
+function soramame_stop(){
+    if (Pjs)
+      Pjs.exit();
+}
+
+
+function soramame_lex(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+
+  var type;
+  var retval;
+  var i = 0;
+  while(retval = yylex()){
+    switch(retval){
+	case COMMENT:
+      type = "COMMENT";
+      break;
+    case NUMBER:
+      type = "NUMBER";
+      break;
+    case STRING:
+      type = "STRING";
+      break;
+    case JOSI:
+      type = "JOSI";
+      break;
+    case WORD:
+      type = "WORD";
+      break;
+    default:
+      type = retval;
+      break;
+    }
+    sora.debug(type+": "+yylval);
+    if(i++ > 100){
+      break;
+    }
+  }
+}
+
+
+function yylex(){
+  var retval = sora.yylex();
+  yylval = sora.yylval;
+  return retval;
+}
+
+
+function yyerror(str){
+  sora.debug(str);
+}
+
+function soramame_parse(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  var script = yyparse();
+  sora.debug(script);
+ 
+}
+//-->
+</script>
