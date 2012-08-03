@@ -12,7 +12,8 @@ function lib_dic() {
 	サイズ : 'size',
 	初期設定する : 'setup',
 	くり返し描画する : 'draw',
-
+	もどる : 'return',
+	
 	//Environment
 	コマ数 : 'frameRate',
 	
