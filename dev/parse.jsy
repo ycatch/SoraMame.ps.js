@@ -18,6 +18,10 @@ stmt : assign { $$ = $1 + ';' }
 		;
 
 assign : '@' WORD '=' expr { $$ = lib_dic.get_vars($2, '') + '=' + $4;}
+		| '@' WORD '+' '=' expr { $$ = lib_dic.get_vars($2, '') + '+=' + $5;}
+		| '@' WORD '-' '=' expr { $$ = lib_dic.get_vars($2, '') + '-=' + $5;}
+		| '@' WORD '*' '=' expr { $$ = lib_dic.get_vars($2, '') + '*=' + $5;}
+		| '@' WORD '/' '=' expr { $$ = lib_dic.get_vars($2, '') + '/=' + $5;}
 		;
 
 funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
