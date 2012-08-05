@@ -29,7 +29,7 @@
   var pat_num2 = "0123456789０１２３４５６７８９";
  
  　// 記号
-  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@\.,:＝＋－×＊÷／％＾（）［］｛｝．、：＠";
+  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@!\.,:＝＋－×＊÷／％＾（）［］｛｝．、：＠！";
   
   //単語(識別子)
   var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_num2 + "]";
@@ -212,6 +212,7 @@ soramame.prototype.issymbol = function(c){
   case ",":
   case ":":
   case "@":
+  case "!":
     return c;
 
   case "＝":
@@ -232,7 +233,8 @@ soramame.prototype.issymbol = function(c){
   case "、":
   case "：":
   case "＠":
-    return this.zen2han(c);
+  case "！":
+  return this.zen2han(c);
   }
 
   switch(c.charCodeAt(0)){
@@ -246,8 +248,8 @@ soramame.prototype.issymbol = function(c){
 
 
 soramame.prototype.zen2han = function(c){
-  var hankaku = "0123456789=+-**//%^()[]{}.,:@";
-  var zenkaku = "０１２３４５６７８９＝＋－×＊÷／％＾（）［］｛｝．、：＠";
+  var hankaku = "0123456789=+-**//%^()[]{}.,:@!";
+  var zenkaku = "０１２３４５６７８９＝＋－×＊÷／％＾（）［］｛｝．、：＠！";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
