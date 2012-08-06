@@ -15,6 +15,10 @@
 　　var pat_comment_line = "\/\/";
   this.comment_line = new RegExp("^" + pat_comment_line);
   
+  //関数定義
+　　var pat_def_function = "---";
+  this.def_function = new RegExp("^" + pat_def_function);
+  
   // 助詞  
   var pat_josi = "[はのとにでを]";	//助詞の判定用
   var pat_josi2 = "はのとにでを";	//助詞以外の判定用
@@ -107,7 +111,16 @@ soramame.prototype.yylex = function(){
     this.yylval = line + "";
 	return STRING;
   }
-
+  
+  // 関数定義
+  p = line.match(this.def_function);
+  if (p != null) {
+	var def_function = p[0];
+	this.source = this.source.substring(def_function.length);
+    this.yylval = def_function + "";
+	return DEF_FUNC;
+  }
+  
   // 助詞
   p = line.match(this.josi);
   if (p != null) {

@@ -1,4 +1,4 @@
-%token NUMBER STRING JOSI WORD COMMENT
+%token NUMBER STRING JOSI WORD COMMENT DEF_FUNC
 
 %left '+' '-'
 %left '*' '/' '%'
@@ -30,10 +30,10 @@ funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
 		| WORD { $$ = lib_dic.get_comm($1,'');}
 		;
 
-def_function : '-' '-' '-' WORD '{' stmt_list '}'
-			{$$ = 'void ' + lib_dic.get_comm($4,'') + '{\n' + $6 + '}';}
-		|'-' '-' '-' WORD WORD '{' stmt_list '}'
-			{$$ = $4 + ' ' + lib_dic.get_comm($5,'') + '{\n' + $7 + '}';}
+def_function : DEF_FUNC WORD '{' stmt_list '}'
+			{$$ = 'void ' + lib_dic.get_comm($2,'') + '{\n' + $4 + '}';}
+		|DEF_FUNC WORD WORD '{' stmt_list '}'
+			{$$ = $2 + ' ' + lib_dic.get_comm($3,'') + '{\n' + $5 + '}';}
 		;
 
 args : phrase
