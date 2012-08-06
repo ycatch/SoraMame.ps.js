@@ -263,6 +263,8 @@ soramame.prototype.zen2han = function(c){
 
 
 soramame.prototype.debug = function(str){
+  str = str.replace(/\</g, "&lt");
+  str = str.replace(/\>/g, "&gt");
   this.Escreen.innerHTML += str+"<br />\n";
 }
 
