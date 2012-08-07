@@ -16,6 +16,7 @@ stmt_list : { $$ = '';}
 stmt : assign { $$ = $1 + ';' }
 		| funcall { $$ = $1 + ';' }
 		| def_function
+		| if_stmt
 		| COMMENT
 		;
 
@@ -36,6 +37,12 @@ def_function : DEF_FUNC WORD '{' stmt_list '}'
 			{$$ = $2 + ' ' + lib_dic.get_comm($3,'') + '{\n' + $5 + '}';}
 		;
 
+if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
+			{$$ = 'if (' + $3 + ') {' + $7 + '}' }
+		| IF '{' phrase_part '}' THEN '{' stmt_list '}' ELSE '{' stmt_list '}'
+			{$$ = 'if (' + $3 + ') {' + $7 + '} else {' + $11 +'}' }
+		;
+		
 args : phrase
 		| args phrase { $$ = $1 + ',' + $2;}
 		;
