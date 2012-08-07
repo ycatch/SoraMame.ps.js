@@ -16,7 +16,8 @@ var JOSI = 259;
 var WORD = 260;
 var COMMENT = 261;
 var DEF_FUNC = 262;
-var UMINUS = 263;
+var DEF_CLASS = 263;
+var UMINUS = 264;
 
   
 /*
@@ -92,11 +93,11 @@ var yytranslate = [
      26,   26,   26,   26,   26,   26,   26,   26,   26,   26,
      26,   26,   26,   26,   26,   26,   26,   26,   26,   26,
      26,   26,   26,   26,   26,   26,    1,    2,    3,    4,
-      5,    6,    7,   26
+      5,    6,    7,   26,   26
   ];
 
 var YYBADCH = 26;
-var YYMAXLEX = 264;
+var YYMAXLEX = 265;
 var YYTERMS = 26;
 var YYNONTERMS = 12;
 

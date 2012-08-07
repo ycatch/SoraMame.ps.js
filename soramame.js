@@ -16,7 +16,7 @@
   this.comment_line = new RegExp("^" + pat_comment_line);
   
   //予約語
-　　var pat_yoyaku = "---";
+　　var pat_yoyaku = "---|===";
   this.yoyaku = new RegExp("^" + pat_yoyaku);
   
   // 助詞  
@@ -122,6 +122,9 @@ soramame.prototype.yylex = function(){
 	switch(this.yylval){
 		case '---':
 			yoyaku_token = DEF_FUNC;
+			break;
+		case '===':
+			yoyaku_token = DEF_CLASS;
 			break;
 	}
 	return yoyaku_token;

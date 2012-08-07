@@ -1,4 +1,4 @@
-%token NUMBER STRING JOSI WORD COMMENT DEF_FUNC
+%token NUMBER STRING JOSI WORD COMMENT DEF_FUNC DEF_CLASS
 
 %left '+' '-'
 %left '*' '/' '%'
