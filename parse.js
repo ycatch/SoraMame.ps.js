@@ -17,7 +17,10 @@ var WORD = 260;
 var COMMENT = 261;
 var DEF_FUNC = 262;
 var DEF_CLASS = 263;
-var UMINUS = 264;
+var IF = 264;
+var THEN = 265;
+var ELSE = 266;
+var UMINUS = 267;
 
   
 /*
@@ -93,11 +96,11 @@ var yytranslate = [
      26,   26,   26,   26,   26,   26,   26,   26,   26,   26,
      26,   26,   26,   26,   26,   26,   26,   26,   26,   26,
      26,   26,   26,   26,   26,   26,    1,    2,    3,    4,
-      5,    6,    7,   26,   26
+      5,    6,    7,   26,   26,   26,   26,   26
   ];
 
 var YYBADCH = 26;
-var YYMAXLEX = 265;
+var YYMAXLEX = 268;
 var YYTERMS = 26;
 var YYNONTERMS = 12;
 
