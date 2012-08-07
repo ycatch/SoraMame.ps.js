@@ -15,9 +15,9 @@
 　　var pat_comment_line = "\/\/";
   this.comment_line = new RegExp("^" + pat_comment_line);
   
-  //関数定義
-　　var pat_def_function = "---";
-  this.def_function = new RegExp("^" + pat_def_function);
+  //予約語
+　　var pat_yoyaku = "---";
+  this.yoyaku = new RegExp("^" + pat_yoyaku);
   
   // 助詞  
   var pat_josi = "[はのとにでを]";	//助詞の判定用
@@ -112,13 +112,19 @@ soramame.prototype.yylex = function(){
 	return STRING;
   }
   
-  // 関数定義
-  p = line.match(this.def_function);
+  // 予約語
+  p = line.match(this.yoyaku);
   if (p != null) {
-	var def_function = p[0];
-	this.source = this.source.substring(def_function.length);
-    this.yylval = def_function + "";
-	return DEF_FUNC;
+	var yoyaku = p[0];
+	this.source = this.source.substring(yoyaku.length);
+    this.yylval = yoyaku + "";
+	var yoyaku_token;
+	switch(this.yylval){
+		case '---':
+			yoyaku_token = DEF_FUNC;
+			break;
+	}
+	return yoyaku_token;
   }
   
   // 助詞
