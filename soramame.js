@@ -16,8 +16,8 @@
   this.comment_line = new RegExp("^" + pat_comment_line);
   
   //予約語
-　　var pat_yoyaku = "---|===|もし|ならば|ちがえば";
-  this.yoyaku = new RegExp("^" + pat_yoyaku);
+　　var pat_yoyaku = "^---|^===|^もし|^ならば|^ちがえば";
+  this.yoyaku = new RegExp(pat_yoyaku);
   
   // 助詞  
   var pat_josi = "[はのとにでを]";	//助詞の判定用
