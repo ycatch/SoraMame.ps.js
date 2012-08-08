@@ -67,6 +67,20 @@ function lib_dic() {
 	
 	//test
 	test : '//SoraMame Script!'};
+
+  //変換候補データ - データ型命
+  //元データ ： 変換先データ
+  this.types = {
+
+	//Primitive
+	整数 : 'int',
+	実数 : 'float',
+	文字型 : 'char',	
+	正否型 : 'boolean',
+	カラー型 : 'color',
+	
+	//test
+	test : '//SoraMame Script!'};
 }
 
 lib_dic.prototype.get_comm = function(str, arg){
@@ -79,13 +93,22 @@ lib_dic.prototype.get_comm = function(str, arg){
 	return msg;
 }
 
-
 lib_dic.prototype.get_vars = function(str, arg){
 	var msg;
     if ( this.vars[str] === undefined ) {
 		msg = str;
 	} else {
 		msg = this.vars[str]; //vars of environment
+    }
+	return msg;
+}
+
+lib_dic.prototype.get_types= function(str, arg){
+	var msg;
+    if ( this.types[str] === undefined ) {
+		msg = str;
+	} else {
+		msg = this.types[str]; //types of environment
     }
 	return msg;
 }
