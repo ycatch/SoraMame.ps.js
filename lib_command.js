@@ -62,6 +62,8 @@ function lib_dic() {
 	//Input - Mouse
 	マウスX : 'mouseX',
 	マウスY : 'mouseY',
+	マウスx : 'mouseX',
+	マウスy : 'mouseY',
 	
 	//test
 	test : '//SoraMame Script!'};
