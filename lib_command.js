@@ -3,8 +3,9 @@
 
 function lib_dic() {
 
-  this.num = 0;
-
+  this.func_num = 0;
+  this.type_num = 0;
+  
   //変換候補データ - 命令
   //元データ ： 変換先データ
   this.commands = {
@@ -86,8 +87,8 @@ function lib_dic() {
 lib_dic.prototype.get_comm = function(str, arg){
 	var msg;
     if ( this.commands[str] === undefined ) {
-		this.commands[str] = "func_" + this.num;
-		this.num += 1;
+		this.commands[str] = "func_" + this.func_num;
+		this.func_num += 1;
 	}
 	msg = this.commands[str] + '(' + arg +')'; //function
 	return msg;
@@ -107,8 +108,9 @@ lib_dic.prototype.get_types= function(str, arg){
 	var msg;
     if ( this.types[str] === undefined ) {
 		msg = str;
-	} else {
-		msg = this.types[str]; //types of environment
-    }
+		this.types[str] = "type_" + this.type_num;
+		this.type_num += 1;
+	}
+	msg = this.types[str]; //Data types
 	return msg;
 }
