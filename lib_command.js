@@ -73,8 +73,8 @@ function lib_dic() {
   this.types = {
 
 	//Primitive
-	整数 : 'int',
-	実数 : 'float',
+	整数型 : 'int',
+	実数型 : 'float',
 	文字型 : 'char',	
 	正否型 : 'boolean',
 	カラー型 : 'color',
