@@ -306,9 +306,9 @@ function yyparse()
         case 13:
 { yyval = yyastk[yysp-(4-1)]  + '/=' + yyastk[yysp-(4-4)];} break;
         case 14:
-{yyval = lib_dic.get_types(yyastk[yysp-(3-3)], '') + " " + lib_dic.get_vars(yyastk[yysp-(3-1)], '');} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(3-3)], '') + " " + yyastk[yysp-(3-1)] ;} break;
         case 15:
-{yyval = lib_dic.get_types(yyastk[yysp-(5-3)], '') + " " + lib_dic.get_vars(yyastk[yysp-(5-1)], '') + '=' + yyastk[yysp-(5-5)];} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(5-3)], '') + " " + yyastk[yysp-(5-1)] + '=' + yyastk[yysp-(5-5)];} break;
         case 16:
 { yyval = lib_dic.get_comm(yyastk[yysp-(2-2)], yyastk[yysp-(2-1)]);} break;
         case 17:
