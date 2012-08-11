@@ -4,6 +4,7 @@
 function lib_dic() {
 
   this.func_num = 0;
+  this.vars_num = 0;
   this.type_num = 0;
   
   //変換候補データ - 命令
@@ -97,10 +98,11 @@ lib_dic.prototype.get_comm = function(str, arg){
 lib_dic.prototype.get_vars = function(str, arg){
 	var msg;
     if ( this.vars[str] === undefined ) {
-		msg = str;
-	} else {
-		msg = this.vars[str]; //vars of environment
-    }
+		//msg = str;
+		this.vars[str] = "vars_" + this.vars_num;
+		this.vars_num += 1;
+	}
+	msg = this.vars[str]; //vars of environment
 	return msg;
 }
 
