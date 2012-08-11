@@ -57,6 +57,10 @@ function lib_dic() {
   //元データ ： 変換先データ
   this.vars = {
 
+    //Structure
+	正 : 'true',
+	否 : 'false',
+
 	//Environment
 	幅 : 'width',
 	高さ : 'height',
