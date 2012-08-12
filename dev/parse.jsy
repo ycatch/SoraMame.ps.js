@@ -1,5 +1,5 @@
 %token NUMBER STRING JOSI WORD COMMENT DEF_FUNC DEF_CLASS
-%token IF THEN ELSE
+%token IF THEN ELSE LOOP
 %left '+' '-'
 %left '*' '/' '%'
 %left '&' '|'
@@ -45,7 +45,11 @@ if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
 		| IF '{' phrase_part '}' THEN '{' stmt_list '}' ELSE '{' stmt_list '}'
 			{$$ = 'if (' + $3 + ') {\n' + $7 + '} else {\n' + $11 +'}' }
 		;
-		
+
+loop_stmt : phrase LOOP '{' stmt_list '}'
+			{ $$ = lib_dic.get_comm($2,'') + '(' + $1 + ') {\n' + $4 + '}' }
+		;
+
 args : phrase
 		| args phrase { $$ = $1 + ',' + $2;}
 		;
