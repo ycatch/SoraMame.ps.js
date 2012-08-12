@@ -17,6 +17,7 @@ stmt : assign { $$ = $1 + ';' }
 		| funcall { $$ = $1 + ';' }
 		| def_function
 		| if_stmt
+		| loop_stmt
 		| COMMENT
 		;
 
@@ -47,7 +48,7 @@ if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
 		;
 
 loop_stmt : phrase LOOP '{' stmt_list '}'
-			{ $$ = lib_dic.get_comm($2,'') + '(' + $1 + ') {\n' + $4 + '}' }
+			{ $$ = lib_dic.get_comm($2,$1) + ' {\n' + $4 + '}' }
 		;
 
 args : phrase

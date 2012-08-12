@@ -19,6 +19,10 @@ function lib_dic() {
 	//Environment
 	コマ数 : 'frameRate',
 	
+	//Control
+	あいだ : 'while',
+	くりかえし : 'for',
+	
 	//2D Primitives
 	テン : 'point',
 	セン: 'line',
