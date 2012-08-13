@@ -47,7 +47,7 @@ if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
 			{$$ = 'if (' + $3 + ') {\n' + $7 + '} else {\n' + $11 +'}' }
 		;
 
-loop_stmt : phrase LOOP '{' stmt_list '}'
+loop_stmt : phrase4loop '{' stmt_list '}'
 			{ $$ = lib_dic.get_comm($2,$1) + ' {\n' + $4 + '}' }
 		;
 
@@ -61,7 +61,15 @@ phrase : '{' phrase_part '}' JOSI { $$ = $2 }
 phrase_part : WORD ':' expr { $$ = $3 }
 		| phrase_part ',' WORD ':' expr { $$ = $1 + ',' + $5 }
 		;
-
+		
+phrase4loop : '{' phrase_part4loop '}' JOSI { $$ = $2 }
+		;
+phrase_part4loop : WORD ':' expr { $$ = $3 }
+		| WORD ':' assign { $$ = $3 }
+		| phrase_part ',' WORD ':' expr { $$ = $1 + ';' + $5 }
+		| phrase_part ',' WORD ':' assign { $$ = $1 + ';' + $5 }
+		;
+		
 expr : expr '+' expr { $$ = $1 + '+' + $3; }
 		| expr '-' expr { $$ = $1 + '-' + $3; }
 		| expr '*' expr { $$ = $1 + '*' + $3; }
