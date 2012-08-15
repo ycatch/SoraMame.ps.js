@@ -27,9 +27,6 @@ assign : variable '=' expr { $$ = $1 + '=' + $3;}
 		| variable '-' '=' expr { $$ = $1  + '-=' + $4;}
 		| variable '*' '=' expr { $$ = $1  + '*=' + $4;}
 		| variable '/' '=' expr { $$ = $1  + '/=' + $4;}
-		| variable JOSI WORD {$$ = lib_dic.get_types($3, '') + " " + $1 ;}
-		| variable JOSI WORD '=' expr 
-		    {$$ = lib_dic.get_types($3, '') + " " + $1 + '=' + $5;}
 		;
 
 funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
@@ -91,6 +88,8 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 		;
 
 variable : '@' WORD {$$ = lib_dic.get_vars($2, '')}
+		| '@' WORD JOSI WORD 
+			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, '')}
 		;
 
 primary : NUMBER
