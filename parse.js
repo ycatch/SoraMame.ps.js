@@ -103,22 +103,22 @@ var yytranslate = [
 var YYBADCH = 31;
 var YYMAXLEX = 269;
 var YYTERMS = 31;
-var YYNONTERMS = 16;
+var YYNONTERMS = 17;
 
 var yyaction = [
-     41,   42,   43,   96,   97,   98,  173,  174,   89,  138,
-     17,   18,   99,  138,  131,   61,   73,   74,   35,   79,
-     80,   81,   82,    0,   83,   70,   30,   39,   40,   69,
-     98,   36,   37,  137,   75,   17,   18,   99,   75,   39,
-     40,  113,   88,  165,-32766,-32766,-32766,   39,   40,   91,
-    107,   94,  111,  149,  101,  172,   64,   76,   77,   78,
-     84,   85,   95,  100,  104,  108,   49,   87,    0,   75,
-      0,    0,  106,    0,  103,  112,    0,    0,    0,    0,
+     41,   42,   43,   97,   98,   99,  176,  177,   90,  140,
+     17,   18,  100,  140,  133,   62,   74,   75,   35,   80,
+     81,   82,   83,    0,   84,   71,   30,   39,   40,   70,
+     99,   36,   37,  139,   76,   17,   18,  100,   76,   39,
+     40,  114,   89,  168,-32766,-32766,-32766,   39,   40,   92,
+    108,   95,  112,  152,  102,  175,   65,   77,   78,   79,
+     85,   86,   96,  101,  105,  109,   49,   88,    0,   76,
+      0,    0,  107,    0,  104,  113,    0,    0,    0,    0,
       0,    0,   45,    0,   46,    0,   48,   31,   32,   33,
-     34,   47,   50,    0,  120,  116,   71,  114,  115,  117,
-    118,   70,  119,    0,  140,   86,   90,   92,  110,  105,
-    139,  142,  141,  145,  144,  146,    0,   29,   68,   51,
-     44,   38,    0,  102
+     34,   47,   50,    0,  121,  117,   72,  115,  116,  118,
+    119,   71,  120,    0,  142,   87,   91,   93,  111,  106,
+    141,  144,  143,  148,  147,  149,    0,   29,   69,   51,
+     44,   38,    0,  103
   ];
 
 var YYLAST = 124;
@@ -145,98 +145,99 @@ var yybase = [
     -15,   88,   89,   82,   90,   87,   91,   92,   93,    4,
       4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
       4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-      4,    4,    8,   29,   29,   29,    6,    6,   10,   10,
-     10,   51,   28,   56,   20,   83,   84,   85,   39,   53,
-     55,   55,   23,   52,   75,   54,   76,   94,   38,   67,
-     68,   69,   70,    3,   98,   45,   47,   57,   50,   77,
-     49,   58,   44,   99,   62,   97,   64,   65,   71,   72,
-     74,   78,   59,   79,   96,   61,   81,   60,   95,   86,
-     48,   63,   73,    0,    0,    0,    0,    0,    0,    0,
-      0,    0,  -15,  -15,  -15,  -15,  -15,  -15,  -15,  -15,
-    -15,  -15,  -15,  -15,  -15,  -15,  -15,  -15,    4,    4,
-      0,    0,    8,    8,    8,    8,    8,    8,    8,    8,
+      4,    4,    8,   29,   29,   29,    6,    6,    6,   10,
+     10,   10,   51,   28,   56,   20,   83,   84,   85,   39,
+     53,   55,   55,   23,   52,   75,   54,   76,   94,   38,
+     67,   68,   69,   70,    3,   98,   45,   47,   57,   50,
+     77,   49,   58,   44,   99,   62,   97,   64,   65,   71,
+     72,   74,   78,   59,   79,   96,   61,   81,   60,   95,
+     86,   48,   63,   73,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,  -15,  -15,  -15,  -15,  -15,  -15,  -15,
+    -15,  -15,  -15,  -15,  -15,  -15,  -15,  -15,  -15,    4,
+      4,    0,    0,    8,    8,    8,    8,    8,    8,    8,
+      8,    0,    0,    0,    0,    0,    0,    0,    0,    0,
       0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-      0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-      0,    0,    0,    0,  -15,  -15,  -15,    0,    0,    0,
-      0,    0,   80,   80,   80,    0,   43,   43,   43
+      0,    0,    0,    0,    0,  -15,  -15,  -15,    0,    0,
+      0,    0,    0,    0,   80,   80,   80,    0,   43,   43,
+     43
   ];
 
-var YY2TBLSTATE = 68;
+var YY2TBLSTATE = 69;
 
 var yydefault = [
-      2,32767,32767,   11,   29,   12,   13,   14,   15,   46,
-     38,   39,   30,   43,   40,   41,   42,32767,32767,   31,
-     32,32767,32767,32767,32767,32767,32767,32767,32767,32767,
+      2,32767,32767,   12,   31,   13,   14,   15,   16,   48,
+     40,   41,   32,   45,   42,   43,   44,32767,32767,   33,
+     34,32767,32767,32767,32767,32767,32767,32767,32767,32767,
   32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
   32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
-  32767,32767,    1,   33,   34,   35,32767,   48,   45,   36,
-     37,32767,32767,32767,32767,32767,32767,32767,32767,32767,
-  32767,32767,32767,32767,32767,32767,32767,32767,   50,32767,
+  32767,32767,    1,   35,   36,   37,   23,   50,32767,   47,
+     38,   39,32767,32767,32767,32767,32767,32767,32767,32767,
+  32767,32767,32767,32767,32767,32767,32767,32767,32767,   52,
   32767,32767,32767,32767,32767,32767,32767,32767,32767,32767,
-  32767,32767,32767,32767,   28,32767,32767,32767,32767,32767,
-  32767,32767,32767,32767,32767,   22,32767,32767,32767,32767,
-  32767,32767,32767,    2,    2,    2,    2,    2,    2,    2,
-      2
+  32767,32767,32767,32767,32767,   30,32767,32767,32767,32767,
+  32767,32767,32767,32767,32767,32767,   24,32767,32767,32767,
+  32767,32767,32767,32767,    2,    2,    2,    2,    2,    2,
+      2,    2
   ];
 
 
 
 var yygoto = [
      10,   11,   21,   22,   23,   24,   25,   26,   27,   28,
-    148,  148,   63,    3,    5,    6,    7,    8,   58,    9,
-      1,   93,   19,   20,   53,   54,   55,   12,   59,   60,
+    151,  151,   64,    3,    5,    6,    7,    8,   59,    9,
+      1,   94,   19,   20,   53,   54,   55,   12,   60,   61,
      13,   14,   15,   16,    2,   56,   56,   56,   56,   56,
-     56,   56,   56,   57,  126,  126,  126,  126,  126,  126,
-    126,  126,   66,   67,    0,    0,    0,    0,    0,    0,
-    109,    0,    0,    0,    0,    0,   56,    0,    0,    0,
-      0,    0,    0,    0,    0,  126,    0,    0,    0,    0,
-      0,    0,   56
+     56,   56,   56,   57,  127,  127,  127,  127,  127,  127,
+    127,  127,   67,   68,    0,    0,    0,    0,    0,    0,
+      0,  110,    0,    0,    0,    0,   56,    0,    0,    0,
+      0,    0,    0,    0,    0,  127,    0,    0,    0,    0,
+      0,    0,    0,   58
   ];
 
-var YYGLAST = 83;
+var YYGLAST = 84;
 
 var yygcheck = [
-     11,   11,    2,    2,    2,    2,    2,    2,    2,    2,
-     14,   14,   12,   11,   11,   11,   11,   11,   11,   11,
-     11,    4,   11,   11,   11,   11,   11,   11,   11,   11,
-     11,   11,   11,   11,   11,   10,   10,   10,   10,   10,
-     10,   10,   10,   10,    5,    5,    5,    5,    5,    5,
-      5,    5,   13,   13,   -1,   -1,   -1,   -1,   -1,   -1,
-      4,   -1,   -1,   -1,   -1,   -1,   10,   -1,   -1,   -1,
+     12,   12,    2,    2,    2,    2,    2,    2,    2,    2,
+     15,   15,   13,   12,   12,   12,   12,   12,   12,   12,
+     12,    4,   12,   12,   12,   12,   12,   12,   12,   12,
+     12,   12,   12,   12,   12,   11,   11,   11,   11,   11,
+     11,   11,   11,   11,    5,    5,    5,    5,    5,    5,
+      5,    5,   14,   14,   -1,   -1,   -1,   -1,   -1,   -1,
+     -1,    4,   -1,   -1,   -1,   -1,   11,   -1,   -1,   -1,
      -1,   -1,   -1,   -1,   -1,    5,   -1,   -1,   -1,   -1,
-     -1,   -1,   10
+     -1,   -1,   -1,   11
   ];
 
 var yygbase = [
-      0,    0, -111,    0,   -8,   23,    0,    0,    0,    0,
-     14,  -17,  -49,  -18,  -52,    0
+      0,    0, -112,    0,   -8,   23,    0,    0,    0,    0,
+      0,   14,  -17,  -50,  -19,  -53,    0
   ];
 
 var yygdefault = [
-  -32768,   72,   52,  124,  125,  168,  127,  128,  129,  130,
-    169,    4,   62,   65,  147,  170
+  -32768,   73,   52,  125,  126,  171,  128,  129,  130,  131,
+    132,  172,    4,   63,   66,  150,  173
   ];
 
 var yylhs = [
       0,    1,    2,    2,    3,    3,    3,    3,    3,    3,
-      3,    4,    4,    4,    4,    4,    5,    5,    6,    6,
-      6,    7,    8,    8,    9,    9,   12,   12,   14,   13,
-     13,   11,   11,   11,   11,   11,   11,   11,   11,   11,
-     11,   11,   11,   11,   11,   11,   11,   11,   11,   11,
-     10,   10,   15,   15
+      3,    3,    4,    4,    4,    4,    4,    5,    5,    6,
+      6,    6,    7,    8,    9,    9,   10,   10,   13,   13,
+     15,   14,   14,   12,   12,   12,   12,   12,   12,   12,
+     12,   12,   12,   12,   12,   12,   12,   12,   12,   12,
+     12,   12,   11,   11,   16,   16
   ];
 
 var yylen = [
       1,    1,    0,    2,    1,    1,    1,    1,    1,    1,
-      1,    3,    4,    4,    4,    4,    2,    1,    5,    7,
-      8,    5,    8,   12,    8,   18,    1,    2,    4,    3,
-      5,    3,    3,    3,    3,    3,    4,    4,    3,    3,
-      4,    4,    4,    4,    3,    2,    2,    1,    1,    1,
-      2,    4,    1,    1
+      1,    1,    3,    4,    4,    4,    4,    2,    1,    5,
+      7,    8,    5,    1,    8,   12,    8,   18,    1,    2,
+      4,    3,    5,    3,    3,    3,    3,    3,    4,    4,
+      3,    3,    4,    4,    4,    4,    3,    2,    2,    1,
+      1,    1,    2,    4,    1,    1
   ];
 
-var YYSTATES = 148;
-var YYNLSTATES = 121;
+var YYSTATES = 150;
+var YYNLSTATES = 122;
 var YYINTERRTOK = 1;
 var YYUNEXPECTED = 32767;
 var YYDEFAULT = -32766;
@@ -322,80 +323,80 @@ function yyparse()
 { yyval = yyastk[yysp-(1-1)] + ';' } break;
         case 5:
 { yyval = yyastk[yysp-(1-1)] + ';' } break;
-        case 11:
-{ yyval = yyastk[yysp-(3-1)] + '=' + yyastk[yysp-(3-3)];} break;
         case 12:
-{ yyval = yyastk[yysp-(4-1)]  + '+=' + yyastk[yysp-(4-4)];} break;
+{ yyval = yyastk[yysp-(3-1)] + '=' + yyastk[yysp-(3-3)];} break;
         case 13:
-{ yyval = yyastk[yysp-(4-1)]  + '-=' + yyastk[yysp-(4-4)];} break;
+{ yyval = yyastk[yysp-(4-1)]  + '+=' + yyastk[yysp-(4-4)];} break;
         case 14:
-{ yyval = yyastk[yysp-(4-1)]  + '*=' + yyastk[yysp-(4-4)];} break;
+{ yyval = yyastk[yysp-(4-1)]  + '-=' + yyastk[yysp-(4-4)];} break;
         case 15:
-{ yyval = yyastk[yysp-(4-1)]  + '/=' + yyastk[yysp-(4-4)];} break;
+{ yyval = yyastk[yysp-(4-1)]  + '*=' + yyastk[yysp-(4-4)];} break;
         case 16:
-{ yyval = lib_dic.get_comm(yyastk[yysp-(2-2)], yyastk[yysp-(2-1)]);} break;
+{ yyval = yyastk[yysp-(4-1)]  + '/=' + yyastk[yysp-(4-4)];} break;
         case 17:
-{ yyval = lib_dic.get_comm(yyastk[yysp-(1-1)],'');} break;
+{ yyval = lib_dic.get_comm(yyastk[yysp-(2-2)], yyastk[yysp-(2-1)]);} break;
         case 18:
-{yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
+{ yyval = lib_dic.get_comm(yyastk[yysp-(1-1)],'');} break;
         case 19:
-{yyval = lib_dic.get_types(yyastk[yysp-(7-4)],'') + ' ' + lib_dic.get_comm(yyastk[yysp-(7-2)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
+{yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
         case 20:
-{yyval = lib_dic.get_types(yyastk[yysp-(8-5)],'') + ' ' + lib_dic.get_comm(yyastk[yysp-(8-3)],yyastk[yysp-(8-2)]) + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(7-4)],'') + ' ' + lib_dic.get_comm(yyastk[yysp-(7-2)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
         case 21:
-{yyval = 'class ' + lib_dic.get_types(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(8-5)],'') + ' ' + lib_dic.get_comm(yyastk[yysp-(8-3)],yyastk[yysp-(8-2)]) + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
         case 22:
-{yyval = 'if (' + yyastk[yysp-(8-3)] + ') {\n' + yyastk[yysp-(8-7)] + '}' } break;
-        case 23:
-{yyval = 'if (' + yyastk[yysp-(12-3)] + ') {\n' + yyastk[yysp-(12-7)] + '} else {\n' + yyastk[yysp-(12-11)] +'}' } break;
+{yyval = 'class ' + lib_dic.get_types(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
         case 24:
-{ yyval = lib_dic.get_comm(yyastk[yysp-(8-5)],yyastk[yysp-(8-2)]) + ' {\n' + yyastk[yysp-(8-7)] + '}' } break;
+{yyval = 'if (' + yyastk[yysp-(8-3)] + ') {\n' + yyastk[yysp-(8-7)] + '}'; } break;
         case 25:
-{ yyval = lib_dic.get_comm(yyastk[yysp-(18-15)],yyastk[yysp-(18-4)] + ';' + yyastk[yysp-(18-8)] + ';' + yyastk[yysp-(18-12)]) + ' {\n' + yyastk[yysp-(18-17)] + '}' } break;
+{yyval = 'if (' + yyastk[yysp-(12-3)] + ') {\n' + yyastk[yysp-(12-7)] + '} else {\n' + yyastk[yysp-(12-11)] +'}'; } break;
+        case 26:
+{ yyval = lib_dic.get_comm(yyastk[yysp-(8-5)],yyastk[yysp-(8-2)]) + ' {\n' + yyastk[yysp-(8-7)] + '}'; } break;
         case 27:
-{ yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
-        case 28:
-{ yyval = yyastk[yysp-(4-2)] } break;
+{ yyval = lib_dic.get_comm(yyastk[yysp-(18-15)],yyastk[yysp-(18-4)] + ';' + yyastk[yysp-(18-8)] + ';' + yyastk[yysp-(18-12)]) + ' {\n' + yyastk[yysp-(18-17)] + '}'; } break;
         case 29:
-{ yyval = yyastk[yysp-(3-3)] } break;
+{ yyval = yyastk[yysp-(2-1)] + ',' + yyastk[yysp-(2-2)];} break;
         case 30:
-{ yyval = yyastk[yysp-(5-1)] + ',' + yyastk[yysp-(5-5)] } break;
+{ yyval = yyastk[yysp-(4-2)]; } break;
         case 31:
-{ yyval = yyastk[yysp-(3-1)] + '+' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-3)]; } break;
         case 32:
-{ yyval = yyastk[yysp-(3-1)] + '-' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(5-1)] + ',' + yyastk[yysp-(5-5)]; } break;
         case 33:
-{ yyval = yyastk[yysp-(3-1)] + '*' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '+' + yyastk[yysp-(3-3)]; } break;
         case 34:
-{ yyval = yyastk[yysp-(3-1)] + '/' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '-' + yyastk[yysp-(3-3)]; } break;
         case 35:
-{ yyval = yyastk[yysp-(3-1)] + '%' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '*' + yyastk[yysp-(3-3)]; } break;
         case 36:
-{ yyval = yyastk[yysp-(4-1)] + '&&' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '/' + yyastk[yysp-(3-3)]; } break;
         case 37:
-{ yyval = yyastk[yysp-(4-1)] + '||' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '%' + yyastk[yysp-(3-3)]; } break;
         case 38:
-{ yyval = yyastk[yysp-(3-1)] + '<' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(4-1)] + '&&' + yyastk[yysp-(4-4)]; } break;
         case 39:
-{ yyval = yyastk[yysp-(3-1)] + '>' + yyastk[yysp-(3-3)]; } break;
+{ yyval = yyastk[yysp-(4-1)] + '||' + yyastk[yysp-(4-4)]; } break;
         case 40:
-{ yyval = yyastk[yysp-(4-1)] + '<=' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '<' + yyastk[yysp-(3-3)]; } break;
         case 41:
-{ yyval = yyastk[yysp-(4-1)] + '>=' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(3-1)] + '>' + yyastk[yysp-(3-3)]; } break;
         case 42:
-{ yyval = yyastk[yysp-(4-1)] + '!=' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(4-1)] + '<=' + yyastk[yysp-(4-4)]; } break;
         case 43:
-{ yyval = yyastk[yysp-(4-1)] + '==' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(4-1)] + '>=' + yyastk[yysp-(4-4)]; } break;
         case 44:
-{ yyval = '(' + yyastk[yysp-(3-2)] + ')'; } break;
+{ yyval = yyastk[yysp-(4-1)] + '!=' + yyastk[yysp-(4-4)]; } break;
         case 45:
-{yyval = '-' + yyastk[yysp-(2-2)]} break;
+{ yyval = yyastk[yysp-(4-1)] + '==' + yyastk[yysp-(4-4)]; } break;
         case 46:
-{yyval = '!' + yyastk[yysp-(2-2)]} break;
-        case 50:
-{yyval = lib_dic.get_vars(yyastk[yysp-(2-2)], '')} break;
-        case 51:
-{yyval = lib_dic.get_types(yyastk[yysp-(4-4)], '') + " " + lib_dic.get_vars(yyastk[yysp-(4-2)], '')} break;
+{ yyval = '(' + yyastk[yysp-(3-2)] + ')'; } break;
+        case 47:
+{yyval = '-' + yyastk[yysp-(2-2)];} break;
+        case 48:
+{yyval = '!' + yyastk[yysp-(2-2)];} break;
+        case 52:
+{yyval = lib_dic.get_vars(yyastk[yysp-(2-2)], '');} break;
+        case 53:
+{yyval = lib_dic.get_types(yyastk[yysp-(4-4)], '') + " " + lib_dic.get_vars(yyastk[yysp-(4-2)], '');} break;
         }
         /* Goto - shift nonterminal */
         yysp -= yyl;
