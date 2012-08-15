@@ -38,8 +38,8 @@ funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
 
 def_function : DEF_FUNC WORD '{' stmt_list '}'
 			{$$ = 'void ' + lib_dic.get_comm($2,'') + '{\n' + $4 + '}';}
-		|DEF_FUNC WORD WORD '{' stmt_list '}'
-			{$$ = $2 + ' ' + lib_dic.get_comm($3,'') + '{\n' + $5 + '}';}
+		|DEF_FUNC WORD JOSI WORD '{' stmt_list '}'
+			{$$ = lib_dic.get_types($4,'') + ' ' + lib_dic.get_comm($2,'') + '{\n' + $6 + '}';}
 		;
 
 def_class : DEF_CLASS WORD '{' stmt_list '}'
