@@ -16,9 +16,9 @@ stmt_list : { $$ = '';}
 stmt : assign { $$ = $1 + ';' }
 		| funcall { $$ = $1 + ';' }
 		| def_function
+		| def_class
 		| if_stmt
 		| loop_stmt
-		| def_class
 		| COMMENT
 		;
 
@@ -42,6 +42,10 @@ def_function : DEF_FUNC WORD '{' stmt_list '}'
 			{$$ = $2 + ' ' + lib_dic.get_comm($3,'') + '{\n' + $5 + '}';}
 		;
 
+def_class : DEF_CLASS WORD '{' stmt_list '}'
+			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
+		;
+
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
 			{$$ = 'if (' + $3 + ') {\n' + $7 + '}' }
 		| IF '{' phrase_part '}' THEN '{' stmt_list '}' ELSE '{' stmt_list '}'
@@ -53,9 +57,6 @@ loop_stmt : '{' phrase_part '}' JOSI LOOP '{' stmt_list '}'
 		| '{' WORD ':' assign ',' WORD ':' expr ',' WORD ':' assign '}' JOSI LOOP '{' stmt_list '}'
 			{ $$ = lib_dic.get_comm($15,$4 + ';' + $8 + ';' + $12) + ' {\n' + $17 + '}' }
 		;
-
-def_class : DEF_CLASS WORD '{' stmt_list '}'
-			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
 
 args : phrase
 		| args phrase { $$ = $1 + ',' + $2;}
