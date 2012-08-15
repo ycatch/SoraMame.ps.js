@@ -22,6 +22,9 @@ function lib_dic() {
 	//Control
 	あいだ : 'while',
 	くりかえし : 'for',
+	もし : 'if',
+	ならば : '', //Processing.jsでは該当語は省略される
+	ちがえば : 'else', //SoraMame.ps.jsでは、parse.jsyで直接指定
 	
 	//2D Primitives
 	テン : 'point',

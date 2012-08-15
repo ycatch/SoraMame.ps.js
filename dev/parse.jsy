@@ -38,6 +38,8 @@ def_function : DEF_FUNC WORD '{' stmt_list '}'
 			{$$ = 'void ' + lib_dic.get_comm($2,'') + '{\n' + $4 + '}';}
 		|DEF_FUNC WORD JOSI WORD '{' stmt_list '}'
 			{$$ = lib_dic.get_types($4,'') + ' ' + lib_dic.get_comm($2,'') + '{\n' + $6 + '}';}
+		|DEF_FUNC args WORD '{' stmt_list '}'
+			{$$ = 'void ' + ' ' + lib_dic.get_comm($3,$2) + '{\n' + $5 + '}';}
 		|DEF_FUNC args WORD JOSI WORD '{' stmt_list '}'
 			{$$ = lib_dic.get_types($5,'') + ' ' + lib_dic.get_comm($3,$2) + '{\n' + $7 + '}';}
 		;
@@ -46,13 +48,13 @@ def_class : DEF_CLASS WORD '{' stmt_list '}'
 			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
 		;
 
-def_variable : variable
+def_variable : variable {$$ = $1 + ';';}
 		;
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
-			{$$ = 'if (' + $3 + ') {\n' + $7 + '}'; }
+			{$$ = lib_dic.get_comm($1,$3) + ' {\n' + $7 + '}'; }
 		| IF '{' phrase_part '}' THEN '{' stmt_list '}' ELSE '{' stmt_list '}'
-			{$$ = 'if (' + $3 + ') {\n' + $7 + '} else {\n' + $11 +'}'; }
+			{$$ = lib_dic.get_comm($1,$3) + ' {\n' + $7 + '} else {\n' + $11 +'}'; }
 		;
 
 loop_stmt : '{' phrase_part '}' JOSI LOOP '{' stmt_list '}'
