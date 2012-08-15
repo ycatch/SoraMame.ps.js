@@ -15,9 +15,10 @@ stmt_list : { $$ = '';}
 
 stmt : assign { $$ = $1 + ';' }
 		| funcall { $$ = $1 + ';' }
+		| def_variable
 		| def_function
 		| def_class
-		| def_variable
+		| new_class
 		| if_stmt
 		| loop_stmt
 		| COMMENT
@@ -34,6 +35,9 @@ funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
 		| WORD { $$ = lib_dic.get_comm($1,'');}
 		;
 
+def_variable : variable {$$ = $1 + ';';}
+		;
+
 def_function : DEF_FUNC WORD '{' stmt_list '}'
 			{$$ = 'void ' + lib_dic.get_comm($2,'') + '{\n' + $4 + '}';}
 		|DEF_FUNC WORD JOSI WORD '{' stmt_list '}'
@@ -48,7 +52,7 @@ def_class : DEF_CLASS WORD '{' stmt_list '}'
 			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
 		;
 
-def_variable : variable {$$ = $1 + ';';}
+new_class : variable '=' NEW funcall { $$ = $1 + ' = new ' + $4; }
 		;
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
