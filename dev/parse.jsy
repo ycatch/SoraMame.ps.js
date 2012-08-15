@@ -18,6 +18,7 @@ stmt : assign { $$ = $1 + ';' }
 		| def_function
 		| if_stmt
 		| loop_stmt
+		| def_class
 		| COMMENT
 		;
 
@@ -52,6 +53,9 @@ loop_stmt : '{' phrase_part '}' JOSI LOOP '{' stmt_list '}'
 		| '{' WORD ':' assign ',' WORD ':' expr ',' WORD ':' assign '}' JOSI LOOP '{' stmt_list '}'
 			{ $$ = lib_dic.get_comm($15,$4 + ';' + $8 + ';' + $12) + ' {\n' + $17 + '}' }
 		;
+
+def_class : DEF_CLASS WORD '{' stmt_list '}'
+			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
 
 args : phrase
 		| args phrase { $$ = $1 + ',' + $2;}

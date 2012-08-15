@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>SoraMame Script</title>
-	<script type="text/javascript" src="./processing-1.3.6.js"></script> 
-	<script type="text/javascript" src="./parse.js"></script>
-	<script type="text/javascript" src="./lib_command.js"></script>
-	<script type="text/javascript" src="./soramame.js"></script>
+	<script type="text/javascript" src="../processing-1.3.6.js"></script> 
+	<script type="text/javascript" src="../parse.js"></script>
+	<script type="text/javascript" src="../lib_command.js"></script>
+	<script type="text/javascript" src="../soramame.js"></script>
 </head>
 
 
@@ -24,13 +24,30 @@
   <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
-//マウスの位置にマルを描く
+//マルの位置を動かす
+@ボールXは整数型 = @幅 ÷ 2
+@ボールYは整数型 = @高さ ÷ 2
+@方向Xは整数型 = 1
+@方向Yは整数型 = 1
+
 ---初期設定する{
   {幅:250, 高さ:250}のサイズ
+  輪郭なし
 }
 
 ---くり返し描画する{
-  {x:@マウスX, y:@マウスY}に{幅:10, 高さ:10}のマル
+  {色:0}の背景色
+  @ボールX += 5 * @方向X
+  もし{条件:@ボールX >= @幅 || @ボールX <= 0}ならば{
+　　　@方向X *= -1
+　}
+
+  @ボールY += 3 * @方向Y
+  もし{条件:@ボールY >= @高さ || @ボールY <= 0}ならば{
+　　　@方向Y *= -1
+　}
+
+  {x:@ボールX, y:@ボールY}に{幅:10, 高さ:10}のマル
 }
 	</textarea><br />
 	<input type="button" value="字句解析" onclick="soramame_lex()" />
@@ -97,25 +114,7 @@ function soramame_lex(){
     case STRING:
       type = "STRING";
       break;
-	case DEF_FUNC:
-      type = "DEF_FUNC";
-      break;
-	case DEF_CLASS:
-      type = "DEF_CLASS";
-      break;
-	case IF:
-      type = "IF";
-      break;
-	case THEN:
-      type = "THEN";
-      break;
-	case ELSE:
-      type = "ELSE";
-      break;
-	case LOOP:
-      type = "LOOP";
-      break;
-	case JOSI:
+    case JOSI:
       type = "JOSI";
       break;
     case WORD:
