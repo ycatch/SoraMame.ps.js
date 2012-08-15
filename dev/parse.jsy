@@ -1,5 +1,5 @@
 %token NUMBER STRING JOSI WORD COMMENT DEF_FUNC DEF_CLASS
-%token IF THEN ELSE LOOP
+%token IF THEN ELSE LOOP NEW
 %left '+' '-'
 %left '*' '/' '%'
 %left '&' '|'
