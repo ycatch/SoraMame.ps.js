@@ -33,8 +33,8 @@ assign : variable '=' expr { $$ = $1 + '=' + $3;}
 		| variable '/' '=' expr { $$ = $1  + '/=' + $4;}
 		;
 
-funcall : args WORD { $$ = lib_dic.get_comm($2, $1);}
-		| WORD { $$ = lib_dic.get_comm($1,'');}
+funcall : WORD { $$ = lib_dic.get_comm($1,'');}
+		| args WORD { $$ = lib_dic.get_comm($2, $1);}
 		;
 
 def_variable : variable {$$ = $1 + ';';}
@@ -60,7 +60,9 @@ def_class_init : DEF_CLASS_INIT WORD '{' stmt_list '}'
 			{$$ = lib_dic.get_types($3,'') + '(' + $2 + ') ' + '{\n' + $5 + '}';}
 		;
 
-new_class : variable '=' NEW funcall { $$ = $1 + ' = new ' + $4 + ';'; }
+new_class : variable '=' NEW WORD { $$ = $1 + ' = new ' + lib_dic.get_types($4,'') + '();'; }
+		| variable '=' NEW args WORD
+			{$$ = $1 + ' = new ' + lib_dic.get_types($5,'') + '(' + $4 + ');'; }
 		;
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
