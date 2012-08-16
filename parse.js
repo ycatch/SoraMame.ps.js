@@ -17,12 +17,13 @@ var WORD = 260;
 var COMMENT = 261;
 var DEF_FUNC = 262;
 var DEF_CLASS = 263;
-var IF = 264;
-var THEN = 265;
-var ELSE = 266;
-var LOOP = 267;
-var NEW = 268;
-var UMINUS = 269;
+var DEF_INIT = 264;
+var IF = 265;
+var THEN = 266;
+var ELSE = 267;
+var LOOP = 268;
+var NEW = 269;
+var UMINUS = 270;
 
   
 /*
@@ -98,11 +99,12 @@ var yytranslate = [
      32,   32,   32,   32,   32,   32,   32,   32,   32,   32,
      32,   32,   32,   32,   32,   32,   32,   32,   32,   32,
      32,   32,   32,   32,   32,   32,    1,    2,    3,    4,
-      5,    6,    7,    8,    9,   10,   11,   12,   13,   32
+      5,    6,    7,    8,   32,    9,   10,   11,   12,   13,
+     32
   ];
 
 var YYBADCH = 32;
-var YYMAXLEX = 270;
+var YYMAXLEX = 271;
 var YYTERMS = 32;
 var YYNONTERMS = 18;
 
