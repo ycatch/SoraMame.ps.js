@@ -52,7 +52,7 @@ def_class : DEF_CLASS WORD '{' stmt_list '}'
 			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
 		;
 
-new_class : variable '=' NEW funcall { $$ = $1 + ' = new ' + $4; }
+new_class : variable '=' NEW funcall { $$ = $1 + ' = new ' + $4 + ';'; }
 		;
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'

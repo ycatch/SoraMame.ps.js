@@ -351,7 +351,7 @@ function yyparse()
         case 25:
 {yyval = 'class ' + lib_dic.get_types(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
         case 26:
-{ yyval = yyastk[yysp-(4-1)] + ' = new ' + yyastk[yysp-(4-4)]; } break;
+{ yyval = yyastk[yysp-(4-1)] + ' = new ' + yyastk[yysp-(4-4)] + ';'; } break;
         case 27:
 {yyval = lib_dic.get_comm(yyastk[yysp-(8-1)],yyastk[yysp-(8-3)]) + ' {\n' + yyastk[yysp-(8-7)] + '}'; } break;
         case 28:
