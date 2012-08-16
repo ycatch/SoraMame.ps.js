@@ -16,8 +16,12 @@
   this.comment_line = new RegExp("^" + pat_comment_line);
   
   //予約語 - 登録時は、parse.jsy も修正すること
-　　var pat_yoyaku = "^---|^===|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい";
+　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい";
   this.yoyaku = new RegExp(pat_yoyaku);
+
+  //予約語2 - 登録時は、parse.jsy も修正すること
+　　var pat_yoyaku2 = "^[\+]{3}";
+  this.yoyaku2 = new RegExp(pat_yoyaku2);
   
   // 助詞  
   var pat_josi = "[はのとにでを]";	//助詞の判定用
@@ -128,6 +132,9 @@ soramame.prototype.yylex = function(){
 			break;
 		case '===':
 			yoyaku_token = DEF_CLASS;
+			break;
+		case '+++':
+			yoyaku_token = DEF_INIT;
 			break;
 		case 'もし':
 			yoyaku_token = IF;
