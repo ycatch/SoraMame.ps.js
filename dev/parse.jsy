@@ -1,5 +1,5 @@
 %token NUMBER STRING JOSI WORD COMMENT
-%token DEF_FUNC DEF_CLASS DEF_INIT
+%token DEF_FUNC DEF_CLASS DEF_CLASS_INIT
 %token IF THEN ELSE LOOP NEW
 %left '+' '-'
 %left '*' '/' '%'
@@ -19,6 +19,7 @@ stmt : assign { $$ = $1 + ';' }
 		| def_variable
 		| def_function
 		| def_class
+		| def_class_init
 		| new_class
 		| if_stmt
 		| loop_stmt
@@ -44,13 +45,19 @@ def_function : DEF_FUNC WORD '{' stmt_list '}'
 		|DEF_FUNC WORD JOSI WORD '{' stmt_list '}'
 			{$$ = lib_dic.get_types($4,'') + ' ' + lib_dic.get_comm($2,'') + '{\n' + $6 + '}';}
 		|DEF_FUNC args WORD '{' stmt_list '}'
-			{$$ = 'void ' + ' ' + lib_dic.get_comm($3,$2) + '{\n' + $5 + '}';}
+			{$$ = 'void ' + lib_dic.get_comm($3,$2) + '{\n' + $5 + '}';}
 		|DEF_FUNC args WORD JOSI WORD '{' stmt_list '}'
 			{$$ = lib_dic.get_types($5,'') + ' ' + lib_dic.get_comm($3,$2) + '{\n' + $7 + '}';}
 		;
 
 def_class : DEF_CLASS WORD '{' stmt_list '}'
 			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
+		;
+
+def_class_init : DEF_CLASS_INIT WORD '{' stmt_list '}'
+			{$$ = lib_dic.get_types($2,'') + '()' + ' {\n' + $4 + '}';}
+		|DEF_CLASS_INIT args WORD '{' stmt_list '}'
+			{$$ = lib_dic.get_types($3,'') + '(' + $2 + ') ' + '{\n' + $5 + '}';}
 		;
 
 new_class : variable '=' NEW funcall { $$ = $1 + ' = new ' + $4 + ';'; }
