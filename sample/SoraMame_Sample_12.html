@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="EUC-JP"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>SoraMame Script</title>
+	<script type="text/javascript" src="../processing-1.3.6.js"></script> 
+	<script type="text/javascript" src="../parse.js"></script>
+	<script type="text/javascript" src="../lib_command.js"></script>
+	<script type="text/javascript" src="../soramame.js"></script>
+</head>
+
+
+<body>
+<h1>SoraMame Script(そら豆スクリプト) - 日本語っぽいプログラミング言語</h1>
+日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
+<hr />
+
+<table width="960px" heiht="320px" bgcolor="#eeeeee"><tbody><tr> 
+  <td width="320px" height="320px" bgcolor="white"> 
+		<canvas id="canvas0" width="320px" height="320px"></canvas> 
+  </td>	
+  <td>
+  <form name="compiledtext" id="compiledtext" onsubmit="return main()">
+	<textarea id="source" cols="80" rows="20">
+//複数のマルを動かすアニメーション（ボール型を定義）
+
+@ボールはボール型[] = 新しいボール型[3]
+
+---初期設定する{
+  {幅:250, 高さ:250}のサイズ
+  輪郭なし
+  @ボール[0] = 新しい{初期位置x:200, 初期位置y:10}のボール型
+  @ボール[1] = 新しい{初期位置x:120, 初期位置y:120}のボール型
+  @ボール[2] = 新しい{初期位置x:10, 初期位置y:200}のボール型
+
+}
+
+---くり返し描画する{
+  フェードアウト
+  {開始:@iは整数型 = 0 , 条件:@i < 3 ,変化:@i += 1}のくりかえし{
+    @ボール[@i]を移動する
+    @ボール[@i]を描く
+  }
+}
+
+---フェードアウト{
+  輪郭なし
+  {色:0, 透明:30}の塗りつぶし色
+  {x:0, y:0, 幅:@幅, 高さ:@高さ}のシカク
+}
+
+===ボール型{
+   @位置xは実数型
+   @位置yは実数型
+   @方向xは実数型 = 1
+   @方向yは実数型 = 1
+
++++{初期位置:@_xは実数型, 初期位置:@_yは実数型}のボール型{
+
+   @位置x = @_x
+   @位置y = @_y
+   }
+
+---移動する{
+    @位置x += 5 * @方向x
+    もし{条件:@位置x >= @幅 || @位置x <= 0}ならば{
+　　　@方向x *= -1
+　  }
+
+    @位置y += 3 * @方向y
+    もし{条件:@位置y >= @高さ || @位置y <= 0}ならば{
+　　　@方向y *= -1
+　  }
+   }
+
+---描く{
+　   {色:255}の塗りつぶし色
+    {x:@位置x, y:@位置y}に{幅:10, 高さ:10}のマル
+   }
+}
+	</textarea><br />
+	<input type="button" value="字句解析" onclick="soramame_lex()" />
+	<input type="button" value="テスト" onclick="soramame_parse()" />
+	<input type="button" value="うごかす" onclick="soramame_exec()" />
+	<input type="button" value="とめる" onclick="soramame_stop()" />
+	<a href="http://www.catch.jp/wiki/?SoraMame.ps.js%2FReference" target='_blannk'>ヘルプ?</a>
+  </form>
+  </td>
+  </tr></tbody></table>  
+<hr>
+<h2>変換結果</h2>
+<pre id="screen"></pre>
+</body>
+
+
+</html>
+
+
+<script type="text/javascript">
+<!--
+var sora;
+var yylval = '';
+var Pjs;
+var lib_dic = new lib_dic();	//コマンド置換辞書
+
+function soramame_exec(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  var script = yyparse();
+  sora.debug(script);
+
+  soramame_stop();
+　　var canvas = document.getElementById('canvas0');
+  try{
+    Pjs = new Processing(canvas, script);
+  }catch(e){
+    alert(e);
+  }
+　　return false;
+}
+
+function soramame_stop(){
+    if (Pjs)
+      Pjs.exit();
+}
+
+
+function soramame_lex(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+
+  var type;
+  var retval;
+  var i = 0;
+  while(retval = yylex()){
+    switch(retval){
+	case COMMENT:
+      type = "COMMENT";
+      break;
+    case NUMBER:
+      type = "NUMBER";
+      break;
+    case STRING:
+      type = "STRING";
+      break;
+	case DEF_FUNC:
+      type = "DEF_FUNC";
+      break;
+	case DEF_CLASS:
+      type = "DEF_CLASS";
+      break;
+	case DEF_CLASS_INIT:
+      type = "DEF_CLASS_INIT";
+      break;
+	case IF:
+      type = "IF";
+      break;
+	case THEN:
+      type = "THEN";
+      break;
+	case ELSE:
+      type = "ELSE";
+      break;
+	case LOOP:
+      type = "LOOP";
+      break;
+	case NEW:
+      type = "NEW";
+      break;
+	case JOSI:
+      type = "JOSI";
+      break;
+	case JOSI_HA:
+      type = "JOSI_HA";
+      break;
+	case JOSI_NO:
+      type = "JOSI_NO";
+      break;
+	case JOSI_WO:
+      type = "JOSI_WO";
+      break;
+    case WORD:
+      type = "WORD";
+      break;
+    default:
+      type = retval;
+      break;
+    }
+    sora.debug(type+": "+yylval);
+    if(i++ > 300){
+      break;
+    }
+  }
+}
+
+
+function yylex(){
+  var retval = sora.yylex();
+  yylval = sora.yylval;
+  return retval;
+}
+
+
+function yyerror(str){
+  sora.debug(str);
+}
+
+function soramame_parse(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  var script = yyparse();
+  sora.debug(script);
+ 
+}
+//-->
+</script>
