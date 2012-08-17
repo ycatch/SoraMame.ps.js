@@ -459,7 +459,7 @@ function yyparse()
         /* error */
         switch (yyerrflag) {
         case 0:
-          yyerror("syntax error");
+          yyerror("SoraMame: syntax error");
         case 1:
         case 2:
           yyerrflag = 3;
