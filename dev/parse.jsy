@@ -1,4 +1,5 @@
-%token NUMBER STRING JOSI WORD COMMENT
+%token NUMBER STRING WORD COMMENT
+%token JOSI JOSI_HA JOSI_NO JOSI_WO 
 %token DEF_FUNC DEF_CLASS DEF_CLASS_INIT
 %token IF THEN ELSE LOOP NEW
 %left '+' '-'
@@ -35,6 +36,7 @@ assign : variable '=' expr { $$ = $1 + '=' + $3;}
 
 funcall : WORD { $$ = lib_dic.get_comm($1,'');}
 		| args WORD { $$ = lib_dic.get_comm($2, $1);}
+		| variable JOSI WORD { $$ = $1 + '.' + lib_dic.get_comm($3, '');}
 		;
 
 def_variable : variable {$$ = $1 + ';';}

@@ -20,8 +20,8 @@
   this.yoyaku = new RegExp(pat_yoyaku);
   
   // 助詞  
-  var pat_josi = "[はのとにでを]";	//助詞の判定用
-  var pat_josi2 = "はのとにでを";	//助詞以外の判定用
+  var pat_josi = "[はのをとにで]";	//助詞の判定用
+  var pat_josi2 = "はのをとにで";	//助詞以外の判定用
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
@@ -160,7 +160,22 @@ soramame.prototype.yylex = function(){
 	var josi = p[0];
 	this.source = this.source.substring(josi.length);
     this.yylval = josi + "";
-	return JOSI;
+	var yoyaku_token;
+	switch(this.yylval){
+		case 'は':
+			yoyaku_token = JOSI_HA;
+			break;
+		case 'の':
+			yoyaku_token = JOSI_NO;
+			break;
+		case 'を':
+			yoyaku_token = JOSI_WO;
+			break;
+		default:
+			yoyaku_token = JOSI;
+			break;
+	}
+	return yoyaku_token;
   }
 
   // 数字
