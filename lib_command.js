@@ -56,6 +56,13 @@ function lib_dic() {
 
 	//attributes
 	もじサイズ : 'textSize',
+
+	//Math - Calculation
+	ルート : 'sqrt',	
+	距離 : 'dist',
+
+	//Math - Random
+	乱数 : 'random',
 	
 	//test
 	test : '//SoraMame Script!'};
@@ -65,6 +72,7 @@ function lib_dic() {
   this.vars = {
 
     //Structure
+	これ : 'this',
 	正 : 'true',
 	否 : 'false',
 
@@ -78,10 +86,14 @@ function lib_dic() {
 	マウスx : 'mouseX',
 	マウスy : 'mouseY',
 	
+	//PVector - Propaty
+	x : 'x',
+	y : 'y',
+
 	//test
 	test : '//SoraMame Script!'};
 
-  //変換候補データ - データ型命
+  //変換候補データ - データ型名
   //元データ ： 変換先データ
   this.types = {
 
@@ -91,6 +103,9 @@ function lib_dic() {
 	文字型 : 'char',	
 	正否型 : 'boolean',
 	カラー型 : 'color',
+	
+	//Math
+	Pベクトル型 : 'PVector',
 	
 	//test
 	test : '//SoraMame Script!'};
