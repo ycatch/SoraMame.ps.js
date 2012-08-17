@@ -114,6 +114,8 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 variable : '@' WORD {$$ = lib_dic.get_vars($2, '');}
 		| '@' WORD JOSI_HA WORD 
 			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, '');}
+		| '@' WORD JOSI '@' WORD 
+			{$$ = lib_dic.get_vars($2, '') + "." + lib_dic.get_vars($5, '');}
 		;
 
 primary : NUMBER
