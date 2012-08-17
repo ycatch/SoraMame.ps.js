@@ -65,6 +65,8 @@ def_class_init : DEF_CLASS_INIT WORD '{' stmt_list '}'
 new_class : variable '=' NEW WORD { $$ = $1 + ' = new ' + lib_dic.get_types($4,'') + '();'; }
 		| variable '=' NEW args WORD
 			{$$ = $1 + ' = new ' + lib_dic.get_types($5,'') + '(' + $4 + ');'; }
+		|  variable '=' NEW WORD '[' expr ']' 
+			{ $$ = $1 + ' = new ' + lib_dic.get_types($4,'') + '[' + $6 + '];'; }
 		;
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
