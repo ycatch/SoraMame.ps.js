@@ -36,7 +36,7 @@ assign : variable '=' expr { $$ = $1 + '=' + $3;}
 
 funcall : WORD { $$ = lib_dic.get_comm($1,'');}
 		| args WORD { $$ = lib_dic.get_comm($2, $1);}
-		| variable JOSI WORD { $$ = $1 + '.' + lib_dic.get_comm($3, '');}
+		| variable JOSI_WO WORD { $$ = $1 + '.' + lib_dic.get_comm($3, '');}
 		;
 
 def_variable : variable {$$ = $1 + ';';}
@@ -112,7 +112,7 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 		;
 
 variable : '@' WORD {$$ = lib_dic.get_vars($2, '');}
-		| '@' WORD JOSI WORD 
+		| '@' WORD JOSI_HA WORD 
 			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, '');}
 		;
 

@@ -165,9 +165,9 @@ soramame.prototype.yylex = function(){
 		case 'は':
 			yoyaku_token = JOSI_HA;
 			break;
-		case 'の':
+		/*case 'の':
 			yoyaku_token = JOSI_NO;
-			break;
+			break; */
 		case 'を':
 			yoyaku_token = JOSI_WO;
 			break;
