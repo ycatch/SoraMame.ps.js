@@ -116,6 +116,7 @@ variable : '@' WORD {$$ = lib_dic.get_vars($2, '');}
 			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, '');}
 		| '@' WORD JOSI '@' WORD 
 			{$$ = lib_dic.get_vars($2, '') + "." + lib_dic.get_vars($5, '');}
+		| '@' WORD '[' expr ']' {$$ = lib_dic.get_vars($2, '') + '[' + $4 + ']';}
 		;
 
 primary : NUMBER
