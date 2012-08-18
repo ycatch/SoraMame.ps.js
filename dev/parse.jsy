@@ -36,7 +36,8 @@ assign : variable '=' expr { $$ = $1 + '=' + $3;}
 
 funcall : WORD { $$ = lib_dic.get_comm($1,'');}
 		| args WORD { $$ = lib_dic.get_comm($2, $1);}
-		| variable JOSI_WO WORD { $$ = $1 + '.' + lib_dic.get_comm($3, '');}
+		| variable JOSI_WO WORD { $$ = $1 + '.' + lib_dic.get_method($1, $3, '');}
+		| variable JOSI_WO args WORD { $$ = $1 + '.' + lib_dic.get_method($1, $4, $3);}
 		;
 
 def_variable : variable {$$ = $1 + ';';}
@@ -115,14 +116,17 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 
 variable : '@' WORD {$$ = lib_dic.get_vars($2, '');}
 		| '@' WORD JOSI_HA WORD 
-			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, ''); lib_dic.set_vars_type($2, $4);}
+			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, '');
+			 lib_dic.set_vars_type(lib_dic.get_vars($2, ''), lib_dic.get_types($4, ''));}
 		| '@' WORD JOSI '@' WORD 
-			{$$ = lib_dic.get_vars($2, '') + "." + lib_dic.get_property($2, $5);}
+			{$$ = lib_dic.get_vars($2, '') + "." + lib_dic.get_property(lib_dic.get_vars($2, ''), $5);}
 		| '@' WORD '[' expr ']' {$$ = lib_dic.get_vars($2, '') + '[' + $4 + ']';}
 		| '@' WORD '[' expr ']' JOSI '@' WORD 
-			{$$ = lib_dic.get_vars($2, '') + '[' + $4 + ']' + "." + lib_dic.get_property($2, $8);}
+			{$$ = lib_dic.get_vars($2, '') + '[' + $4 + ']' 
+			 + "." + lib_dic.get_property(lib_dic.get_vars($2, ''), $8);}
 		| '@' WORD JOSI_HA WORD '[' ']' 
-			{$$ = lib_dic.get_types($4, '') + '[] ' + lib_dic.get_vars($2, ''); lib_dic.set_vars_type($2, $4)}
+			{$$ = lib_dic.get_types($4, '') + '[] ' + lib_dic.get_vars($2, '');
+			 lib_dic.set_vars_type(lib_dic.get_vars($2, ''), lib_dic.get_types($4, ''))}
 		;
 
 primary : NUMBER

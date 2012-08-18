@@ -111,9 +111,12 @@ function lib_dic() {
 	this.type_property = {
 	
 	//Math
+	PVector : '',
 	PVector_x : 'x',
 	PVector_y : 'y',
 	PVector_z : 'z',
+	PVector_取りだし : 'get',
+	PVector_設定 : 'set',
 
 	//test
 	test : '//type_property'};
@@ -165,10 +168,23 @@ lib_dic.prototype.set_vars_type = function(vars_name, type_name){
 }
 
 lib_dic.prototype.get_property = function(vars_name, property){
-	var msg = lib_dic.get_vars(property, '');
-    if ( this.vars_type[vars_name] != undefined ) {
+	var msg;
+    if ( this.vars_type[vars_name] === undefined ) {
+		msg = lib_dic.get_vars(property, '');
+	} else {
 		var keyword = this.vars_type[vars_name] + '_' + property;
 		msg = this.type_property[keyword];
+	}
+	return msg;
+}
+
+lib_dic.prototype.get_method = function(vars_name, method, args){
+	var msg;
+    if ( this.vars_type[vars_name] === undefined ) {
+		msg = lib_dic.get_comm(method, '');
+	} else {
+		var keyword = this.vars_type[vars_name] + '_' + method;
+		msg = this.type_property[keyword] + '(' + args + ')';
 	}
 	return msg;
 }
