@@ -85,13 +85,9 @@ function lib_dic() {
 	マウスY : 'mouseY',
 	マウスx : 'mouseX',
 	マウスy : 'mouseY',
-	
-	//PVector - Propaty
-	x : 'x',
-	y : 'y',
 
 	//test
-	test : '//SoraMame Script!'};
+	test : 'vars name'};
 
   //変換候補データ - データ型名
   //元データ ： 変換先データ
@@ -108,7 +104,26 @@ function lib_dic() {
 	Pベクトル型 : 'PVector',
 	
 	//test
-	test : '//SoraMame Script!'};
+	test : 'types'};
+	
+	//変換候補データ
+	//データ型-プロパティ 
+	this.type_property = {
+	
+	//Math
+	PVector_x : 'x',
+	PVector_y : 'y',
+	PVector_z : 'z',
+
+	//test
+	test : '//type_property'};
+	
+	//変換候補データ
+	//変数名-データ型
+	this.vars_type = {
+	
+	//test
+	test : '//vars_type'};
 }
 
 lib_dic.prototype.get_comm = function(str, arg){
@@ -139,5 +154,21 @@ lib_dic.prototype.get_types= function(str, arg){
 		this.type_num += 1;
 	}
 	msg = this.types[str]; //Data types
+	return msg;
+}
+
+lib_dic.prototype.set_vars_type = function(vars_name, type_name){
+    if ( this.type_property[type_name] != undefined ) {
+		this.vars_type[vars_name] = type_name;
+	}
+	return;
+}
+
+lib_dic.prototype.get_property = function(vars_name, property){
+	var msg = property;
+    if ( this.vars_type[vars_name] != undefined ) {
+		var keyword = this.vars_type[vars_name] + '_' + property;
+		msg = this.type_property[keyword];
+	}
 	return msg;
 }

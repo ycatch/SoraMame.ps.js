@@ -434,15 +434,15 @@ function yyparse()
         case 61:
 {yyval = lib_dic.get_vars(yyastk[yysp-(2-2)], '');} break;
         case 62:
-{yyval = lib_dic.get_types(yyastk[yysp-(4-4)], '') + " " + lib_dic.get_vars(yyastk[yysp-(4-2)], '');} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(4-4)], '') + " " + lib_dic.get_vars(yyastk[yysp-(4-2)], ''); lib_dic.set_vars_type(yyastk[yysp-(4-2)], yyastk[yysp-(4-4)]);} break;
         case 63:
-{yyval = lib_dic.get_vars(yyastk[yysp-(5-2)], '') + "." + lib_dic.get_vars(yyastk[yysp-(5-5)], '');} break;
+{yyval = lib_dic.get_vars(yyastk[yysp-(5-2)], '') + "." + lib_dic.get_property(yyastk[yysp-(5-2)], yyastk[yysp-(5-5)]);} break;
         case 64:
 {yyval = lib_dic.get_vars(yyastk[yysp-(5-2)], '') + '[' + yyastk[yysp-(5-4)] + ']';} break;
         case 65:
-{yyval = lib_dic.get_vars(yyastk[yysp-(8-2)], '') + '[' + yyastk[yysp-(8-4)] + ']' + "." + lib_dic.get_vars(yyastk[yysp-(8-8)], '');} break;
+{yyval = lib_dic.get_vars(yyastk[yysp-(8-2)], '') + '[' + yyastk[yysp-(8-4)] + ']' + "." + lib_dic.get_property(yyastk[yysp-(8-2)], yyastk[yysp-(8-8)]);} break;
         case 66:
-{yyval = lib_dic.get_types(yyastk[yysp-(6-4)], '') + '[] ' + lib_dic.get_vars(yyastk[yysp-(6-2)], '');} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(6-4)], '') + '[] ' + lib_dic.get_vars(yyastk[yysp-(6-2)], ''); lib_dic.set_vars_type(yyastk[yysp-(6-2)], yyastk[yysp-(6-4)])} break;
         }
         /* Goto - shift nonterminal */
         yysp -= yyl;
