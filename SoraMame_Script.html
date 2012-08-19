@@ -37,7 +37,7 @@
 	<input type="button" value="へんかん" onclick="soramame_parse()" />
 	<input type="button" value="うごかす" onclick="soramame_exec()" />
 	<input type="button" value="とめる" onclick="soramame_stop()" />
-	<input type="file" id="myFile" />
+	<input type="file" id="myFile" onchange="file_open()" />
 	<a href="http://www.catch.jp/wiki/?SoraMame.ps.js" target='_blannk'>ヘルプ?</a>
   </form>
   </td>
@@ -177,19 +177,9 @@ function soramame_init() {
 	}
 }
 
-// read ボタンを押した際に実行する関数を登録         
-window.onload = function() {
-    document.getElementById("myFile").addEventListener("change", file_open, false);
-}
-
-//ファイルを開く
+//テキストファイルを読み込む
 function file_open() {
-	var fileData = document.getElementById("myFile").files[0];
-	if (fileData.type != "text/plain"){
-		alert("テキストファイルを選択してください");
-		return;
-	}
-	
+	var fileData = document.getElementById("myFile").files[0];	
 	var reader = new FileReader();
 	reader.onload = function(evt){
 		document.getElementById("source").innerHTML = evt.target.result; // 内容をページ上に表示         
