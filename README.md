@@ -12,7 +12,8 @@ SoraMame Script(そら豆スクリプト)は、自分で考えて自分で作り
 
 #参考
 
-##2012-05-20
-尾藤正人(Masato Bito)氏のJavascript なでしこ（もどき）を参考にしてスタート。
+尾藤正人(Masato Bito)氏のJavascript なでしこ（もどき）を参考にして開発をスタート(2012-05-20)。
 <http://blog.bz2.jp/archives/2005/09/javascript_4.html>
 
+クジラ飛行机氏が中心になって開発している日本語プログラミング言語「なでしこ」からも、強力に影響を受けています。
+<http://nadesi.com/>
