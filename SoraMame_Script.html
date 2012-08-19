@@ -38,7 +38,6 @@
 	<input type="button" value="うごかす" onclick="soramame_exec()" />
 	<input type="button" value="とめる" onclick="soramame_stop()" />
 	<input type="file" id="myFile" />
-	<input type="button" value="ひらく" onclick="file_open()"/>
 	<a href="http://www.catch.jp/wiki/?SoraMame.ps.js" target='_blannk'>ヘルプ?</a>
   </form>
   </td>
@@ -176,6 +175,11 @@ function soramame_init() {
 	} else {
 		window.alert("このWebブラウザは、そら豆スクリプトに未対応かも。\n FirefoxやGoogleChromeなどをお試しください");
 	}
+}
+
+// read ボタンを押した際に実行する関数を登録         
+window.onload = function() {
+    document.getElementById("myFile").addEventListener("change", file_open, false);
 }
 
 //ファイルを開く
