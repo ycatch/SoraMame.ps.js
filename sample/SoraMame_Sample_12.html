@@ -12,9 +12,9 @@
 </head>
 
 
-<body>
+<body onLoad="soramame_init()">
 <h1>SoraMame Script(そら豆スクリプト) - 日本語っぽいプログラミング言語</h1>
-日本語っぽいコードを、ビジュアルデザイン用のプログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
+日本語っぽいコードを、プログラミング言語Processing.jsに変換して実行します(SoraMame.ps.js)。
 <hr />
 
 <table width="960px" heiht="320px" bgcolor="#eeeeee"><tbody><tr> 
@@ -80,20 +80,24 @@
     {x:@位置x, y:@位置y}に{幅:10, 高さ:10}のマル
    }
 }
-	</textarea><br />
-	<input type="button" value="字句解析" onclick="soramame_lex()" />
-	<input type="button" value="テスト" onclick="soramame_parse()" />
+</textarea><br />
+	<input type="button" value="わける" onclick="soramame_lex()" />
+	<input type="button" value="へんかん" onclick="soramame_parse()" />
 	<input type="button" value="うごかす" onclick="soramame_exec()" />
 	<input type="button" value="とめる" onclick="soramame_stop()" />
-	<a href="http://www.catch.jp/wiki/?SoraMame.ps.js%2FReference" target='_blannk'>ヘルプ?</a>
+	<br />
+	<input type="file" id="myFile" onchange="file_open()" />
+	[<a href="#" id="download-link" >ほぞん</a>]
+	[<a href="http://www.catch.jp/wiki/?SoraMame.ps.js" target='_blannk'>ヘルプ?</a>]
   </form>
   </td>
   </tr></tbody></table>  
 <hr>
 <h2>変換結果</h2>
 <pre id="screen"></pre>
-</body>
 
+<div id="result"></div> 
+</body>
 
 </html>
 
@@ -214,5 +218,33 @@ function soramame_parse(){
   sora.debug(script);
  
 }
+
+function soramame_init() {
+	if (window.File) {
+		//window.alert("File API OK.");
+	} else {
+		window.alert("このWebブラウザは、そら豆スクリプトに未対応かも。\n FirefoxやGoogleChromeなどをお試しください");
+	}
+}
+
+//テキストファイルを読み込む
+function file_open() {
+	var fileData = document.getElementById("myFile").files[0];	
+	var reader = new FileReader();
+	reader.onload = function(evt){
+		document.getElementById("source").innerHTML = evt.target.result; // 内容をページ上に表示         
+	}
+	reader.readAsText(fileData, "utf-8"); // 文字コードをUTF-8として読み込む
+}
+
+//テキストファイルを保存する
+window.onload = function() {
+	document.getElementById("download-link").addEventListener("click", function(){
+		var value = document.getElementById("source").innerHTML;
+		var href = "data:application/octet-stream," + encodeURIComponent(value);
+		this.setAttribute("href", href);
+	}, false);
+}
 //-->
 </script>
+
