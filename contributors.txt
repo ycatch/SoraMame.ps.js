@@ -1,4 +1,16 @@
 Copyright 2012 Yutaka kachi
 
+
+ExplorerCanvas
+ Copyright 2006 Google Inc.
+
+Processing.js
+ Copyright (C) 2008 John Resig
+ Copyright (C) 2009-2011; see the AUTHORS file for authors and copyright holders.
+
+tinylog lite JavaScript library - with Processing.js
+ Copyright (C) 2010 Eli Grey
+ https://github.com/eligrey/tinylog
+
 2005	îˆì°ê≥êl(Masato Bito)éÅ	Javascript Ç»Ç≈ÇµÇ±ÅiÇ‡Ç«Ç´Åj
 2011	wise9(UEI) edit.html
