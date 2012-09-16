@@ -24,12 +24,13 @@
   <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
-//マウスの位置にシカクを描く
+//マウスの位置に、マルとシカクを描く
 ---初期設定する{
   {幅:300, 高さ:300}のサイズ
 }
 
 ---くり返し描画する{
+  {x:@マウスX, y:@マウスY}に{幅:50, 高さ:50}のマル
   {x:@マウスX, y:@マウスY}に{幅:50, 高さ:50}のシカク
 }</textarea><br />
 	<input type="button" value="わける" onclick="soramame_lex()" />
