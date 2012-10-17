@@ -32,6 +32,10 @@
   // 数字
   var pat_num2 = "0123456789０１２３４５６７８９";
  
+  // 16進表示の数字
+ 　var par_num_hex = "#([0-9]|[a-f]|[A-F])+"
+  this.num_hex = new RegExp("^" + par_num_hex);
+ 
  　// 記号
   var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@!&|<>\.,:＝＋－×＊÷／％＾（）［］｛｝．、：＠！＆｜＜＞";
   
@@ -196,7 +200,16 @@ soramame.prototype.yylex = function(){
     this.yylval = token - 0;
 	return NUMBER;
   }
- 
+
+  // 16進表記の数値
+  p = line.match(this.num_hex);
+  if (p != null) {
+	var line = p[0];	
+	this.source = this.source.substring(p[0].length);
+    this.yylval = line + "";
+	return NUMBER;
+  }
+  
   // 記号
   var c = this.issymbol(line.charAt(0));
   if(c){
