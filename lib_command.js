@@ -49,6 +49,9 @@ function lib_dic() {
 	輪郭なし : 'noStroke',
 	塗りつぶし色 : 'fill',
 	塗りつぶしなし : 'noFill',
+	
+	//Creating & Reading
+	色指定する : 'color',
 
 	//Typography
 	//Loading & Displaying
