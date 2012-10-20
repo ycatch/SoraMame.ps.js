@@ -72,8 +72,14 @@ new_class : variable '=' NEW WORD { $$ = $1 + ' = new ' + lib_dic.get_types($4,'
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
 			{$$ = lib_dic.get_comm($1,$3) + ' {\n' + $7 + '}'; }
-		| IF '{' phrase_part '}' THEN '{' stmt_list '}' ELSE '{' stmt_list '}'
-			{$$ = lib_dic.get_comm($1,$3) + ' {\n' + $7 + '} else {\n' + $11 +'}'; }
+		| IF '{' phrase_part '}' THEN '{' stmt_list '}' else_stmt
+			{$$ = lib_dic.get_comm($1,$3) + ' {\n' + $7 + '} \n' + $9; }
+		;
+
+else_stmt : ELSE '{' stmt_list '}'
+				{$$ = 'else {\n' + $3 +'}'; }
+		| ELSE if_stmt
+				{$$ = 'else ' + $2 ; }
 		;
 
 loop_stmt : '{' phrase_part '}' JOSI LOOP '{' stmt_list '}'
