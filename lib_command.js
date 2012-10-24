@@ -67,12 +67,6 @@ function lib_dic() {
 	//Math - Random
 	乱数 : 'random',
 	
-	//定数 - Constants
-	PI : 'PI',
-	HALF_PI : 'HALF_PI',
-	TWO_PI : 'TWO_PI',
-	QUARTER_PI : 'QUARTER_PI',
-	
 	//test
 	test : '//SoraMame Script!'};
 
@@ -94,6 +88,12 @@ function lib_dic() {
 	マウスY : 'mouseY',
 	マウスx : 'mouseX',
 	マウスy : 'mouseY',
+
+	//定数 - Constants
+	PI : 'PI',
+	HALF_PI : 'HALF_PI',
+	TWO_PI : 'TWO_PI',
+	QUARTER_PI : 'QUARTER_PI',
 
 	//test
 	test : 'vars name'};
