@@ -55,7 +55,9 @@ function lib_dic() {
 
 	//Typography
 	//Loading & Displaying
-	もじ表示 : 'text',
+	フォント読み込みする : 'loadFont',
+	もじ表示する : 'text',
+	フォント設定する : 'textFont',
 
 	//attributes
 	もじサイズ : 'textSize',
@@ -111,6 +113,9 @@ function lib_dic() {
 	
 	//Math
 	Pベクトル型 : 'PVector',
+
+	//Typography
+	フォント型 : 'PFont',
 	
 	//test
 	test : 'types'};
