@@ -115,7 +115,7 @@ function lib_dic() {
 	Pベクトル型 : 'PVector',
 
 	//Typography
-	フォント型 : 'PFont',
+	Pフォント型 : 'PFont',
 	
 	//test
 	test : 'types'};
