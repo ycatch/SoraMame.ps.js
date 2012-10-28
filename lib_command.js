@@ -111,6 +111,9 @@ function lib_dic() {
 	正否型 : 'boolean',
 	カラー型 : 'color',
 	
+	//Composite
+	文字列型 : 'String',
+
 	//Math
 	Pベクトル型 : 'PVector',
 
