@@ -66,6 +66,10 @@ function lib_dic() {
 	ルート : 'sqrt',	
 	距離 : 'dist',
 
+	//Math - Trigonometry
+	Sin : 'sin',	
+	Cos : 'cos',
+
 	//Math - Random
 	乱数 : 'random',
 	
