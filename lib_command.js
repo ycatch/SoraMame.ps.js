@@ -137,7 +137,7 @@ function lib_dic() {
 	PVector_y : 'y',
 	PVector_z : 'z',
 	PVector_取りだし : 'get',
-	PVector_設定 : 'set',
+	PVector_設定する : 'set',
 
 	//test
 	test : '//type_property'};
