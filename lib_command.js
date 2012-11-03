@@ -53,6 +53,11 @@ function lib_dic() {
 	//Creating & Reading
 	色指定する : 'color',
 
+	//Image
+	//Loading & Displaying
+	イメージ表示する : 'image',
+	イメージ読み込みする : 'loadImage',
+	
 	//Typography
 	//Loading & Displaying
 	フォント読み込みする : 'loadFont',
@@ -117,6 +122,9 @@ function lib_dic() {
 	
 	//Composite
 	文字列型 : 'String',
+
+	//Image
+	Pイメージ型 : 'PImage',
 
 	//Math
 	Pベクトル型 : 'PVector',
