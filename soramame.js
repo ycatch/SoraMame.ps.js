@@ -12,16 +12,7 @@
   this.CRLF3 = new RegExp(pat_CRLF);
 
   //行コメント
-　　var pat_comment_line = "\/\/";
-  this.comment_line = new RegExp("^" + pat_comment_line);
-  
-  //ブロックコメント-開始
-　　var pat_comment_block_start = "\/\*";
-  this.comment_block_start = new RegExp("^" + pat_comment_block_start);
-
-  //ブロックコメント-終了
-　　var pat_comment_block_end = "\/\*";
-  this.comment_block_end = new RegExp("^" + pat_comment_block_end);
+  this.comment_line = new RegExp("^\/\/");
   
   //予約語 - 登録時は、parse.jsy も修正すること
 　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく";
@@ -51,8 +42,8 @@
   var pat_space2 = " 　"
 
   //単語(識別子)
-  var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_num2 + pat_comment_block_start + pat_comment_block_end + "]";
-  var pat_word2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_space2 + pat_comment_block_start + pat_comment_block_end + "]";
+  var pat_word1 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_num2 + "]";
+  var pat_word2 = "[^" + pat_josi2 + pat_kakko2 + pat_symbol2 + pat_CRLF2 + pat_space2 + "]";
   this.word = new RegExp("^" + pat_word1 + pat_word2 + "*");
   
   // その他
@@ -92,6 +83,14 @@ soramame.prototype.yylex = function(){
       line = this.source.substring(0, p);
     }
   }
+
+  
+/*   // 1文を取り出す
+  var line = this.source;
+  var p = line.match(this.CRLF3);
+  if (p != null) {
+	line = line.substring(0, p[0].index);
+  } */
 
   //行コメント
   p = line.match(this.comment_line);
