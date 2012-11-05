@@ -13,7 +13,10 @@
 
   //行コメント
   this.comment_line = new RegExp("^\/\/");
-  
+ 
+  //ブロックコメント
+  this.comment_block = new RegExp("^\/[\*]");
+ 
   //予約語 - 登録時は、parse.jsy も修正すること
 　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく";
   this.yoyaku = new RegExp(pat_yoyaku);
@@ -94,6 +97,18 @@ soramame.prototype.yylex = function(){
 
   //行コメント
   p = line.match(this.comment_line);
+  if (p != null) {
+    var index = line.indexOf("\n");
+	if (index != "-1") {
+		line = line.substr(0, index);
+	}
+	this.source = this.source.substr(line.length);
+	this.yylval= line + "";
+	return COMMENT;
+  }
+
+  //ブロックコメント
+  p = line.match(this.comment_block);
   if (p != null) {
     var index = line.indexOf("\n");
 	if (index != "-1") {
