@@ -14,9 +14,12 @@
   //行コメント
   this.comment_line = new RegExp("^\/\/");
  
-  //ブロックコメント
+  //ブロックコメント - 開始
   this.comment_block = new RegExp("^\/[\*]");
  
+   //ブロックコメント - 終了
+  this.comment_block_end = new RegExp("^[\*]\/[\s　]+$");
+  
   //予約語 - 登録時は、parse.jsy も修正すること
 　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく";
   this.yoyaku = new RegExp(pat_yoyaku);
@@ -58,6 +61,7 @@
 
 soramame.prototype.yylex = function(){
   var retval = WORD;
+  var comment_blk_flag = false;
 
     // 文の終端を読み飛ばす
   while(this.isCRLF(this.source.charAt(0))){
@@ -114,7 +118,14 @@ soramame.prototype.yylex = function(){
 	if (index != "-1") {
 		line = line.substr(0, index);
 	}
-	this.source = this.source.substr(line.length);
+	
+	//取り出した1行の末尾に「*/」があるか
+	p = line.match(this.comment_block_end);
+	if (p == null) {
+		comment_blk_flag = true;
+	}
+	
+	this.source = this.source.substr(line.length);	
 	this.yylval= line + "";
 	return COMMENT;
   }
