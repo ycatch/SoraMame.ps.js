@@ -19,7 +19,7 @@
  
    //ブロックコメント - 終了
   this.comment_block_end = new RegExp("[\*]\/");
-  
+ 
   //予約語 - 登録時は、parse.jsy も修正すること
 　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく";
   this.yoyaku = new RegExp(pat_yoyaku);
