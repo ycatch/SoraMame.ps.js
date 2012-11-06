@@ -18,7 +18,7 @@
   this.comment_block = new RegExp("^\/[\*]");
  
    //ブロックコメント - 終了
-  this.comment_block_end = new RegExp("^[\*]\/[\s　]+$");
+  this.comment_block_end = new RegExp("[\*]\/");
   
   //予約語 - 登録時は、parse.jsy も修正すること
 　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく";
@@ -56,12 +56,12 @@
   this.yylval;
   this.Escreen = document.getElementById("screen");
   this.debug_clean();
+  this.comment_blk_flag = false;
 }
 
 
 soramame.prototype.yylex = function(){
   var retval = WORD;
-  var comment_blk_flag = false;
 
     // 文の終端を読み飛ばす
   while(this.isCRLF(this.source.charAt(0))){
@@ -104,9 +104,9 @@ soramame.prototype.yylex = function(){
   if (p != null) {
     var index = line.indexOf("\n");
 	if (index != "-1") {
-		line = line.substr(0, index);
+		line = line.substring(0, index);
 	}
-	this.source = this.source.substr(line.length);
+	this.source = this.source.substring(line.length);
 	this.yylval= line + "";
 	return COMMENT;
   }
@@ -116,16 +116,33 @@ soramame.prototype.yylex = function(){
   if (p != null) {
     var index = line.indexOf("\n");
 	if (index != "-1") {
-		line = line.substr(0, index);
+		line = line.substring(0, index);
 	}
 	
-	//取り出した1行の末尾に「*/」があるか
+	//取り出した1行に、コメント終端がなければブロック開始
 	p = line.match(this.comment_block_end);
 	if (p == null) {
-		comment_blk_flag = true;
+		this.comment_blk_flag = true;
 	}
 	
-	this.source = this.source.substr(line.length);	
+	this.source = this.source.substring(line.length);	
+	this.yylval= line + "";
+	return COMMENT;
+  }
+  
+  //ブロックコメント - 継続
+  if (this.comment_blk_flag == true) {
+    var index = line.indexOf("\n");
+	if (index != "-1") {
+		line = line.substring(0, index);
+	}
+	
+  	//取り出した1行の末尾に、コメント終端があればブロック終了
+	p = line.match(this.comment_block_end);
+	if (p != null) {
+		this.comment_blk_flag = false;
+	}
+	this.source = this.source.substring(line.length);	
 	this.yylval= line + "";
 	return COMMENT;
   }
