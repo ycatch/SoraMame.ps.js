@@ -24,14 +24,22 @@
   <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	<textarea id="source" cols="80" rows="20">
-//画像を表示
+//マウスに合わせて画像を動かす
 /* @pjs preload="sora-mame.png"; */
 
-{幅:300, 高さ:300}のサイズ
-
 @豆AはPイメージ型
-@豆A = {ファイル:「sora-mame.png」}でイメージ読み込みする
-{対象:@豆A, X:0, Y:0}でイメージ表示する
+
+---初期設定する{
+  {幅:300, 高さ:300}のサイズ
+  @豆A = {ファイル:「sora-mame.png」}でイメージ読み込みする
+}
+
+---くり返し描画する{
+  {色:255}の背景色
+  {対象:@豆A}で{幅:@幅 - @マウスX, 高さ:@マウスY}にイメージ表示する
+  {対象:@豆A}で{幅:@マウスX, 高さ:@高さ - @マウスY}にイメージ表示する
+  {対象:@豆A}で{幅:@幅 - @マウスX, 高さ:@高さ - @マウスY}にイメージ表示する
+}
 </textarea><br />
 	<input type="button" value="わける" onclick="soramame_lex()" />
 	<input type="button" value="へんかん" onclick="soramame_parse()" />
