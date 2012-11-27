@@ -35,12 +35,27 @@ function lib_dic() {
 	円弧 : 'arc',
 	四辺形 : 'quad',
 
+	//3D Primitives
+	ハコ : 'box',
+
 	//attributes
 	輪郭幅 : 'strokeWeight',
 
 	//Input - Mouse 
 	クリック時 : 'mouseClicked',
 	ドラッグ時 : 'mouseDragged',
+
+	//Transform
+	回転する : 'rotate',
+	x回転する : 'rotateX',
+	y回転する : 'rotateY',
+	z回転する : 'rotateZ',
+	X回転する : 'rotateX',
+	Y回転する : 'rotateY',
+	Z回転する : 'rotateZ',
+	座標移動する : 'translate',
+	座標覚える : 'pushMatrix',
+	座標もどす : 'popMatrix',
 
 	//Color
 	//setting
@@ -99,6 +114,9 @@ function lib_dic() {
 	マウスY : 'mouseY',
 	マウスx : 'mouseX',
 	マウスy : 'mouseY',
+	
+	//Display Mode
+	P3D : 'P3D',
 
 	//定数 - Constants
 	PI : 'PI',
