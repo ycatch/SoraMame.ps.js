@@ -42,7 +42,7 @@
   this.num_hex = new RegExp("^" + par_num_hex);
  
  　// 記号
-  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@!&|<>\.,:＝＋－×＊÷／％＾（）［］｛｝．、：＠！＆｜＜＞";
+  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@!&|<>\.,\$:＝＋－×＊÷／％＾（）［］｛｝．、：＠！＆｜＜＞＄";
   
   // 空白
   var pat_space2 = " 　"
@@ -336,6 +336,7 @@ soramame.prototype.issymbol = function(c){
   case "|":
   case "<":
   case ">":
+  case "$":
     return c;
 
   case "＝":
@@ -361,6 +362,7 @@ soramame.prototype.issymbol = function(c){
   case "｜":
   case "＜":
   case "＞":
+  case "＄":
   return this.zen2han(c);
   }
 
@@ -375,8 +377,8 @@ soramame.prototype.issymbol = function(c){
 
 
 soramame.prototype.zen2han = function(c){
-  var hankaku = "0123456789=+-**//%^()[]{}.,:@!&|<>";
-  var zenkaku = "０１２３４５６７８９＝＋－×＊÷／％＾（）［］｛｝．、：＠！＆｜＜＞";
+  var hankaku = "0123456789=+-**//%^()[]{}.,:@!&|<>$";
+  var zenkaku = "０１２３４５６７８９＝＋－×＊÷／％＾（）［］｛｝．、：＠！＆｜＜＞＄";
   return hankaku.charAt(zenkaku.indexOf(c));
 }
 
