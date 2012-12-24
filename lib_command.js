@@ -64,6 +64,7 @@ function lib_dic() {
 	輪郭なし : 'noStroke',
 	塗りつぶし色 : 'fill',
 	塗りつぶしなし : 'noFill',
+	色モード : 'colorMode',
 	
 	//Creating & Reading
 	色指定する : 'color',
@@ -116,7 +117,12 @@ function lib_dic() {
 	マウスy : 'mouseY',
 	
 	//Display Mode
+	P2D : 'P2D',
 	P3D : 'P3D',
+	
+	//Color Mode
+	RGB	: 'RGB',
+	HSB : 'HSB',
 
 	//定数 - Constants
 	PI : 'PI',

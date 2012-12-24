@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Basic Sample - SoraMame Script</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="../../styles/css/bootstrap.min.css">
+	<style>
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+	</style>
+	<link rel="stylesheet" href="../../styles/css/bootstrap-responsive.min.css">
+
+	<script src="./../../styles/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+
+	<script type="text/javascript" src="../../processing-1.4.1.js"></script>
+	<script type="text/javascript" src="../../parse.js"></script>
+	<script type="text/javascript" src="../../lib_command.js"></script>
+	<script type="text/javascript" src="../../soramame.js"></script>
+</head>
+
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+ 				<a class="brand" href="#">Basic Sample #32</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="http://www.catch.jp/wiki/?SoraMame.ps.js" target="_blannk">公式Web</a></li>
+						<li><a href="http://www.catch.jp/wiki/?SoraMame.ps.js%2FSamples" target="_blannk">Samples</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<!-- Example row of columns -->
+		<div class="row-fluid">
+			<div class="span5">
+				<canvas id="canvas0" width="310px" height="310px" style="border:dotted 1px lightgray"></canvas> 
+			</div>
+			<div class="span7">
+			<form name="compiledtext" id="compiledtext" onsubmit="return main()">
+				<div class="btn-group">
+					<button class="btn btn-small" type="button" onclick="soramame_exec()"><i class="icon-play" style="margin-top: 1px;"></i> うごかす</button>
+					<button class="btn btn-small" type="button" onclick="soramame_stop()"><i class="icon-stop" style="margin-top: 1px;"></i> とめる</button>
+					<button class="btn btn-small" type="button" onclick="soramame_lex()" >わける</button>
+					<button class="btn btn-small" type="button" onclick="soramame_parse()" >へんかん</button>
+				</div>
+				<textarea id="source" class="input-xxlarge" rows="10">
+//マウスに合わせて、マルを描く（色相-彩度-明度で色指定）
+//マウスの位置にマルを描く
+---初期設定する{
+  {幅:300, 高さ:300}のサイズ
+  {指定:$HSB, 範囲:255}の色モード
+  {色:255}の背景色
+  輪郭なし
+}
+
+---くり返し描画する{
+  {色相:(@マウスX / @幅 * 255 + 1), 彩度:255, 明度:255, 透明:100}の塗りつぶし色
+  {x:@マウスX, y:@マウスY}に{幅:50, 高さ:50}のマル
+}
+			</textarea>
+			</form>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<h2>変換コード</h2>
+				<pre id="screen"></pre>
+				<div id="result"></div>
+		   </div>
+		</div>
+		<footer>
+			<p>&copy; Yutaka Kachi 2012</p>
+		</footer>
+	</div>
+</body>
+
+</html>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../styles/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+<script src="../../styles/js/vendor/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+<!--
+var sora;
+var yylval = '';
+var Pjs;
+var lib_dic = new lib_dic();	//コマンド置換辞書
+
+function soramame_exec(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  var script = yyparse();
+  sora.debug(script);
+
+  soramame_stop();
+　　var canvas = document.getElementById('canvas0');
+  try{
+    Pjs = new Processing(canvas, script);
+  }catch(e){
+    alert(e);
+  }
+　　return false;
+}
+
+function soramame_stop(){
+    if (Pjs)
+      Pjs.exit();
+}
+
+
+function soramame_lex(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+
+  var type;
+  var retval;
+  var i = 0;
+  while(retval = yylex()){
+    switch(retval){
+	case COMMENT:
+      type = "COMMENT";
+      break;
+    case NUMBER:
+      type = "NUMBER";
+      break;
+    case STRING:
+      type = "STRING";
+      break;
+	case DEF_FUNC:
+      type = "DEF_FUNC";
+      break;
+	case DEF_CLASS:
+      type = "DEF_CLASS";
+      break;
+	case DEF_CLASS_INIT:
+      type = "DEF_CLASS_INIT";
+      break;
+	case IF:
+      type = "IF";
+      break;
+	case THEN:
+      type = "THEN";
+      break;
+	case ELSE:
+      type = "ELSE";
+      break;
+	case LOOP:
+      type = "LOOP";
+      break;
+	case NEW:
+      type = "NEW";
+      break;
+	case JOSI:
+      type = "JOSI";
+      break;
+	case JOSI_HA:
+      type = "JOSI_HA";
+      break;
+	case JOSI_NO:
+      type = "JOSI_NO";
+      break;
+	case JOSI_WO:
+      type = "JOSI_WO";
+      break;
+    case WORD:
+      type = "WORD";
+      break;
+    default:
+      type = retval;
+      break;
+    }
+    sora.debug(type+": "+yylval);
+    if(i++ > 1000){
+      break;
+    }
+  }
+}
+
+
+function yylex(){
+  var retval = sora.yylex();
+  yylval = sora.yylval;
+  return retval;
+}
+
+
+function yyerror(str){
+  sora.debug(str);
+}
+
+function soramame_parse(){
+  var Esource = document.getElementById("source");
+  sora = new soramame(Esource.value);
+  var script = yyparse();
+  sora.debug(script);
+}
+
+//-->
+</script>
+
