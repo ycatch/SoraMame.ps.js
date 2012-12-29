@@ -25,8 +25,8 @@
   this.yoyaku = new RegExp(pat_yoyaku);
   
   // 助詞  
-  var pat_josi = "[はのをとにで]";	//助詞の判定用
-  var pat_josi2 = "はのをとにで";	//助詞以外の判定用
+  var pat_josi = "[はのをとにで、]";	//助詞の判定用
+  var pat_josi2 = "はのをとにで、";	//助詞以外の判定用
   this.josi = new RegExp("^" + pat_josi);
 
   // 文字列リテラル
@@ -42,7 +42,7 @@
   this.num_hex = new RegExp("^" + par_num_hex);
  
  　// 記号
-  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@!&|<>\.,\$:＝＋－×＊÷／％＾（）［］｛｝．、：＠！＆｜＜＞＄";
+  var pat_symbol2 = "\*=\+\-\/%^\(\)\[\\]{}@!&|<>\.,\$:＝＋－×＊÷／％＾（）［］｛｝．：＠！＆｜＜＞＄";
   
   // 空白
   var pat_space2 = " 　"
@@ -214,12 +214,15 @@ soramame.prototype.yylex = function(){
 		case 'は':
 			yoyaku_token = JOSI_HA;
 			break;
+		case '、':
+			yoyaku_token = JOSI_TEN;
+			break;
 		/*case 'の':
 			yoyaku_token = JOSI_NO;
 			break; */
-		case 'を':
+		/*case 'を':
 			yoyaku_token = JOSI_WO;
-			break;
+			break; */
 		default:
 			yoyaku_token = JOSI;
 			break;
@@ -354,7 +357,7 @@ soramame.prototype.issymbol = function(c){
   case "］":
   case "｛":
   case "｝":
-  case "、":
+  /*case "、": */
   case "：":
   case "＠":
   case "！":

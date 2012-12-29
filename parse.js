@@ -18,15 +18,16 @@ var JOSI = 261;
 var JOSI_HA = 262;
 var JOSI_NO = 263;
 var JOSI_WO = 264;
-var DEF_FUNC = 265;
-var DEF_CLASS = 266;
-var DEF_CLASS_INIT = 267;
-var IF = 268;
-var THEN = 269;
-var ELSE = 270;
-var LOOP = 271;
-var NEW = 272;
-var UMINUS = 273;
+var JOSI_TEN = 265;
+var DEF_FUNC = 266;
+var DEF_CLASS = 267;
+var DEF_CLASS_INIT = 268;
+var IF = 269;
+var THEN = 270;
+var ELSE = 271;
+var LOOP = 272;
+var NEW = 273;
+var UMINUS = 274;
 
   
 /*
@@ -102,12 +103,12 @@ var yytranslate = [
      38,   38,   38,   38,   38,   38,   38,   38,   38,   38,
      38,   38,   38,   38,   38,   38,   38,   38,   38,   38,
      38,   38,   38,   38,   38,   38,    1,    2,    3,    4,
-      5,    6,    7,   38,    8,    9,   10,   11,   12,   13,
-     14,   15,   16,   38
+      5,    6,    7,   38,    8,   38,    9,   10,   11,   12,
+     13,   14,   15,   16,   38
   ];
 
 var YYBADCH = 38;
-var YYMAXLEX = 274;
+var YYMAXLEX = 275;
 var YYTERMS = 38;
 var YYNONTERMS = 20;
 
