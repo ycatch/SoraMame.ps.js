@@ -5,9 +5,6 @@ Bootstrap v2.1.1
  Licensed under the Apache License v2.0
  http://www.apache.org/licenses/LICENSE-2.0
 
-ExplorerCanvas
- Copyright 2006 Google Inc.
-
 Processing.js
  Copyright (C) 2008 John Resig
  Copyright (C) 2009-2011; see the AUTHORS file for authors and copyright holders.
