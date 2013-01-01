@@ -46,28 +46,28 @@ def_variable : variable {$$ = $1 + ';';}
 def_function : DEF_FUNC WORD '{' stmt_list '}'
 			{$$ = 'void ' + lib_dic.get_comm($2,'') + '{\n' + $4 + '}';}
 		|DEF_FUNC WORD JOSI_HA WORD '{' stmt_list '}'
-			{$$ = lib_dic.get_types($4,'') + ' ' + lib_dic.get_comm($2,'') + '{\n' + $6 + '}';}
+			{$$ = lib_dic.get_types($4) + ' ' + lib_dic.get_comm($2,'') + '{\n' + $6 + '}';}
 		|DEF_FUNC args WORD '{' stmt_list '}'
 			{$$ = 'void ' + lib_dic.get_comm($3,$2) + '{\n' + $5 + '}';}
 		|DEF_FUNC args WORD JOSI_HA WORD '{' stmt_list '}'
-			{$$ = lib_dic.get_types($5,'') + ' ' + lib_dic.get_comm($3,$2) + '{\n' + $7 + '}';}
+			{$$ = lib_dic.get_types($5) + ' ' + lib_dic.get_comm($3,$2) + '{\n' + $7 + '}';}
 		;
 
 def_class : DEF_CLASS WORD '{' stmt_list '}'
-			{$$ = 'class ' + lib_dic.get_types($2,'') + '{\n' + $4 + '}';}
+			{$$ = 'class ' + lib_dic.get_types($2) + '{\n' + $4 + '}';}
 		;
 
 def_class_init : DEF_CLASS_INIT WORD '{' stmt_list '}'
-			{$$ = lib_dic.get_types($2,'') + '()' + ' {\n' + $4 + '}';}
+			{$$ = lib_dic.get_types($2) + '()' + ' {\n' + $4 + '}';}
 		|DEF_CLASS_INIT args WORD '{' stmt_list '}'
-			{$$ = lib_dic.get_types($3,'') + '(' + $2 + ') ' + '{\n' + $5 + '}';}
+			{$$ = lib_dic.get_types($3) + '(' + $2 + ') ' + '{\n' + $5 + '}';}
 		;
 
-new_class : variable '=' NEW WORD { $$ = $1 + ' = new ' + lib_dic.get_types($4,'') + '();'; }
+new_class : variable '=' NEW WORD { $$ = $1 + ' = new ' + lib_dic.get_types($4) + '();'; }
 		| variable '=' NEW args WORD
-			{$$ = $1 + ' = new ' + lib_dic.get_types($5,'') + '(' + $4 + ');'; }
-		|  variable '=' NEW WORD '[' expr ']' 
-			{ $$ = $1 + ' = new ' + lib_dic.get_types($4,'') + '[' + $6 + '];'; }
+			{$$ = $1 + ' = new ' + lib_dic.get_types($5) + '(' + $4 + ');'; }
+		| variable '=' NEW WORD '[' expr ']' 
+			{ $$ = $1 + ' = new ' + lib_dic.get_types($4) + '[' + $6 + '];'; }
 		;
 
 if_stmt : IF '{' phrase_part '}' THEN '{' stmt_list '}'
@@ -123,8 +123,8 @@ expr : expr '+' expr { $$ = $1 + '+' + $3; }
 variable : '@' WORD {$$ = lib_dic.get_vars($2, '');}
 		| '$' WORD {$$ = lib_dic.get_vars($2, '');}
 		| '@' WORD JOSI_HA WORD 
-			{$$ = lib_dic.get_types($4, '') + " " + lib_dic.get_vars($2, '');
-			 lib_dic.set_vars_type(lib_dic.get_vars($2, ''), lib_dic.get_types($4, ''));}
+			{$$ = lib_dic.get_types($4) + " " + lib_dic.get_vars($2, '');
+			 lib_dic.set_vars_type(lib_dic.get_vars($2, ''), lib_dic.get_types($4));}
 		| '@' WORD JOSI '@' WORD 
 			{$$ = lib_dic.get_vars($2, '') + "." + lib_dic.get_property(lib_dic.get_vars($2, ''), $5);}
 		| '@' WORD '[' expr ']' {$$ = lib_dic.get_vars($2, '') + '[' + $4 + ']';}
@@ -132,8 +132,8 @@ variable : '@' WORD {$$ = lib_dic.get_vars($2, '');}
 			{$$ = lib_dic.get_vars($2, '') + '[' + $4 + ']' 
 			 + "." + lib_dic.get_property(lib_dic.get_vars($2, ''), $8);}
 		| '@' WORD JOSI_HA WORD '[' ']' 
-			{$$ = lib_dic.get_types($4, '') + '[] ' + lib_dic.get_vars($2, '');
-			 lib_dic.set_vars_type(lib_dic.get_vars($2, ''), lib_dic.get_types($4, ''))}
+			{$$ = lib_dic.get_types($4) + '[] ' + lib_dic.get_vars($2, '');
+			 lib_dic.set_vars_type(lib_dic.get_vars($2, ''), lib_dic.get_types($4))}
 		;
 
 primary : NUMBER

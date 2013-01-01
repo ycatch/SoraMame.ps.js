@@ -203,7 +203,7 @@ lib_dic.prototype.get_vars = function(str, arg){
 	return msg;
 }
 
-lib_dic.prototype.get_types= function(str, arg){
+lib_dic.prototype.get_types= function(str){
 	var msg;
     if ( this.types[str] === undefined ) {
 		this.types[str] = "type_" + this.type_num;

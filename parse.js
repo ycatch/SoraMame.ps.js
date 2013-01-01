@@ -370,23 +370,23 @@ function yyparse()
         case 24:
 {yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
         case 25:
-{yyval = lib_dic.get_types(yyastk[yysp-(7-4)],'') + ' ' + lib_dic.get_comm(yyastk[yysp-(7-2)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(7-4)]) + ' ' + lib_dic.get_comm(yyastk[yysp-(7-2)],'') + '{\n' + yyastk[yysp-(7-6)] + '}';} break;
         case 26:
 {yyval = 'void ' + lib_dic.get_comm(yyastk[yysp-(6-3)],yyastk[yysp-(6-2)]) + '{\n' + yyastk[yysp-(6-5)] + '}';} break;
         case 27:
-{yyval = lib_dic.get_types(yyastk[yysp-(8-5)],'') + ' ' + lib_dic.get_comm(yyastk[yysp-(8-3)],yyastk[yysp-(8-2)]) + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(8-5)]) + ' ' + lib_dic.get_comm(yyastk[yysp-(8-3)],yyastk[yysp-(8-2)]) + '{\n' + yyastk[yysp-(8-7)] + '}';} break;
         case 28:
-{yyval = 'class ' + lib_dic.get_types(yyastk[yysp-(5-2)],'') + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
+{yyval = 'class ' + lib_dic.get_types(yyastk[yysp-(5-2)]) + '{\n' + yyastk[yysp-(5-4)] + '}';} break;
         case 29:
-{yyval = lib_dic.get_types(yyastk[yysp-(5-2)],'') + '()' + ' {\n' + yyastk[yysp-(5-4)] + '}';} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(5-2)]) + '()' + ' {\n' + yyastk[yysp-(5-4)] + '}';} break;
         case 30:
-{yyval = lib_dic.get_types(yyastk[yysp-(6-3)],'') + '(' + yyastk[yysp-(6-2)] + ') ' + '{\n' + yyastk[yysp-(6-5)] + '}';} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(6-3)]) + '(' + yyastk[yysp-(6-2)] + ') ' + '{\n' + yyastk[yysp-(6-5)] + '}';} break;
         case 31:
-{ yyval = yyastk[yysp-(4-1)] + ' = new ' + lib_dic.get_types(yyastk[yysp-(4-4)],'') + '();'; } break;
+{ yyval = yyastk[yysp-(4-1)] + ' = new ' + lib_dic.get_types(yyastk[yysp-(4-4)]) + '();'; } break;
         case 32:
-{yyval = yyastk[yysp-(5-1)] + ' = new ' + lib_dic.get_types(yyastk[yysp-(5-5)],'') + '(' + yyastk[yysp-(5-4)] + ');'; } break;
+{yyval = yyastk[yysp-(5-1)] + ' = new ' + lib_dic.get_types(yyastk[yysp-(5-5)]) + '(' + yyastk[yysp-(5-4)] + ');'; } break;
         case 33:
-{ yyval = yyastk[yysp-(7-1)] + ' = new ' + lib_dic.get_types(yyastk[yysp-(7-4)],'') + '[' + yyastk[yysp-(7-6)] + '];'; } break;
+{ yyval = yyastk[yysp-(7-1)] + ' = new ' + lib_dic.get_types(yyastk[yysp-(7-4)]) + '[' + yyastk[yysp-(7-6)] + '];'; } break;
         case 34:
 {yyval = lib_dic.get_comm(yyastk[yysp-(8-1)],yyastk[yysp-(8-3)]) + ' {\n' + yyastk[yysp-(8-7)] + '}'; } break;
         case 35:
@@ -444,8 +444,8 @@ function yyparse()
         case 65:
 {yyval = lib_dic.get_vars(yyastk[yysp-(2-2)], '');} break;
         case 66:
-{yyval = lib_dic.get_types(yyastk[yysp-(4-4)], '') + " " + lib_dic.get_vars(yyastk[yysp-(4-2)], '');
-			 lib_dic.set_vars_type(lib_dic.get_vars(yyastk[yysp-(4-2)], ''), lib_dic.get_types(yyastk[yysp-(4-4)], ''));} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(4-4)]) + " " + lib_dic.get_vars(yyastk[yysp-(4-2)], '');
+			 lib_dic.set_vars_type(lib_dic.get_vars(yyastk[yysp-(4-2)], ''), lib_dic.get_types(yyastk[yysp-(4-4)]));} break;
         case 67:
 {yyval = lib_dic.get_vars(yyastk[yysp-(5-2)], '') + "." + lib_dic.get_property(lib_dic.get_vars(yyastk[yysp-(5-2)], ''), yyastk[yysp-(5-5)]);} break;
         case 68:
@@ -454,8 +454,8 @@ function yyparse()
 {yyval = lib_dic.get_vars(yyastk[yysp-(8-2)], '') + '[' + yyastk[yysp-(8-4)] + ']' 
 			 + "." + lib_dic.get_property(lib_dic.get_vars(yyastk[yysp-(8-2)], ''), yyastk[yysp-(8-8)]);} break;
         case 70:
-{yyval = lib_dic.get_types(yyastk[yysp-(6-4)], '') + '[] ' + lib_dic.get_vars(yyastk[yysp-(6-2)], '');
-			 lib_dic.set_vars_type(lib_dic.get_vars(yyastk[yysp-(6-2)], ''), lib_dic.get_types(yyastk[yysp-(6-4)], ''))} break;
+{yyval = lib_dic.get_types(yyastk[yysp-(6-4)]) + '[] ' + lib_dic.get_vars(yyastk[yysp-(6-2)], '');
+			 lib_dic.set_vars_type(lib_dic.get_vars(yyastk[yysp-(6-2)], ''), lib_dic.get_types(yyastk[yysp-(6-4)]))} break;
         }
         /* Goto - shift nonterminal */
         yysp -= yyl;
