@@ -174,9 +174,9 @@ function lib_dic() {
 	//test
 	test : '//type_property'};
 	
-	//変換候補データ
-	//変数名-データ型
-	this.vars_type = {
+  //変換候補データ
+  //変数名-データ型
+  this.vars_type = {
 	
 	//test
 	test : '//vars_type'};
