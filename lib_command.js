@@ -192,7 +192,7 @@ lib_dic.prototype.get_comm = function(str, arg){
 	return msg;
 }
 
-lib_dic.prototype.get_vars = function(str, arg){
+lib_dic.prototype.get_vars = function(str){
 	var msg;
     if ( this.vars[str] === undefined ) {
 		//msg = str;
