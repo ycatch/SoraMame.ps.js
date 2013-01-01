@@ -234,7 +234,7 @@ lib_dic.prototype.get_property = function(vars_name, property){
 lib_dic.prototype.get_method = function(vars_name, method, args){
 	var msg;
     if ( this.vars_type[vars_name] === undefined ) {
-		msg = lib_dic.get_comm(method, '');
+		msg = lib_dic.get_comm(method, args);
 	} else {
 		var keyword = this.vars_type[vars_name] + '_' + method;
 		msg = this.type_property[keyword] + '(' + args + ')';
