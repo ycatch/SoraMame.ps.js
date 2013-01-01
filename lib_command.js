@@ -223,7 +223,7 @@ lib_dic.prototype.set_vars_type = function(vars_name, type_name){
 lib_dic.prototype.get_property = function(vars_name, property){
 	var msg;
     if ( this.vars_type[vars_name] === undefined ) {
-		msg = lib_dic.get_vars(property, '');
+		msg = lib_dic.get_vars(property);
 	} else {
 		var keyword = this.vars_type[vars_name] + '_' + property;
 		msg = this.type_property[keyword];
