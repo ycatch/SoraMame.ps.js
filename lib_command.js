@@ -145,6 +145,7 @@ function lib_dic() {
 	カラー型 : 'color',
 	
 	//Composite
+	配列リスト型 : 'ArrayList',
 	文字列型 : 'String',
 
 	//Image
@@ -159,9 +160,16 @@ function lib_dic() {
 	//test
 	test : 'types'};
 	
-	//変換候補データ
-	//データ型-プロパティ 
-	this.type_property = {
+  //変換候補データ ：データ型-プロパティ 
+  //(プロパティとメソッドを持つ)組み込みオブジェクトか判別可能にする(先頭のオブジェクト名は、判別用)
+  this.type_property = {
+
+  //Composite
+	ArrayList : '',
+	ArrayList_サイズ : 'size',
+	ArrayList_足す : 'add',
+	ArrayList_消す : 'remove',
+	ArrayList_取りだし : 'get',
 	
 	//Math
 	PVector : '',
@@ -213,6 +221,10 @@ lib_dic.prototype.get_types= function(str){
 	return msg;
 }
 
+//(プロパティとメソッドを持つ)組み込みオブジェクトか判別して、
+//該当するなら、変数名とデータ型の対応を追加登録する
+//vars_name =　変数名(変換先)
+//type_name = データ型名(変換先)
 lib_dic.prototype.set_vars_type = function(vars_name, type_name){
     if ( this.type_property[type_name] != undefined ) {
 		this.vars_type[vars_name] = type_name;
