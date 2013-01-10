@@ -21,7 +21,7 @@
   this.comment_block_end = new RegExp("[\*]\/");
  
   //予約語 - 登録時は、parse.jsy も修正すること
-　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく";
+　　var pat_yoyaku = "^---|^===|^[\+]{3}|^もし|^ならば|^ちがえば|^あいだ|^くりかえし|^新しい|^新しく|^もどる";
   this.yoyaku = new RegExp(pat_yoyaku);
   
   // 助詞  
@@ -198,6 +198,9 @@ soramame.prototype.yylex = function(){
 			break;
 		case '新しく':
 			yoyaku_token = NEW;
+			break;
+		case 'もどる':
+			yoyaku_token = RET;
 			break;
 		}
 	return yoyaku_token;

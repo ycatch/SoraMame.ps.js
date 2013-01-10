@@ -25,7 +25,8 @@ var THEN = 268;
 var ELSE = 269;
 var LOOP = 270;
 var NEW = 271;
-var UMINUS = 272;
+var RET = 272;
+var UMINUS = 273;
 
   
 /*
@@ -102,11 +103,11 @@ var yytranslate = [
      38,   38,   38,   38,   38,   38,   38,   38,   38,   38,
      38,   38,   38,   38,   38,   38,    1,    2,    3,    4,
       5,    6,    7,    8,    9,   10,   11,   12,   13,   14,
-     15,   16,   38
+     15,   16,   38,   38
   ];
 
 var YYBADCH = 38;
-var YYMAXLEX = 273;
+var YYMAXLEX = 274;
 var YYTERMS = 38;
 var YYNONTERMS = 20;
 

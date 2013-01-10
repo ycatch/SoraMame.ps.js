@@ -1,7 +1,7 @@
 %token NUMBER STRING WORD COMMENT
 %token JOSI JOSI_HA JOSI_TEN
 %token DEF_FUNC DEF_CLASS DEF_CLASS_INIT
-%token IF THEN ELSE LOOP NEW
+%token IF THEN ELSE LOOP NEW RET
 %left '+' '-'
 %left '*' '/' '%'
 %left '&' '|'
