@@ -16,7 +16,7 @@
 	</style>
 	<link rel="stylesheet" href="../../styles/css/bootstrap-responsive.min.css">
 
-	<script src="./../../styles/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+	<script src="../../styles/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 	<script type="text/javascript" src="../../processing-1.4.1.js"></script>
 	<script type="text/javascript" src="../../parse.js"></script>
@@ -228,18 +228,21 @@ function soramame_lex(){
 	case NEW:
       type = "NEW";
       break;
+	case RET:
+      type = "RET";
+      break;
 	case JOSI:
       type = "JOSI";
       break;
 	case JOSI_HA:
       type = "JOSI_HA";
       break;
-	case JOSI_NO:
+	/* case JOSI_NO:
       type = "JOSI_NO";
-      break;
-	case JOSI_WO:
+      break; */
+	/* case JOSI_WO:
       type = "JOSI_WO";
-      break;
+      break; */
     case WORD:
       type = "WORD";
       break;

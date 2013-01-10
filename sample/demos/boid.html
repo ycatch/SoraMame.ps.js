@@ -329,6 +329,9 @@ function soramame_lex(){
 	case NEW:
       type = "NEW";
       break;
+	case RET:
+      type = "RET";
+      break;
 	case JOSI:
       type = "JOSI";
       break;
@@ -338,12 +341,12 @@ function soramame_lex(){
 	case JOSI_TEN:
       type = "JOSI_TEN";
       break;
-	case JOSI_NO:
+	/* case JOSI_NO:
       type = "JOSI_NO";
-      break;
-	case JOSI_WO:
+      break; */
+	/* case JOSI_WO:
       type = "JOSI_WO";
-      break;
+      break; */
     case WORD:
       type = "WORD";
       break;
@@ -352,7 +355,7 @@ function soramame_lex(){
       break;
     }
     sora.debug(type+": "+yylval);
-    if(i++ > 300){
+    if(i++ > 1000){
       break;
     }
   }
